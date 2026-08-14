@@ -1,1 +1,9 @@
-// TODO: Add styles as per the requirement
+/*SCSS entrypoint*/
+
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+@use 'base/reset';
+@use 'base/base';
+
+@use 'components/button';

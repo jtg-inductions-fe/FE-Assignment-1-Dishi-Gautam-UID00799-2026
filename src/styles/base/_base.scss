@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as *;
+
+body {
+    min-width: 320px;
+    font-family: $font-family-base;
+    background-color: $color-white;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 3px;
+}

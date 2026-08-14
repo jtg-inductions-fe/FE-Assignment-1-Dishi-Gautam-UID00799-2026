@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as *;
+
+.button {
+    padding: 16px 32px;
+    min-height: 49px;
+    border-radius: $radius-pill;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 14px;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.button-primary {
+    background-color: $color-primary;
+    color: $color-button-text;
+}
