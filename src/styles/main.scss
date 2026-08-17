@@ -1,9 +1,6 @@
-/*SCSS entrypoint*/
-
-@use 'abstracts/variables';
-@use 'abstracts/mixins';
+/* SCSS entrypoint */
 
 @use 'base/reset';
 @use 'base/base';
-
 @use 'components/button';
+@use 'components/card';

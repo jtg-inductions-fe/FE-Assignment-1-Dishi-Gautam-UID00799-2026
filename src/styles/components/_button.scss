@@ -1,17 +1,19 @@
-@use '../abstracts/variables' as *;
+@use '../abstracts' as abstracts;
 
 .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 16px 32px;
     min-height: 49px;
-    border-radius: $radius-pill;
     border: none;
+    border-radius: abstracts.$radius-pill;
+    font-family: abstracts.$font-family-heading;
     cursor: pointer;
-    text-decoration: none;
-    font-weight: 14px;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: abstracts.$shadow-button;
 }
 
-.button-primary {
-    background-color: $color-primary;
-    color: $color-button-text;
+.button--primary {
+    background-color: abstracts.$color-primary;
+    color: abstracts.$color-button-text;
 }

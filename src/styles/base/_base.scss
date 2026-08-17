@@ -1,9 +1,8 @@
-@use '../abstracts/variables' as *;
+@use '../abstracts' as abstracts;
 
 body {
-    min-width: 320px;
-    font-family: $font-family-base;
-    background-color: $color-white;
+    min-width: abstracts.$breakpoint-mobile-min;
+    background-color: abstracts.$color-white;
 }
 
 button,
@@ -12,6 +11,6 @@ a {
 }
 
 :focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid abstracts.$color-primary;
     outline-offset: 3px;
 }

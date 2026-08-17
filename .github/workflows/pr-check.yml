@@ -13,9 +13,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout (full history for commit range)
-              uses: actions/checkout@v4
+              uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
               with:
                   fetch-depth: 0
+                  persist-credentials: false
 
             - name: Validate branch name
               env:
@@ -50,24 +51,33 @@ jobs:
                   REGEX="^\[(${STORY_ID})\]: .+"
                   STATUS=0
                   FROM_SHA="$BEFORE_SHA"
+
                   if [ -z "$FROM_SHA" ] \
                     || [ "$FROM_SHA" = "0000000000000000000000000000000000000000" ] \
                     || ! git cat-file -e "$FROM_SHA^{commit}" 2>/dev/null; then
                     FROM_SHA="$BASE_SHA"
                   fi
-                  while IFS= read -r SUBJECT; do
-                    [ -z "$SUBJECT" ] && continue
-                    case "$SUBJECT" in
-                      "Merge branch "*|"Merge pull request "*|"Merge remote-tracking "*) continue ;;
-                    esac
+
+                  while IFS= read -r SHA; do
+                    [ -z "$SHA" ] && continue
+
+                    PARENT_COUNT=$(git rev-list --parents -n 1 "$SHA" | awk '{print NF - 1}')
+
+                    if [ "$PARENT_COUNT" -gt 1 ]; then
+                      continue
+                    fi
+
+                    SUBJECT=$(git log -1 --format=%s "$SHA")
+
                     if ! echo "$SUBJECT" | grep -Eq "$REGEX"; then
                       echo "::error::Invalid commit message: \"$SUBJECT\""
                       STATUS=1
                     fi
-                  done < <(git log --format='%s' "$FROM_SHA".."$HEAD_SHA")
+                  done < <(git log --format='%H' "$FROM_SHA".."$HEAD_SHA")
 
                   if [ "$STATUS" -ne 0 ]; then
                     echo "Each commit must follow: [Story_ID]: <message>  e.g. [AJ_A1_01]: Add header"
                     exit 1
                   fi
+
                   echo "All commit messages OK"

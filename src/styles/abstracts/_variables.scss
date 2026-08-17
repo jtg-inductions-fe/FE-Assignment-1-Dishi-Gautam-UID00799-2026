@@ -1,14 +1,14 @@
-//Breakpoints as per Figma layout
-//Navigation collapses on tablet/phone
-//Desktop uses full width navigation
+// Breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1025px;
+$breakpoint-mobile-min: 320px;
 
+// Container
 $container-max-width: 75rem;
 $container-padding-mobile: 1rem;
 $container-padding-desktop: 2rem;
 
-$breakpoint-desktop: 1025px;
-$breakpoint-tablet: 768px;
-
+// Colors
 $color-white: #ffffff;
 $color-button-text: #eeeeee;
 $color-primary: #5d50c6;
@@ -18,7 +18,18 @@ $color-heading: #191825;
 $color-tab-highlighter: #222831;
 $color-orange: #ff5722;
 $color-foot-highlighter: #191825bf;
+$color-shadow: rgba(0, 0, 0, 0.3);
 
-$font-family-base: 'Roboto', sans-serif;
+// Typography
+$font-family-body: 'Inter', sans-serif;
+$font-family-heading: 'Circular Std', sans-serif;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-size-small: 0.875rem;
 
+// Border radius
 $radius-pill: 999px;
+
+// Shadows
+$shadow-button: 0 0 1px 1px $color-shadow;
