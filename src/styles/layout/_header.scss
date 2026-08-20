@@ -1,17 +1,18 @@
-@use '@styles/abstracts' as abstracts;
+@use 'sass:map';
+@use '@styles/abstracts/variables' as variables;
+@use '@styles/abstracts/mixins' as mixins;
 
 .header {
     position: relative;
     z-index: 100;
     width: 100%;
-    background: abstracts.$color-white;
+    background: variables.$color-white;
 }
 
 .navbar {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     height: 80px;
     box-sizing: border-box;
@@ -22,7 +23,6 @@
     display: block;
     width: 40px;
     height: 40px;
-    margin: 0;
     flex: 0 0 40px;
 }
 
@@ -30,14 +30,10 @@
     display: block;
     width: 40px;
     height: 40px;
-    margin: 0;
     object-fit: contain;
 }
 
-.navbar__links {
-    display: none;
-}
-
+.navbar__links,
 .navbar__actions {
     display: none;
 }
@@ -48,12 +44,12 @@
     justify-content: center;
     width: 48px;
     height: 48px;
-    margin: 0;
+    margin-left: auto;
     padding: 0;
     border: 0;
     border-radius: 10px;
-    background: abstracts.$color-primary;
-    color: abstracts.$color-white;
+    background: variables.$color-primary;
+    color: variables.$color-white;
     appearance: none;
     cursor: pointer;
     flex: 0 0 48px;
@@ -70,21 +66,21 @@
     line-height: 1;
 }
 
-@media (min-width: abstracts.$breakpoint-tablet) and (max-width: 1024px) {
+@include mixins.breakpoint(tablet) {
     .navbar {
-        height: 80px;
         padding: 16px 32px;
     }
 
     .navbar__logo {
         position: absolute;
-        left: 50%;
         top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
     }
 
     .navbar__menu {
         order: -1;
+        margin-left: 0;
     }
 
     .navbar__actions {
@@ -95,10 +91,10 @@
     }
 
     .navbar__login {
-        color: abstracts.$color-heading;
-        font-family: abstracts.$font-family-body;
+        color: variables.$color-heading;
+        font-family: variables.$font-family-body;
         font-size: 14px;
-        font-weight: abstracts.$font-weight-semibold;
+        font-weight: map.get(variables.$font-weights, semibold);
         text-decoration: none;
     }
 
@@ -109,16 +105,15 @@
         padding: 0;
     }
 }
-@media (min-width: abstracts.$breakpoint-desktop) {
+
+@include mixins.breakpoint(desktop) {
     .navbar {
-        height: 80px;
         padding: 16px 4vw;
     }
 
     .navbar__logo {
         position: static;
         transform: none;
-        flex: 0 0 40px;
     }
 
     .navbar__menu {
@@ -128,7 +123,6 @@
     .navbar__links {
         display: flex;
         align-items: center;
-        justify-content: center;
         gap: 42px;
         margin-left: auto;
         margin-right: 80px;
@@ -136,31 +130,28 @@
 
     .navbar__links a {
         color: rgba(25, 24, 37, 0.5);
-        font-family: abstracts.$font-family-body;
+        font-family: variables.$font-family-body;
         font-size: 14px;
-        font-weight: abstracts.$font-weight-regular;
+        font-weight: map.get(variables.$font-weights, regular);
         text-decoration: none;
         transition: color 0.2s ease;
+    }
 
-        &:hover {
-            color: abstracts.$color-heading;
-            text-decoration: underline;
-            text-underline-offset: 5px;
-        }
+    .navbar__links a:hover {
+        color: variables.$color-heading;
     }
 
     .navbar__actions {
         display: flex;
         align-items: center;
         gap: 24px;
-        margin-left: 0;
     }
 
     .navbar__login {
-        color: abstracts.$color-heading;
-        font-family: abstracts.$font-family-body;
+        color: variables.$color-heading;
+        font-family: variables.$font-family-body;
         font-size: 14px;
-        font-weight: abstracts.$font-weight-semibold;
+        font-weight: map.get(variables.$font-weights, semibold);
         text-decoration: none;
     }
 
