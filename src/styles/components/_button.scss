@@ -1,31 +1,30 @@
-@use '@styles/abstracts' as abstracts;
+@use 'sass:map';
+@use '@styles/abstracts/variables' as variables;
+@use '@styles/abstracts/mixins' as mixins;
 
 .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include mixins.flex(center, center);
+
     gap: 0;
     box-sizing: border-box;
     min-height: 49px;
     padding: 0 32px;
     border: 1px solid transparent;
-    border-radius: abstracts.$radius-pill;
-    font-family: abstracts.$font-family-body;
-    font-size: abstracts.$font-size-body;
-    font-weight: abstracts.$font-weight-semibold;
+    border-radius: variables.$radius-pill;
+    font-family: variables.$font-family-body;
+    font-size: 1rem;
+    font-weight: map.get(variables.$font-weights, semibold);
     line-height: 1;
     text-decoration: none;
     white-space: nowrap;
-
     cursor: pointer;
-
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
         background-color 0.2s ease;
 
     &:focus-visible {
-        outline: 2px solid abstracts.$color-primary;
+        outline: 2px solid variables.$color-primary;
         outline-offset: 3px;
     }
 
@@ -45,10 +44,10 @@
     }
 
     &--primary {
-        background-color: abstracts.$color-primary;
-        color: abstracts.$color-white;
-        border-color: abstracts.$color-primary;
-        box-shadow: abstracts.$shadow-button;
+        background-color: variables.$color-primary;
+        color: variables.$color-white;
+        border-color: variables.$color-primary;
+        box-shadow: variables.$shadow-button;
 
         &:hover {
             box-shadow: 0 8px 20px rgba(93, 80, 198, 0.25);
@@ -56,8 +55,8 @@
     }
 
     &--secondary {
-        background-color: abstracts.$color-white;
-        color: abstracts.$color-heading;
+        background-color: variables.$color-white;
+        color: variables.$color-heading;
         border-color: #e4e4e4;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 

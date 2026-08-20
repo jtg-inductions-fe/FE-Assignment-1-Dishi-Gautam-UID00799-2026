@@ -2,7 +2,7 @@
 
 @function rem($px) {
     @if unitless($px) {
-        @return ($px / 16) * 1rem;
+        @return math.div($px, 16) * 1rem;
     }
 
     @return math.div($px, 16px) * 1rem;

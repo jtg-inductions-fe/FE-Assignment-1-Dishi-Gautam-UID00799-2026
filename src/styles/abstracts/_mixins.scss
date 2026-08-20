@@ -1,20 +1,25 @@
-@use 'variables' as *;
-
-@mixin tablet {
-    @media (min-width: $breakpoint-tablet) {
-        @content;
-    }
-}
-
-@mixin desktop {
-    @media (min-width: $breakpoint-desktop) {
-        @content;
-    }
-}
+@use 'sass:map';
+@use '@styles/abstracts/variables' as variables;
 
 @mixin flex($justify-content: center, $align-items: center, $direction: row) {
     display: flex;
     justify-content: $justify-content;
     align-items: $align-items;
     flex-direction: $direction;
+}
+
+@mixin breakpoint($device) {
+    @if $device == mobile {
+        @media (max-width: map.get(variables.$breakpoints, mobile)) {
+            @content;
+        }
+    } @else if $device == tablet {
+        @media (min-width: 431px) and (max-width: map.get(variables.$breakpoints, tablet)) {
+            @content;
+        }
+    } @else if $device == desktop {
+        @media (min-width: map.get(variables.$breakpoints, desktop)) {
+            @content;
+        }
+    }
 }

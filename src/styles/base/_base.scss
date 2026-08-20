@@ -1,8 +1,9 @@
-@use '../abstracts' as abstracts;
+@use 'sass:map';
+@use '@styles/abstracts/variables' as variables;
 
 body {
-    min-width: abstracts.$breakpoint-mobile-min;
-    background-color: abstracts.$color-white;
+    min-width: map.get(variables.$breakpoints, mobile-min);
+    background-color: variables.$color-white;
 }
 
 button,
@@ -11,6 +12,6 @@ a {
 }
 
 :focus-visible {
-    outline: 2px solid abstracts.$color-primary;
+    outline: 2px solid variables.$color-primary;
     outline-offset: 3px;
 }
