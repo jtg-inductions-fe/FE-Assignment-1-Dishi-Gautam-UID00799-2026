@@ -1,0 +1,20 @@
+@use '../abstracts' as abstracts;
+
+body {
+    font-family: abstracts.$font-family-body !important;
+}
+
+.text-body {
+    font-family: abstracts.$font-family-body !important;
+}
+.text-small {
+    font-family: abstracts.$font-family-body;
+    font-size: abstracts.$font-size-small;
+    font-weight: abstracts.$font-weight-regular;
+}
+
+.heading-primary {
+    font-family: abstracts.$font-family-heading;
+    font-size: abstracts.$font-size-heading;
+    font-weight: abstracts.$font-weight-bold;
+}
