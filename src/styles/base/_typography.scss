@@ -1,22 +1,97 @@
 @use 'sass:map';
 @use '@styles/abstracts/variables' as variables;
+@use '@styles/abstracts/variables' as var;
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/assets/fonts/icomoon/fonts/inter-font.woff2');
+    font-weight: map.get(var.$font-weights, regular);
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url('/assets/fonts/icomoon/fonts/circular-std.woff2');
+    font-weight: map.get(var.$font-weights, book);
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url('/assets/fonts/icomoon/fonts/circular-std.woff2');
+    font-weight: map.get(var.$font-weights, bold);
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url('/assets/fonts/icomoon/fonts/circular-std.woff2');
+    font-weight: map.get(var.$font-weights, black);
+    font-style: normal;
+    font-display: swap;
+}
 
 body {
-    font-family: variables.$font-family-body !important;
+    font-family: var.$font-family-body;
+    font-weight: map.get(var.$font-weights, regular);
+    color: var.$color-text;
 }
 
 .text-body {
-    font-family: variables.$font-family-body !important;
+    font-family: var.$font-family-body;
+    font-weight: map.get(var.$font-weights, regular);
 }
 
 .text-small {
-    font-family: variables.$font-family-body;
-    font-size: variables.$font-size-small;
-    font-weight: map.get(variables.$font-weights, regular);
+    font-family: var.$font-family-body;
+    font-size: var.$font-size-small;
+    font-weight: map.get(var.$font-weights, regular);
 }
 
 .heading-primary {
-    font-family: variables.$font-family-heading;
+    font-family: var.$font-family-heading;
     font-size: 2rem;
-    font-weight: map.get(variables.$font-weights, bold);
+    font-weight: map.get(var.$font-weights, bold);
+}
+
+.navbar__link {
+    font-family: var.$font-family-heading;
+    font-weight: map.get(
+        var.$font-weights,
+        semibold
+    ); // Evaluates to 700 (Circular Bold)
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.btn {
+    font-family: var.$font-family-heading;
+    font-weight: map.get(
+        var.$font-weights,
+        semibold
+    ); // Evaluates to 700 (Circular Bold)
+    border-radius: var.$radius-pill;
+    cursor: pointer;
+
+    &--login {
+        background: transparent;
+        color: var.$color-heading;
+    }
+
+    &--signup {
+        background-color: var.$color-primary;
+        color: var.$color-white;
+    }
+}
+
+h1,
+.heading-hero {
+    font-family: var.$font-family-heading;
+    font-weight: map.get(
+        var.$font-weights,
+        semibold
+    ); // Evaluates to 700 (Circular Bold)
 }

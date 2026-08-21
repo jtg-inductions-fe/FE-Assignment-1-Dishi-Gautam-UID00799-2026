@@ -4,7 +4,6 @@
 
 .button {
     @include mixins.flex(center, center);
-
     gap: 0;
     box-sizing: border-box;
     min-height: 49px;
@@ -22,16 +21,13 @@
         transform 0.2s ease,
         box-shadow 0.2s ease,
         background-color 0.2s ease;
-
     &:focus-visible {
         outline: 2px solid variables.$color-primary;
         outline-offset: 3px;
     }
-
     &:active {
         transform: translateY(1px);
     }
-
     &__icon {
         display: block;
         width: 17px;
@@ -42,18 +38,15 @@
         object-fit: contain;
         flex: 0 0 17px;
     }
-
     &--primary {
         background-color: variables.$color-primary;
         color: variables.$color-white;
         border-color: variables.$color-primary;
         box-shadow: variables.$shadow-button;
-
         &:hover {
             box-shadow: 0 8px 20px rgba(93, 80, 198, 0.25);
         }
     }
-
     &--secondary {
         background-color: variables.$color-white;
         color: variables.$color-heading;
