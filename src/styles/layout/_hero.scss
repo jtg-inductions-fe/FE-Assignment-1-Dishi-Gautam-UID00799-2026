@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as variables;
 @use '../abstracts/mixins' as mixins;
 
-.hero {
+.header {
     position: relative;
     width: 100%;
     max-width: variables.$container-max-width;
