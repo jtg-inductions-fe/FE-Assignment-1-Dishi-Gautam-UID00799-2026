@@ -9,14 +9,20 @@
     <body>
         <div class="hero__layout-gradient-bg"></div>
 
+        <div class="hero__layout-gradient-bg"></div>
+
         <header class="header">
-            <nav class="navbar" aria-label="Main navigation">
-                <a href="/" class="navbar__logo" aria-label="Travlog home">
+            <nav class="navbar">
+                <button class="navbar__menu" aria-label="Open navigation menu">
                     <img
-                        class="navbar__logo-image"
-                        src="/assets/svgs/logo.svg"
+                        src="/assets/svgs/menu.svg"
                         alt=""
+                        aria-hidden="true"
                     />
+                </button>
+
+                <a href="#" class="navbar__logo" aria-label="Travlog home">
+                    <img src="/assets/svgs/logo.svg" alt="Travlog" />
                 </a>
 
                 <div class="navbar__links">
@@ -88,14 +94,15 @@
 
         <main>
             <section class="hero">
-                <div class="hero__visual">
-                    <div class="hero__visual-inner">
-                        <img
-                            class="hero__layer"
-                            src="/assets/images/layer.png"
-                            alt=""
-                            aria-hidden="true"
-                        />
+                <div class="hero__grid-container">
+                    <div class="hero__visual">
+                        <div class="hero__visual-inner">
+                            <img
+                                class="hero__layer"
+                                src="/assets/images/layer.png"
+                                alt=""
+                                aria-hidden="true"
+                            />
 
                         <img
                             class="hero__image hero__image--one"
@@ -154,39 +161,59 @@
                     </div>
                 </div>
 
-                <div class="hero__content">
-                    <p class="hero__eyebrow">
-                        <span>Explore the world!</span>
-                        <img
-                            src="/assets/svgs/work.svg"
-                            alt=""
-                            aria-hidden="true"
-                        />
-                    </p>
+                        <div class="hero__content">
+                            <div class="hero__eyebrow">
+                                <span>Explore the world!</span>
+                                <img
+                                    src="/assets/svgs/work.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                            </div>
 
-                    <h1>Travel <span>top destination</span> of the world</h1>
+                            <h1 class="hero__title">
+                                Travel
+                                <span class="highlight"
+                                    >top<br />destination</span
+                                ><br />of the world
+                            </h1>
 
-                    <p class="hero__description">
-                        We always make our customer happy by providing as many
-                        choices as possible
-                    </p>
+                            <p class="hero__description">
+                                We always make our customer happy by
+                                providing<br />
+                                as many choices as possible
+                            </p>
 
-                    <div class="hero__actions">
-                        <button class="button button--primary" type="button">
-                            Get Started
-                        </button>
-
-                        <button class="button button--secondary" type="button">
-                            <img
-                                class="button__icon"
-                                src="/assets/svgs/play.svg"
-                                alt=""
-                                aria-hidden="true"
-                            />
-
-                            <span>Watch Demo</span>
-                        </button>
+                            <div class="hero__actions">
+                                <button
+                                    class="button button--primary"
+                                    type="button"
+                                >
+                                    Get Started
+                                </button>
+                                <button
+                                    class="button button--secondary"
+                                    type="button"
+                                >
+                                    <img
+                                        class="button__icon"
+                                        src="/assets/svgs/play.svg"
+                                        alt=""
+                                        aria-hidden="true"
+                                    />
+                                    <span>Watch Demo</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <div class="partner-logo">
+                    <img src="/assets/svgs/tripadvisor.svg" alt="Tripadvisor" />
+                    <img src="/assets/svgs/expedia.svg" alt="Expedia" />
+                    <img src="/assets/svgs/booking.svg" alt="Booking.com" />
+                    <img src="/assets/svgs/airbnb.svg" alt="Airbnb" />
+                    <img src="/assets/svgs/orbitz.svg" alt="Orbitz" />
                 </div>
             </section>
         </main>

@@ -1,4 +1,5 @@
 @use 'sass:map';
+
 @use '@styles/abstracts/variables' as variables;
 
 @mixin flex($justify-content: center, $align-items: center, $direction: row) {
