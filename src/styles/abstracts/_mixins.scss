@@ -1,4 +1,5 @@
 @use 'sass:map';
+
 @use '@styles/abstracts/variables' as variables;
 
 @mixin flex($justify-content: center, $align-items: center, $direction: row) {
@@ -14,11 +15,11 @@
             @content;
         }
     } @else if $device == tablet {
-        @media (min-width: 431px) and (max-width: map.get(variables.$breakpoints, tablet)) {
+        @media (min-width: 431px) and (max-width: 1024px) {
             @content;
         }
     } @else if $device == desktop {
-        @media (min-width: map.get(variables.$breakpoints, desktop)) {
+        @media (min-width: 1025px) {
             @content;
         }
     }
