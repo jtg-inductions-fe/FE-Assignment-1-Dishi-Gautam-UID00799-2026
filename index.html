@@ -13,7 +13,11 @@
 
         <header class="header">
             <nav class="navbar">
-                <button class="navbar__menu" aria-label="Open navigation menu">
+                <button
+                    class="navbar__menu"
+                    type="button"
+                    aria-label="Open navigation menu"
+                >
                     <img
                         src="/assets/svgs/menu.svg"
                         alt=""
@@ -164,20 +168,21 @@
                         <div class="hero__content">
                             <div class="hero__eyebrow">
                                 <span>Explore the world!</span>
+
                                 <img
                                     src="/assets/svgs/work.svg"
                                     alt=""
                                     aria-hidden="true"
                                 />
                             </div>
-
                             <h1 class="hero__title">
-                                Travel
-                                <span class="highlight"
-                                    >top<br />destination</span
-                                ><br />of the world
+                                <span>Travel <b class="highlight">top</b></span>
+                                <span
+                                    ><b class="highlight">destination</b> of
+                                    the</span
+                                >
+                                <span>world</span>
                             </h1>
-
                             <p class="hero__description">
                                 We always make our customer happy by
                                 providing<br />
@@ -191,6 +196,7 @@
                                 >
                                     Get Started
                                 </button>
+
                                 <button
                                     class="button button--secondary"
                                     type="button"
@@ -201,18 +207,86 @@
                                         alt=""
                                         aria-hidden="true"
                                     />
+
                                     <span>Watch Demo</span>
                                 </button>
                             </div>
                         </div>
                     </div>
+
+                    <!-- VISUAL -->
+                    <div class="hero__visual">
+                        <div class="hero__visual-inner">
+                            <img
+                                class="hero__layer"
+                                src="/assets/images/layer.png"
+                                alt=""
+                                aria-hidden="true"
+                            />
+
+                            <div class="hero__images-grid">
+                                <!-- LEFT IMAGE COLUMN -->
+                                <div class="hero__images-left">
+                                    <img
+                                        class="hero__image hero__image--one"
+                                        src="/assets/images/destination_01.png"
+                                        alt="Seaside destination"
+                                    />
+
+                                    <img
+                                        class="hero__image hero__image--two"
+                                        src="/assets/images/destination_02.png"
+                                        alt="Mountain destination"
+                                    />
+
+                                    <!-- PINK SHARE -->
+
+                                    <img
+                                        src="/assets/svgs/share.svg"
+                                        alt="Share"
+                                    />
+                                </div>
+
+                                <!-- RIGHT IMAGE COLUMN -->
+                                <div class="hero__images-right">
+                                    <img
+                                        class="hero__image hero__image--three"
+                                        src="/assets/images/destination_03.png"
+                                        alt="Traveler exploring city"
+                                    />
+
+                                    <!-- TOP PLACES -->
+                                    <div class="hero__float--places">
+                                        <img
+                                            class="hero__float-icon--pin"
+                                            src="/assets/svgs/location.svg"
+                                            alt=""
+                                            aria-hidden="true"
+                                        />
+
+                                        <span>Top Places</span>
+                                    </div>
+
+                                    <img
+                                        src="/assets/svgs/follow.svg"
+                                        alt="Follow"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- PARTNERS -->
                 <div class="partner-logo">
                     <img src="/assets/svgs/tripadvisor.svg" alt="Tripadvisor" />
+
                     <img src="/assets/svgs/expedia.svg" alt="Expedia" />
+
                     <img src="/assets/svgs/booking.svg" alt="Booking.com" />
+
                     <img src="/assets/svgs/airbnb.svg" alt="Airbnb" />
+
                     <img src="/assets/svgs/orbitz.svg" alt="Orbitz" />
                 </div>
             </section>
