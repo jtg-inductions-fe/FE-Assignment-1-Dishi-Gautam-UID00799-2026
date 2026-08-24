@@ -7,6 +7,8 @@
     z-index: 100;
     width: 100%;
     background: variables.$color-white;
+    padding: 32px 0;
+    box-sizing: border-box;
 }
 
 .navbar {
@@ -16,6 +18,12 @@
     height: 80px;
     box-sizing: border-box;
     padding: 16px;
+}
+
+.navbar__signup {
+    font-family: variables.$font-family-heading;
+    font-size: 14px;
+    font-weight: map.get(variables.$font-weights, bold);
 }
 
 .navbar__logo {
@@ -46,6 +54,7 @@
     appearance: none;
     cursor: pointer;
     z-index: 5;
+
     img {
         display: block;
         width: 48px;
@@ -83,7 +92,7 @@
         color: variables.$color-heading;
         font-family: variables.$font-family-heading;
         font-size: 14px;
-        font-weight: map.get(variables.$font-weights, semibold);
+        font-weight: map.get(variables.$font-weights, bold);
         text-decoration: none;
     }
 
@@ -124,9 +133,10 @@
             color: rgba(25, 24, 37, 0.5);
             font-family: variables.$font-family-heading;
             font-size: 14px;
-            font-weight: map.get(variables.$font-weights, semibold);
+            font-weight: map.get(variables.$font-weights, bold);
             text-decoration: none;
             transition: color 0.2s ease;
+
             &:hover {
                 color: variables.$color-heading;
             }
@@ -145,7 +155,7 @@
         color: variables.$color-heading;
         font-family: variables.$font-family-heading;
         font-size: 14px;
-        font-weight: map.get(variables.$font-weights, semibold);
+        font-weight: map.get(variables.$font-weights, bold);
         text-decoration: none;
     }
 
