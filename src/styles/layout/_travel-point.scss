@@ -1,0 +1,351 @@
+@use 'sass:map';
+
+@use '@styles/abstracts/variables' as variables;
+@use '@styles/abstracts/mixins' as mixins;
+
+.travel-point {
+    width: 100%;
+    overflow: hidden;
+    background-color: variables.$color-white;
+
+    &__container {
+        width: min(
+            variables.$container-max-width,
+            calc(100% - (2 * variables.$container-padding-desktop))
+        );
+        min-height: 654px;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-columns: 700px 431px;
+        column-gap: 130px;
+        align-items: center;
+    }
+
+    &__visual {
+        position: relative;
+        width: 700px;
+        height: 585px;
+        transform: translateX(-120px);
+    }
+
+    &__image-wrapper {
+        position: relative;
+        width: 700px;
+        height: 585px;
+    }
+
+    &__main-image {
+        display: block;
+        width: 700px;
+        height: 585px;
+        object-fit: contain;
+        object-position: left center;
+    }
+
+    &__content {
+        position: relative;
+        width: 100%;
+        max-width: 431px;
+    }
+
+    &__eyebrow {
+        @include mixins.text-style(
+            variables.$font-family-heading,
+            1.4375rem,
+            bold
+        );
+
+        margin: 0 0 16px;
+        color: variables.$color-secondary;
+        line-height: 1.25;
+        letter-spacing: 0.25rem;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        @include mixins.text-style(
+            variables.$font-family-heading,
+            2.75rem,
+            bold
+        );
+
+        max-width: 431px;
+        margin: 0;
+        color: variables.$color-heading;
+        line-height: 1.18;
+        letter-spacing: -0.0375rem;
+    }
+
+    &__description {
+        @include mixins.text-style(
+            variables.$font-family-body,
+            1.125rem,
+            regular
+        );
+
+        max-width: 431px;
+        margin: 27px 0 0;
+        color: variables.$color-text;
+        line-height: 1.55;
+    }
+
+    &__stats {
+        display: grid;
+        width: 431px;
+        margin-top: 43px;
+        grid-template-columns: 211px 211px;
+        grid-template-rows: 151px 151px;
+        gap: 16px 9px;
+    }
+
+    &__stat {
+        @include mixins.flex(center, center, column);
+
+        width: 211px;
+        height: 151px;
+        box-sizing: border-box;
+        border: 1px solid rgba(25, 25, 37, 0.1);
+        border-radius: 2rem;
+        background-color: variables.$color-white;
+    }
+
+    &__number {
+        @include mixins.text-style(
+            variables.$font-family-heading,
+            2.1875rem,
+            bold
+        );
+
+        margin: 0 0 11px;
+        color: variables.$color-orange;
+        line-height: 1;
+    }
+
+    &__label {
+        @include mixins.text-style(
+            variables.$font-family-body,
+            0.875rem,
+            regular
+        );
+
+        margin: 0;
+        color: variables.$color-heading;
+        line-height: 1.25rem;
+    }
+
+    &__ticket {
+        position: absolute;
+        z-index: 10;
+        top: -60px;
+        right: -75px;
+        display: block;
+        width: 220px;
+        height: auto;
+        pointer-events: none;
+        object-fit: contain;
+    }
+
+    @include mixins.breakpoint(tablet) {
+        padding-top: 48px;
+
+        &__container {
+            width: 100%;
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        &__visual {
+            position: relative;
+            width: 100%;
+            height: auto;
+            transform: none;
+        }
+
+        &__image-wrapper {
+            width: 100%;
+            height: auto;
+        }
+
+        &__main-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: center top;
+        }
+
+        &__content {
+            width: 100%;
+            max-width: none;
+            padding: 48px 32px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        &__eyebrow {
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+        }
+
+        &__title {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 2.25rem;
+        }
+
+        &__description {
+            max-width: 600px;
+            margin: 24px auto 0;
+            font-size: 1rem;
+        }
+
+        &__stats {
+            width: 100%;
+            max-width: 650px;
+            margin: 36px auto 0;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: repeat(2, 151px);
+            gap: 16px;
+        }
+
+        &__stat {
+            width: 100%;
+            height: 151px;
+        }
+
+        &__ticket {
+            display: none;
+        }
+    }
+
+    @include mixins.breakpoint(mobile) {
+        padding-top: 40px;
+
+        &__container {
+            width: 100%;
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__visual {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 0;
+            transform: none;
+        }
+
+        &__image-wrapper {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 0;
+        }
+
+        &__main-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: center top;
+        }
+
+        &__content {
+            width: 100%;
+            max-width: none;
+            padding: 32px 16px 48px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        &__eyebrow {
+            @include mixins.text-style(
+                variables.$font-family-heading,
+                0.75rem,
+                bold
+            );
+
+            margin: 0 0 16px;
+            line-height: 1.25;
+            letter-spacing: 0.2rem;
+        }
+
+        &__title {
+            @include mixins.text-style(
+                variables.$font-family-heading,
+                1.75rem,
+                bold
+            );
+
+            max-width: 330px;
+            margin: 0 auto;
+            line-height: 1.2;
+            letter-spacing: 0;
+        }
+
+        &__description {
+            @include mixins.text-style(
+                variables.$font-family-body,
+                0.75rem,
+                regular
+            );
+
+            max-width: 330px;
+            margin: 20px auto 0;
+            line-height: 1.55;
+        }
+
+        &__stats {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 330px;
+            margin: 32px auto 0;
+            gap: 16px;
+        }
+
+        &__stat {
+            width: 100%;
+            height: 151px;
+            min-height: 151px;
+        }
+
+        &__number {
+            @include mixins.text-style(
+                variables.$font-family-heading,
+                1.25rem,
+                bold
+            );
+
+            margin: 0 0 11px;
+        }
+
+        &__label {
+            @include mixins.text-style(
+                variables.$font-family-body,
+                0.75rem,
+                regular
+            );
+
+            margin: 0;
+        }
+
+        &__ticket {
+            display: none;
+        }
+    }
+
+    @include mixins.breakpoint(desktop) {
+        &__container {
+            transform: translateY(40px);
+        }
+    }
+}
