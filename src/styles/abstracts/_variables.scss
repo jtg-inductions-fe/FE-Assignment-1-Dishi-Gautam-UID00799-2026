@@ -6,6 +6,18 @@ $breakpoints: (
 $container-max-width: 75rem;
 $container-padding-mobile: 1rem;
 $container-padding-desktop: 2rem;
+$color-white: #ffffff;
+$color-button-text: #eeeeee;
+$color-primary: #5d50c6;
+$color-secondary: #f85e9f;
+$color-text: #19182580;
+$color-heading: #191825;
+$color-nav-link: rgba(25, 24, 37, 0.5);
+$color-tab-highlighter: #222831;
+$color-orange: #ff5722;
+$color-foot-highlighter: #191825bf;
+$color-shadow: rgba(0, 0, 0, 0.3);
+
 $font-family-body: 'Inter', sans-serif;
 $font-family-heading: 'Circular Std', sans-serif;
 $font-weights: (
@@ -62,3 +74,19 @@ $shadow-button-secondary: 0 4px 12px rgba($color-black, 0.05);
 $shadow-button-secondary-hover: 0 6px 16px rgba($color-black, 0.08);
 
 $radius-pill: 999px;
+$color-text-muted: rgba(25, 24, 37, 0.5);
+
+$z-index-header: 100;
+$z-index-navigation-drawer: 200;
+
+$header-padding: 2rem;
+$navbar-height: 5rem;
+$navbar-padding-mobile: 1rem;
+$navbar-padding-tablet: 1rem 2rem;
+$navbar-padding-desktop: 1rem 4vw;
+
+$navbar-logo-size: 2.5rem;
+$navbar-menu-size: 3rem;
+
+$navigation-drawer-width: 20rem;
+$navigation-drawer-padding: 2rem;
