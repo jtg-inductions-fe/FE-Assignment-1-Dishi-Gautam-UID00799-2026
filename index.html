@@ -9,7 +9,11 @@
     <body>
         <header class="header">
             <nav class="navbar" aria-label="Main navigation">
-                <a href="/" class="navbar__logo" aria-label="Travlog home">
+                <a
+                    href="/"
+                    class="navbar__logo"
+                    aria-label="Travlog home"
+                >
                     <img
                         class="navbar__logo-image"
                         src="/assets/svgs/logo.svg"
@@ -45,7 +49,6 @@
                     type="button"
                     aria-label="Open navigation menu"
                     aria-expanded="false"
-                    aria-controls="mobile-navigation"
                 >
                     <img
                         class="navbar__menu-image"
@@ -53,43 +56,44 @@
                         alt=""
                     />
                 </button>
+
+                <div class="navbar__mobile-menu">
+                    <div class="navbar__mobile-header">
+                        <span class="navbar__mobile-title">Menu</span>
+
+                        <button
+                            class="navbar__mobile-close"
+                            type="button"
+                            aria-label="Close navigation menu"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="navbar__mobile-links">
+                        <a href="/" aria-current="page">Home</a>
+                        <a href="/discover">Discover</a>
+                        <a href="/special-deals">Special Deals</a>
+                        <a href="/contact">Contact</a>
+                    </div>
+
+                    <div class="navbar__mobile-actions">
+                        <a
+                            href="/login"
+                            class="button button--secondary"
+                        >
+                            Log In
+                        </a>
+
+                        <a
+                            href="/signup"
+                            class="button button--primary"
+                        >
+                            Sign Up
+                        </a>
+                    </div>
+                </div>
             </nav>
-
-            <aside
-                id="mobile-navigation"
-                class="mobile-navigation"
-                aria-label="Mobile navigation"
-                aria-hidden="true"
-            >
-                <div class="mobile-navigation__header">
-                    <span class="mobile-navigation__title">Menu</span>
-
-                    <button
-                        class="mobile-navigation__close"
-                        type="button"
-                        aria-label="Close navigation menu"
-                    >
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="mobile-navigation__links">
-                    <a href="/" aria-current="page">Home</a>
-                    <a href="/discover">Discover</a>
-                    <a href="/special-deals">Special Deals</a>
-                    <a href="/contact">Contact</a>
-                </div>
-
-                <div class="mobile-navigation__actions">
-                    <a href="/login" class="button button--secondary">
-                        Log In
-                    </a>
-
-                    <a href="/signup" class="button button--primary">
-                        Sign Up
-                    </a>
-                </div>
-            </aside>
         </header>
 
         <script type="module" src="/src/script/index.js"></script>

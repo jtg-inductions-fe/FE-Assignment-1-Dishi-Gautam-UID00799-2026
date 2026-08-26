@@ -1,134 +1,111 @@
 const menuButton = document.querySelector('.navbar__menu');
-const closeButton = document.querySelector('.mobile-navigation__close');
-const mobileNavigation = document.querySelector('#mobile-navigation');
+const closeButton = document.querySelector('.navbar__mobile-close');
+const navbar = document.querySelector('.navbar');
+const mobileMenu = document.querySelector('.navbar__mobile-menu');
 
-if (menuButton && closeButton && mobileNavigation) {
-    const getFocusableElements = () => [
-        ...mobileNavigation.querySelectorAll('a[href], button:not([disabled])'),
-    ];
+if (menuButton && closeButton && navbar && mobileMenu) {
+    const toggleMenu = (isOpen) => {
+        navbar.classList.toggle('navbar--open', isOpen);
 
-    const openMenu = () => {
-        mobileNavigation.classList.add('mobile-navigation--open');
+        document.body.classList.toggle(
+            'u-overflow-hidden',
+            isOpen,
+        );
 
-        mobileNavigation.setAttribute('aria-hidden', 'false');
-
-        menuButton.setAttribute('aria-expanded', 'true');
-
-        menuButton.setAttribute('aria-label', 'Close navigation menu');
-
-        document.body.classList.add('menu-open');
-
-        closeButton.focus();
+        menuButton.setAttribute(
+            'aria-expanded',
+            String(isOpen),
+        );
     };
 
-    const closeMenu = (returnFocus = true) => {
-        mobileNavigation.classList.remove('mobile-navigation--open');
-
-        mobileNavigation.setAttribute('aria-hidden', 'true');
-
-        menuButton.setAttribute('aria-expanded', 'false');
-
-        menuButton.setAttribute('aria-label', 'Open navigation menu');
-
-        document.body.classList.remove('menu-open');
-
-        if (returnFocus) {
-            menuButton.focus();
-        }
+    const closeMenu = () => {
+        toggleMenu(false);
+        menuButton.focus();
     };
 
     menuButton.addEventListener('click', () => {
-        const isOpen = mobileNavigation.classList.contains(
-            'mobile-navigation--open',
-        );
+        const isOpen = navbar.classList.contains('navbar--open');
 
-        if (isOpen) {
-            closeMenu();
-        } else {
-            openMenu();
+        toggleMenu(!isOpen);
+
+        if (!isOpen) {
+            closeButton.focus();
         }
     });
 
-    closeButton.addEventListener('click', () => {
-        closeMenu();
-    });
+    closeButton.addEventListener('click', closeMenu);
 
-    mobileNavigation.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-            closeMenu(false);
-        });
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
     });
 
     document.addEventListener('keydown', (event) => {
-        const isOpen = mobileNavigation.classList.contains(
-            'mobile-navigation--open',
+        if (!navbar.classList.contains('navbar--open')) {
+            return;
+        }
+
+        const elements = [
+            closeButton,
+            ...mobileMenu.querySelectorAll('a'),
+        ];
+
+        const currentIndex = elements.indexOf(
+            document.activeElement,
         );
 
-        if (!isOpen) {
-            return;
-        }
+        const menuActions = new Map([
+            ['Escape', closeMenu],
 
-        const elements = getFocusableElements();
+            [
+                'ArrowDown',
+                () => {
+                    event.preventDefault();
 
-        if (!elements.length) {
-            return;
-        }
+                    const nextIndex =
+                        currentIndex === elements.length - 1
+                            ? 0
+                            : currentIndex + 1;
 
-        const currentIndex = elements.indexOf(document.activeElement);
+                    elements[nextIndex].focus();
+                },
+            ],
 
-        if (event.key === 'Escape') {
+            [
+                'ArrowUp',
+                () => {
+                    event.preventDefault();
+
+                    const previousIndex =
+                        currentIndex <= 0
+                            ? elements.length - 1
+                            : currentIndex - 1;
+
+                    elements[previousIndex].focus();
+                },
+            ],
+
+            [
+                'Home',
+                () => {
+                    event.preventDefault();
+                    elements[0].focus();
+                },
+            ],
+
+            [
+                'End',
+                () => {
+                    event.preventDefault();
+                    elements[elements.length - 1].focus();
+                },
+            ],
+        ]);
+
+        const action = menuActions.get(event.key);
+
+        if (action) {
             event.preventDefault();
-            closeMenu();
-            return;
-        }
-
-        if (event.key === 'ArrowDown') {
-            event.preventDefault();
-
-            const nextIndex =
-                currentIndex < elements.length - 1 ? currentIndex + 1 : 0;
-
-            elements[nextIndex].focus();
-            return;
-        }
-
-        if (event.key === 'ArrowUp') {
-            event.preventDefault();
-
-            const previousIndex =
-                currentIndex > 0 ? currentIndex - 1 : elements.length - 1;
-
-            elements[previousIndex].focus();
-            return;
-        }
-
-        if (event.key === 'Home') {
-            event.preventDefault();
-            elements[0].focus();
-            return;
-        }
-
-        if (event.key === 'End') {
-            event.preventDefault();
-            elements[elements.length - 1].focus();
-            return;
-        }
-
-        if (event.key !== 'Tab') {
-            return;
-        }
-
-        const firstElement = elements[0];
-        const lastElement = elements[elements.length - 1];
-
-        if (event.shiftKey && document.activeElement === firstElement) {
-            event.preventDefault();
-            lastElement.focus();
-        }
-
-        if (!event.shiftKey && document.activeElement === lastElement) {
-            event.preventDefault();
-            firstElement.focus();
+            action();
         }
     });
 }
