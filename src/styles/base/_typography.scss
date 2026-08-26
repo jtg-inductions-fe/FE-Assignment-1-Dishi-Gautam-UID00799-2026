@@ -1,42 +1,55 @@
 @use 'sass:map';
+
 @use '@styles/abstracts/functions' as function;
 @use '@styles/abstracts/variables' as var;
 @use '@styles/abstracts/mixins' as mixins;
 
-@font-face {
-    font-family: 'Inter';
-    src: url('/assets/fonts/icomoon/fonts/inter-font.woff2');
-    font-weight: map.get(var.$font-weights, regular);
-    font-style: normal;
-    font-display: swap;
-}
+@include mixins.font-face(
+    (
+        family: 'Inter',
+        src-woff2: '/assets/fonts/icomoon/fonts/inter-font.woff2',
+        src-woff: '/assets/fonts/icomoon/fonts/inter-font.woff',
+        weight: 100 900,
+        style: normal,
+        display: swap,
+    )
+);
 
-@font-face {
-    font-family: 'Circular Std';
-    src: url('/assets/fonts/icomoon/fonts/circular-std.woff2');
-    font-weight: map.get(var.$font-weights, medium);
-    font-style: normal;
-    font-display: swap;
-}
+@include mixins.font-face(
+    (
+        family: 'Circular Std',
+        src-woff2: '/assets/fonts/icomoon/fonts/circular-std.woff2',
+        src-woff: '/assets/fonts/icomoon/fonts/circular-std.woff',
+        weight: map.get(var.$font-weights, medium),
+        style: normal,
+        display: swap,
+    )
+);
 
-@font-face {
-    font-family: 'Circular Std';
-    src: url('/assets/fonts/icomoon/fonts/circular-std.woff2');
-    font-weight: map.get(var.$font-weights, bold);
-    font-style: normal;
-    font-display: swap;
-}
+@include mixins.font-face(
+    (
+        family: 'Circular Std',
+        src-woff2: '/assets/fonts/icomoon/fonts/circular-std.woff2',
+        src-woff: '/assets/fonts/icomoon/fonts/circular-std.woff',
+        weight: map.get(var.$font-weights, bold),
+        style: normal,
+        display: swap,
+    )
+);
 
-@font-face {
-    font-family: 'Circular Std';
-    src: url('/assets/fonts/icomoon/fonts/circular-std.woff2');
-    font-weight: map.get(var.$font-weights, black);
-    font-style: normal;
-    font-display: swap;
-}
+@include mixins.font-face(
+    (
+        family: 'Circular Std',
+        src-woff2: '/assets/fonts/icomoon/fonts/circular-std.woff2',
+        src-woff: '/assets/fonts/icomoon/fonts/circular-std.woff',
+        weight: map.get(var.$font-weights, black),
+        style: normal,
+        display: swap,
+    )
+);
 
 body {
-    @include mixins.text-style(var.$font-family-body, inherit, regular);
+    @include mixins.text-style(var.$font-family-body, 1rem, regular);
 
     color: var.$color-text;
 }
@@ -57,21 +70,15 @@ h1 {
 }
 
 a {
-    font-family: var.$font-family-heading;
-    font-size: function.rem(16px);
-    font-weight: map.get(var.$font-weights, medium);
+    @include mixins.text-style(
+        var.$font-family-heading,
+        function.rem(16px),
+        medium
+    );
+
     text-decoration: none;
 }
 
 p {
-    font-family: var.$font-family-body;
-    font-weight: map.get(var.$font-weights, regular);
-}
-
-.text-small {
-    @include mixins.text-style(
-        var.$font-family-body,
-        var.$font-size-small,
-        regular
-    );
+    @include mixins.text-style(var.$font-family-body, inherit, regular);
 }

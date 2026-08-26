@@ -1,8 +1,16 @@
+@use '@styles/abstracts/variables' as var;
 @use '@styles/abstracts/mixins' as mixins;
+@use 'sass:map';
 
 @include mixins.font-face(
-    'icomoon',
-    '/assets/fonts/icomoon/fonts/icomoon.woff'
+    (
+        family: 'icomoon',
+        src: '/assets/fonts/icomoon/fonts/icomoon.woff',
+        format: 'woff',
+        weight: map.get(var.$font-weights, regular),
+        style: normal,
+        display: swap,
+    )
 );
 
 [class^='icon-'],
@@ -11,6 +19,7 @@
     font-style: normal;
     font-weight: normal;
     line-height: 1;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

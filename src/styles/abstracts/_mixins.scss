@@ -36,19 +36,13 @@
     }
 }
 
-@mixin font-face(
-    $family,
-    $src,
-    $weight: normal,
-    $style: normal,
-    $display: block
-) {
+@mixin font-face($font) {
     @font-face {
-        font-family: $family;
-        src: url($src) format('woff');
-        font-weight: $weight;
-        font-style: $style;
-        font-display: $display;
+        font-family: map.get($font, family);
+        src: map.get($font, src);
+        font-weight: map.get($font, weight);
+        font-style: map.get($font, style);
+        font-display: map.get($font, display);
     }
 }
 

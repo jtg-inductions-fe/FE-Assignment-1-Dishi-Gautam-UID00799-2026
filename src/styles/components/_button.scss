@@ -1,60 +1,61 @@
-@use 'sass:map';
 @use '@styles/abstracts/variables' as variables;
 @use '@styles/abstracts/mixins' as mixins;
 
 .button {
     @include mixins.flex(center, center);
-    gap: 0;
-    box-sizing: border-box;
-    min-height: 49px;
-    padding: 0 32px;
+    @include mixins.text-style(variables.$font-family-body, 1rem, bold);
+
+    min-height: 3.0625rem;
+    padding: 0 2rem;
     border: 1px solid transparent;
     border-radius: variables.$radius-pill;
-    font-family: variables.$font-family-body;
-    font-size: 1rem;
-    font-weight: map.get(variables.$font-weights, bold);
+
     line-height: 1;
     text-decoration: none;
     white-space: nowrap;
-    cursor: pointer;
+
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
         background-color 0.2s ease;
+
     &:focus-visible {
         outline: 2px solid variables.$color-primary;
         outline-offset: 3px;
     }
+
     &:active {
         transform: translateY(1px);
     }
+
     &__icon {
         display: block;
-        width: 17px;
-        height: 17px;
-        max-width: 17px;
-        max-height: 17px;
-        margin: 0 8px 0 0;
+        width: 1.0625rem;
+        height: 1.0625rem;
+        margin-right: 0.5rem;
         object-fit: contain;
-        flex: 0 0 17px;
+        flex: 0 0 1.0625rem;
     }
+
     &--primary {
         background-color: variables.$color-primary;
         color: variables.$color-white;
         border-color: variables.$color-primary;
         box-shadow: variables.$shadow-button;
+
         &:hover {
-            box-shadow: 0 8px 20px rgba(93, 80, 198, 0.25);
+            box-shadow: variables.$shadow-button-hover;
         }
     }
+
     &--secondary {
         background-color: variables.$color-white;
         color: variables.$color-heading;
-        border-color: #e4e4e4;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border-color: variables.$color-border;
+        box-shadow: variables.$shadow-button-secondary;
 
         &:hover {
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            box-shadow: variables.$shadow-button-secondary-hover;
         }
     }
 }
