@@ -1,7 +1,7 @@
 /* SCSS entrypoint */
 @use 'abstracts';
 @use 'base';
-@use 'components/button';
-@use 'components/card';
 @use 'layout/header';
 @use 'layout/hero';
+@use 'components';
+@use 'vendors/icons';

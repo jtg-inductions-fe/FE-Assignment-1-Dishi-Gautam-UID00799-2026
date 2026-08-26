@@ -1,59 +1,72 @@
-// Breakpoints
 $breakpoints: (
     mobile: 430px,
     tablet: 1024px,
     desktop: 1025px,
 );
 
-// Layout
 $container-max-width: 75rem;
 $container-padding-mobile: 1rem;
 $container-padding-desktop: 2rem;
 
-// Typography
 $font-family-body: 'Inter', sans-serif;
 $font-family-heading: 'Circular Std', sans-serif;
+
 $font-weights: (
     regular: 400,
     medium: 500,
     bold: 700,
     black: 900,
 );
+
+$font-configs: (
+    inter: (
+        font-family: 'Inter',
+        font-path: '/assets/fonts',
+        font-name: 'inter-font',
+    ),
+    circular-medium: (
+        font-family: 'Circular Std',
+        font-path: '/assets/fonts',
+        font-name: 'circular-std',
+    ),
+    circular-bold: (
+        font-family: 'Circular Std',
+        font-path: '/assets/fonts',
+        font-name: 'circular-std',
+    ),
+    circular-black: (
+        font-family: 'Circular Std',
+        font-path: '/assets/fonts',
+        font-name: 'circular-std',
+    ),
+);
+
 $font-icomoon: (
     family: 'icomoon',
-    src: '/assets/fonts/icomoon/fonts/icomoon.woff',
+    src: '/assets/fonts/icomoon/icomoon.woff',
     format: 'woff',
     weight: 400,
     style: normal,
     display: swap,
 );
 
-// Base colors
 $color-white: #ffffff;
 $color-black: #000000;
-
-// Brand colors
 $color-primary: #5d50c6;
 $color-secondary: #f85e9f;
 $color-orange: #ff5722;
-
-// Text colors
 $color-text: #19182580;
 $color-heading: #191825;
 $color-nav-link: rgba(25, 24, 37, 0.5);
 $color-button-text: #eeeeee;
-
-// UI colors
 $color-tab-highlighter: #222831;
 $color-foot-highlighter: #191825bf;
-$color-border: #e4e4e4;
 
-// Effects
+$color-border: #e4e4e4;
 $color-shadow: rgba(0, 0, 0, 0.3);
 $shadow-button: 0 0 1px 1px $color-shadow;
 $shadow-button-hover: 0 8px 20px rgba(93, 80, 198, 0.25);
 $shadow-button-secondary: 0 4px 12px rgba(0, 0, 0, 0.05);
 $shadow-button-secondary-hover: 0 6px 16px rgba(0, 0, 0, 0.08);
 
-// Components
 $radius-pill: 999px;
