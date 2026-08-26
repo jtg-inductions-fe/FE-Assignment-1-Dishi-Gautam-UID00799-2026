@@ -42,7 +42,11 @@
 
     @font-face {
         font-family: $font-family;
-        src: url('#{$font-path}/#{$font-name}.woff2') format('woff2');
+        src:
+            url('#{$font-path}/#{$font-name}.woff2') format('woff2'),
+            url('#{$font-path}/#{$font-name}.woff') format('woff'),
+            url('#{$font-path}/#{$font-name}.ttf') format('truetype'),
+            url('#{$font-path}/#{$font-name}.svg##{$font-name}') format('svg');
         font-weight: $font-weight;
         font-style: $font-style;
         font-display: swap;
