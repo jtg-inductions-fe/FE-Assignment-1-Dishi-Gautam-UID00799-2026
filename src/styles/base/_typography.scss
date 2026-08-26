@@ -1,6 +1,7 @@
 @use 'sass:map';
-@use '@styles/abstracts/variables' as variables;
+@use '@styles/abstracts/functions' as function;
 @use '@styles/abstracts/variables' as var;
+@use '@styles/abstracts/mixins' as mixins;
 
 @font-face {
     font-family: 'Inter';
@@ -13,7 +14,7 @@
 @font-face {
     font-family: 'Circular Std';
     src: url('/assets/fonts/icomoon/fonts/circular-std.woff2');
-    font-weight: map.get(var.$font-weights, book);
+    font-weight: map.get(var.$font-weights, medium);
     font-style: normal;
     font-display: swap;
 }
@@ -35,63 +36,42 @@
 }
 
 body {
-    font-family: var.$font-family-body;
-    font-weight: map.get(var.$font-weights, regular);
+    @include mixins.text-style(var.$font-family-body, inherit, regular);
+
     color: var.$color-text;
 }
 
-.text-body {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var.$font-family-heading;
+    color: var.$color-heading;
+}
+
+h1 {
+    font-size: function.rem(32px);
+    font-weight: map.get(var.$font-weights, bold);
+}
+
+a {
+    font-family: var.$font-family-heading;
+    font-size: function.rem(16px);
+    font-weight: map.get(var.$font-weights, medium);
+    text-decoration: none;
+}
+
+p {
     font-family: var.$font-family-body;
     font-weight: map.get(var.$font-weights, regular);
 }
 
 .text-small {
-    font-family: var.$font-family-body;
-    font-size: var.$font-size-small;
-    font-weight: map.get(var.$font-weights, regular);
-}
-
-.heading-primary {
-    font-family: var.$font-family-heading;
-    font-size: 2rem;
-    font-weight: map.get(var.$font-weights, bold);
-}
-
-.navbar__link {
-    font-family: var.$font-family-heading;
-    font-weight: map.get(
-        var.$font-weights,
-        semibold
-    ); // Evaluates to 700 (Circular Bold)
-    font-size: 1rem;
-    text-decoration: none;
-}
-
-.btn {
-    font-family: var.$font-family-heading;
-    font-weight: map.get(
-        var.$font-weights,
-        semibold
-    ); // Evaluates to 700 (Circular Bold)
-    border-radius: var.$radius-pill;
-    cursor: pointer;
-
-    &--login {
-        background: transparent;
-        color: var.$color-heading;
-    }
-
-    &--signup {
-        background-color: var.$color-primary;
-        color: var.$color-white;
-    }
-}
-
-h1,
-.heading-hero {
-    font-family: var.$font-family-heading;
-    font-weight: map.get(
-        var.$font-weights,
-        semibold
-    ); // Evaluates to 700 (Circular Bold)
+    @include mixins.text-style(
+        var.$font-family-body,
+        var.$font-size-small,
+        regular
+    );
 }

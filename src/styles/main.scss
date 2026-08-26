@@ -1,8 +1,6 @@
 /* SCSS entrypoint */
 @use 'abstracts';
-@use 'base/reset';
-@use 'base/base';
-@use 'base/icons';
-@use 'base/typography';
+@use 'base';
 @use 'components/button';
 @use 'components/card';
+@use 'components/icons';
