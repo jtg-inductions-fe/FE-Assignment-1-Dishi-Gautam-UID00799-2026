@@ -1,40 +1,42 @@
+@use '@styles/abstracts/functions' as function;
 @use '@styles/abstracts/variables' as variables;
 @use '@styles/abstracts/mixins' as mixins;
 
 .button {
     @include mixins.flex(center, center);
-    @include mixins.text-style(variables.$font-family-body, 1rem, bold);
-
-    min-height: 3.0625rem;
-    padding: 0 2rem;
-    border: 1px solid transparent;
+    @include mixins.text-style(
+        variables.$font-family-body,
+        function.px-to-rem(16px),
+        bold
+    );
+    min-height: function.px-to-rem(49px);
+    padding: 0 function.px-to-rem(32px);
+    border: function.px-to-rem(1px) solid transparent;
     border-radius: variables.$radius-pill;
-
     line-height: 1;
     text-decoration: none;
     white-space: nowrap;
-
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
         background-color 0.2s ease;
 
     &:focus-visible {
-        outline: 2px solid variables.$color-primary;
-        outline-offset: 3px;
+        outline: function.px-to-rem(2px) solid variables.$color-primary;
+        outline-offset: function.px-to-rem(3px);
     }
 
     &:active {
-        transform: translateY(1px);
+        transform: translateY(function.px-to-rem(1px));
     }
 
     &__icon {
         display: block;
-        width: 1.0625rem;
-        height: 1.0625rem;
-        margin-right: 0.5rem;
+        width: function.px-to-rem(17px);
+        height: function.px-to-rem(17px);
+        margin-right: function.px-to-rem(8px);
         object-fit: contain;
-        flex: 0 0 1.0625rem;
+        flex: 0 0 function.px-to-rem(17px);
     }
 
     &--primary {

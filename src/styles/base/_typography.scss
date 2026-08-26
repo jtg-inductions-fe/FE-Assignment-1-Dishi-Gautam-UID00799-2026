@@ -1,7 +1,6 @@
 @use 'sass:map';
-
 @use '@styles/abstracts/functions' as function;
-@use '@styles/abstracts/variables' as var;
+@use '@styles/abstracts/variables' as variables;
 @use '@styles/abstracts/mixins' as mixins;
 
 @include mixins.font-face(
@@ -20,7 +19,7 @@
         family: 'Circular Std',
         src-woff2: '/assets/fonts/icomoon/fonts/circular-std.woff2',
         src-woff: '/assets/fonts/icomoon/fonts/circular-std.woff',
-        weight: map.get(var.$font-weights, medium),
+        weight: map.get(variables.$font-weights, medium),
         style: normal,
         display: swap,
     )
@@ -31,7 +30,7 @@
         family: 'Circular Std',
         src-woff2: '/assets/fonts/icomoon/fonts/circular-std.woff2',
         src-woff: '/assets/fonts/icomoon/fonts/circular-std.woff',
-        weight: map.get(var.$font-weights, bold),
+        weight: map.get(variables.$font-weights, bold),
         style: normal,
         display: swap,
     )
@@ -42,16 +41,19 @@
         family: 'Circular Std',
         src-woff2: '/assets/fonts/icomoon/fonts/circular-std.woff2',
         src-woff: '/assets/fonts/icomoon/fonts/circular-std.woff',
-        weight: map.get(var.$font-weights, black),
+        weight: map.get(variables.$font-weights, black),
         style: normal,
         display: swap,
     )
 );
 
 body {
-    @include mixins.text-style(var.$font-family-body, 1rem, regular);
-
-    color: var.$color-text;
+    @include mixins.text-style(
+        variables.$font-family-body,
+        function.px-to-rem(16px),
+        regular
+    );
+    color: variables.$color-text;
 }
 
 h1,
@@ -60,25 +62,24 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var.$font-family-heading;
-    color: var.$color-heading;
+    font-family: variables.$font-family-heading;
+    color: variables.$color-heading;
 }
 
 h1 {
-    font-size: function.rem(32px);
-    font-weight: map.get(var.$font-weights, bold);
+    font-size: function.px-to-rem(32px);
+    font-weight: map.get(variables.$font-weights, bold);
 }
 
 a {
     @include mixins.text-style(
-        var.$font-family-heading,
-        function.rem(16px),
+        variables.$font-family-heading,
+        function.px-to-rem(16px),
         medium
     );
-
     text-decoration: none;
 }
 
 p {
-    @include mixins.text-style(var.$font-family-body, inherit, regular);
+    @include mixins.text-style(variables.$font-family-body, inherit, regular);
 }
