@@ -6,28 +6,97 @@
         <title>Travlog</title>
         <link rel="stylesheet" href="src/styles/main.scss" />
     </head>
+
     <body>
         <header class="header">
-            <nav class="navbar">
-                <a href="#" class="navbar__logo" aria-label="Travlog home">
-                    <img src="/assets/svgs/logo.svg" alt="Travlog" />
+            <nav class="navbar" aria-label="Main navigation">
+                <a href="/" class="navbar__logo" aria-label="Travlog home">
+                    <img src="/assets/svgs/logo.svg" alt="" />
                 </a>
+
                 <div class="navbar__links">
-                    <a href="#">Home</a>
-                    <a href="#">Discover</a>
-                    <a href="#">Special Deals</a>
-                    <a href="#">Contact</a>
+                    <a href="/" aria-current="page"> Home </a>
+
+                    <a href="/discover"> Discover </a>
+
+                    <a href="/special-deals"> Special Deals </a>
+
+                    <a href="/contact"> Contact </a>
                 </div>
+
                 <div class="navbar__actions">
-                    <a href="#" class="navbar__login">Log In</a>
-                    <a href="#" class="navbar__signup button button--primary">
+                    <a
+                        href="/login"
+                        class="navbar__login button button--secondary"
+                    >
+                        Log In
+                    </a>
+
+                    <a
+                        href="/signup"
+                        class="navbar__signup button button--primary"
+                    >
                         Sign Up
                     </a>
                 </div>
-                <button class="navbar__menu" aria-label="Open navigation menu">
-                    <img src="/assets/svgs/menu.svg" alt="Menu" />
+
+                <button
+                    class="navbar__menu"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-navigation"
+                >
+                    <img src="/assets/svgs/menu.svg" alt="" />
                 </button>
             </nav>
+
+            <nav
+                id="mobile-navigation"
+                class="mobile-navigation"
+                aria-label="Mobile navigation"
+                aria-hidden="true"
+            >
+                <div class="mobile-navigation__header">
+                    <span class="mobile-navigation__title"> Menu </span>
+
+                    <button
+                        type="button"
+                        class="mobile-navigation__close"
+                        aria-label="Close navigation menu"
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="mobile-navigation__links">
+                    <a href="/" aria-current="page"> Home </a>
+
+                    <a href="/discover"> Discover </a>
+
+                    <a href="/special-deals"> Special Deals </a>
+
+                    <a href="/contact"> Contact </a>
+                </div>
+
+                <div class="mobile-navigation__actions">
+                    <a
+                        href="/login"
+                        class="mobile-navigation__login button button--secondary"
+                    >
+                        Log In
+                    </a>
+
+                    <a
+                        href="/signup"
+                        class="mobile-navigation__signup button button--primary"
+                    >
+                        Sign Up
+                    </a>
+                </div>
+            </nav>
         </header>
+
+        <script type="module" src="/src/script/navigation.js"></script>
     </body>
 </html>

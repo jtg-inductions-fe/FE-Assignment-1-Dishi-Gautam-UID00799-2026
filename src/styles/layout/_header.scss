@@ -4,69 +4,172 @@
 
 .header {
     position: relative;
-    z-index: 100;
+    z-index: variables.$z-index-header;
     width: 100%;
+    padding: variables.$header-padding 0;
     background: variables.$color-white;
-    padding: 32px 0;
-    box-sizing: border-box;
 }
 
 .navbar {
     position: relative;
     @include mixins.flex(space-between, center);
-    width: 100%;
-    height: 80px;
-    box-sizing: border-box;
-    padding: 16px;
-}
 
-.navbar__signup {
-    font-family: variables.$font-family-heading;
-    font-size: 14px;
-    font-weight: map.get(variables.$font-weights, bold);
+    width: 100%;
+    height: variables.$navbar-height;
+    padding: variables.$navbar-padding-mobile;
 }
 
 .navbar__logo {
     display: block;
-    width: 40px;
-    height: 40px;
-    flex: 0 0 40px;
-    z-index: 5;
-
-    img {
-        display: block;
-        width: 40px;
-        height: 40px;
-        object-fit: contain;
-    }
+    width: variables.$navbar-logo-size;
+    height: variables.$navbar-logo-size;
+    flex: 0 0 variables.$navbar-logo-size;
 }
 
-.navbar__links,
+.navbar__logo-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.navbar__links {
+    display: none;
+}
+
 .navbar__actions {
     display: none;
+    gap: 1.5rem;
+    margin-left: auto;
+}
+
+.navbar__login {
+    color: variables.$color-heading;
+    text-decoration: none;
+}
+
+.navbar__signup {
+    min-height: 3rem;
+    padding: 0 1.5rem;
 }
 
 .navbar__menu {
     @include mixins.flex(center, center);
+
     padding: 0;
     border: 0;
     background: transparent;
-    appearance: none;
     cursor: pointer;
-    z-index: 5;
+}
 
-    img {
-        display: block;
-        width: 48px;
-        height: 48px;
-        object-fit: contain;
-    }
+.navbar__menu-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.mobile-navigation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    z-index: variables.$z-index-navigation-drawer;
+
+    width: min(variables.$navigation-drawer-width, 85vw);
+    height: 100vh;
+    padding: variables.$navigation-drawer-padding;
+
+    background: variables.$color-white;
+    box-shadow: -0.25rem 0 1.25rem rgba(0, 0, 0, 0.08);
+
+    transform: translateX(100%);
+    transition:
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.mobile-navigation[aria-hidden='true'] {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.mobile-navigation[aria-hidden='false'] {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.mobile-navigation--open {
+    transform: translateX(0);
+}
+
+.mobile-navigation__header {
+    @include mixins.flex(space-between, center);
+
+    margin-bottom: 2.5rem;
+}
+
+.mobile-navigation__title {
+    font-family: variables.$font-family-heading;
+    font-size: 1.25rem;
+    font-weight: map.get(variables.$font-weights, bold);
+    color: variables.$color-heading;
+}
+
+.mobile-navigation__close {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 2rem;
+    line-height: 1;
+    color: variables.$color-heading;
+    cursor: pointer;
+}
+
+.mobile-navigation__links {
+    @include mixins.flex(flex-start, stretch, column);
+
+    gap: 1.5rem;
+}
+
+.mobile-navigation__links a {
+    color: variables.$color-heading;
+    font-family: variables.$font-family-heading;
+    font-size: 1rem;
+    font-weight: map.get(variables.$font-weights, book);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.mobile-navigation__links a:hover,
+.mobile-navigation__links a:focus-visible {
+    color: variables.$color-primary;
+}
+
+.mobile-navigation__links a[aria-current='page'] {
+    color: variables.$color-heading;
+}
+
+.mobile-navigation__actions {
+    @include mixins.flex(flex-start, stretch, column);
+
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.mobile-navigation__actions .button {
+    width: 100%;
+}
+
+body.menu-open {
+    overflow: hidden;
 }
 
 @include mixins.breakpoint(tablet) {
     .navbar {
-        justify-content: space-between;
-        padding: 16px 32px;
+        padding: variables.$navbar-padding-tablet;
     }
 
     .navbar__logo {
@@ -77,37 +180,32 @@
     }
 
     .navbar__menu {
-        display: flex;
         order: -1;
     }
 
     .navbar__actions {
-        display: flex;
         @include mixins.flex(flex-end, center);
-        gap: 20px;
-        margin-left: 0;
     }
 
-    .navbar__login {
-        color: variables.$color-heading;
-        font-family: variables.$font-family-heading;
-        font-size: 14px;
-        font-weight: map.get(variables.$font-weights, bold);
-        text-decoration: none;
+    .mobile-navigation {
+        right: auto;
+        left: 0;
+        transform: translateX(-100%);
+        box-shadow: 0.25rem 0 1.25rem rgba(0, 0, 0, 0.08);
     }
 
-    .navbar__signup {
-        width: 110px;
-        height: 48px;
-        min-height: 48px;
-        padding: 0;
+    .mobile-navigation--open {
+        transform: translateX(0);
+    }
+
+    .mobile-navigation__actions {
+        display: none;
     }
 }
 
 @include mixins.breakpoint(desktop) {
     .navbar {
-        justify-content: space-between;
-        padding: 16px 4vw;
+        padding: variables.$navbar-padding-desktop;
     }
 
     .navbar__logo {
@@ -120,49 +218,36 @@
     }
 
     .navbar__links {
-        display: flex;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+
         @include mixins.flex(center, center);
-        gap: 42px;
+
+        gap: 2.625rem;
         margin: 0;
+        transform: translate(-50%, -50%);
+    }
 
-        a {
-            color: rgba(25, 24, 37, 0.5);
-            font-family: variables.$font-family-heading;
-            font-size: 14px;
-            font-weight: map.get(variables.$font-weights, bold);
-            text-decoration: none;
-            transition: color 0.2s ease;
+    .navbar__links a {
+        color: variables.$color-nav-link;
+        font-family: variables.$font-family-heading;
+        font-size: 0.875rem;
+        font-weight: map.get(variables.$font-weights, bold);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
 
-            &:hover {
-                color: variables.$color-heading;
-            }
-        }
+    .navbar__links a:hover,
+    .navbar__links a:focus-visible {
+        color: variables.$color-primary;
+    }
+
+    .navbar__links a[aria-current='page'] {
+        color: variables.$color-heading;
     }
 
     .navbar__actions {
-        display: flex;
         @include mixins.flex(flex-end, center);
-        gap: 24px;
-        margin-left: auto;
-        z-index: 5;
-    }
-
-    .navbar__login {
-        color: variables.$color-heading;
-        font-family: variables.$font-family-heading;
-        font-size: 14px;
-        font-weight: map.get(variables.$font-weights, bold);
-        text-decoration: none;
-    }
-
-    .navbar__signup {
-        width: 110px;
-        height: 48px;
-        min-height: 48px;
-        padding: 0;
     }
 }
