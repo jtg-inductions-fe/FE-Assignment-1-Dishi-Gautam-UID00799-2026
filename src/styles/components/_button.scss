@@ -12,7 +12,7 @@
     border-radius: variables.$radius-pill;
     font-family: variables.$font-family-body;
     font-size: 1rem;
-    font-weight: map.get(variables.$font-weights, semibold);
+    font-weight: map.get(variables.$font-weights, bold);
     line-height: 1;
     text-decoration: none;
     white-space: nowrap;

@@ -1,14 +1,13 @@
-@font-face {
-    font-family: 'icomoon';
-    src: url('/assets/fonts/icomoon/fonts/icomoon.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
+@use '@styles/abstracts/mixins' as mixins;
+
+@include mixins.font-face(
+    'icomoon',
+    '/assets/fonts/icomoon/fonts/icomoon.woff'
+);
 
 [class^='icon-'],
 [class*=' icon-'] {
-    font-family: 'icomoon' !important;
+    font-family: 'icomoon';
     font-style: normal;
     font-weight: normal;
     line-height: 1;

@@ -8,7 +8,6 @@
     align-items: $align-items;
     flex-direction: $direction;
 }
-
 @mixin breakpoint($device) {
     @if $device == mobile {
         @media (max-width: map.get(variables.$breakpoints, mobile)) {
@@ -23,4 +22,38 @@
             @content;
         }
     }
+}
+
+@mixin breakpoint-min($device) {
+    @media (min-width: map.get(variables.$breakpoints, $device)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-max($device) {
+    @media (max-width: map.get(variables.$breakpoints, $device)) {
+        @content;
+    }
+}
+
+@mixin font-face(
+    $family,
+    $src,
+    $weight: normal,
+    $style: normal,
+    $display: block
+) {
+    @font-face {
+        font-family: $family;
+        src: url($src) format('woff');
+        font-weight: $weight;
+        font-style: $style;
+        font-display: $display;
+    }
+}
+
+@mixin text-style($family, $size, $weight) {
+    font-family: $family;
+    font-size: $size;
+    font-weight: map.get(variables.$font-weights, $weight);
 }
