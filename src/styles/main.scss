@@ -1,6 +1,5 @@
 /* SCSS entrypoint */
-@use 'abstracts';
 @use 'base';
 @use 'components';
+@use 'layout';
 @use 'vendors';
-@use 'layout/header';

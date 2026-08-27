@@ -4,24 +4,24 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Travlog</title>
-        <link rel="stylesheet" href="src/styles/main.scss" />
     </head>
 
     <body>
         <header class="header">
             <nav class="navbar" aria-label="Main navigation">
                 <a href="/" class="navbar__logo" aria-label="Travlog home">
-                    <img src="/assets/svgs/logo.svg" alt="" />
+                    <img
+                        class="navbar__logo-image"
+                        src="/assets/svgs/logo.svg"
+                        alt=""
+                    />
                 </a>
 
                 <div class="navbar__links">
-                    <a href="/" aria-current="page"> Home </a>
-
-                    <a href="/discover"> Discover </a>
-
-                    <a href="/special-deals"> Special Deals </a>
-
-                    <a href="/contact"> Contact </a>
+                    <a href="/" aria-current="page">Home</a>
+                    <a href="/discover">Discover</a>
+                    <a href="/special-deals">Special Deals</a>
+                    <a href="/contact">Contact</a>
                 </div>
 
                 <div class="navbar__actions">
@@ -47,22 +47,26 @@
                     aria-expanded="false"
                     aria-controls="mobile-navigation"
                 >
-                    <img src="/assets/svgs/menu.svg" alt="" />
+                    <img
+                        class="navbar__menu-image"
+                        src="/assets/svgs/menu.svg"
+                        alt=""
+                    />
                 </button>
             </nav>
 
-            <nav
+            <aside
                 id="mobile-navigation"
                 class="mobile-navigation"
                 aria-label="Mobile navigation"
                 aria-hidden="true"
             >
                 <div class="mobile-navigation__header">
-                    <span class="mobile-navigation__title"> Menu </span>
+                    <span class="mobile-navigation__title">Menu</span>
 
                     <button
-                        type="button"
                         class="mobile-navigation__close"
+                        type="button"
                         aria-label="Close navigation menu"
                     >
                         <span aria-hidden="true">&times;</span>
@@ -70,33 +74,24 @@
                 </div>
 
                 <div class="mobile-navigation__links">
-                    <a href="/" aria-current="page"> Home </a>
-
-                    <a href="/discover"> Discover </a>
-
-                    <a href="/special-deals"> Special Deals </a>
-
-                    <a href="/contact"> Contact </a>
+                    <a href="/" aria-current="page">Home</a>
+                    <a href="/discover">Discover</a>
+                    <a href="/special-deals">Special Deals</a>
+                    <a href="/contact">Contact</a>
                 </div>
 
                 <div class="mobile-navigation__actions">
-                    <a
-                        href="/login"
-                        class="mobile-navigation__login button button--secondary"
-                    >
+                    <a href="/login" class="button button--secondary">
                         Log In
                     </a>
 
-                    <a
-                        href="/signup"
-                        class="mobile-navigation__signup button button--primary"
-                    >
+                    <a href="/signup" class="button button--primary">
                         Sign Up
                     </a>
                 </div>
-            </nav>
+            </aside>
         </header>
 
-        <script type="module" src="/src/script/navigation.js"></script>
+        <script type="module" src="/src/script/index.js"></script>
     </body>
 </html>
