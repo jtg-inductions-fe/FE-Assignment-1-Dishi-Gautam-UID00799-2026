@@ -74,7 +74,6 @@
         }
     }
 
-    /* Left Content Column */
     &__content-wrap {
         position: relative;
         display: flex;
@@ -375,7 +374,6 @@
         }
     }
 
-    /* 2-Column Responsive Image Grid */
     &__images-grid {
         position: relative;
         z-index: 2;
@@ -412,40 +410,6 @@
 
         @include mixins.breakpoint-min(desktop) {
             gap: 32px;
-        }
-
-        /* Pink Telegram Icon */
-        > img:last-child {
-            position: absolute;
-            left: -30px;
-            top: 55%;
-            transform: translateY(-50%);
-            z-index: 10;
-            width: 82px;
-            height: 82px;
-            cursor: pointer;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 20px rgba(248, 94, 159, 0.40));
-            transition: transform 0.2s ease, filter 0.2s ease;
-
-            &:hover {
-                transform: translateY(calc(-50% - 2px));
-                filter: drop-shadow(0 14px 24px rgba(248, 94, 159, 0.50));
-            }
-
-            @include mixins.breakpoint(tablet) {
-                left: -48px;
-                top: 55%;
-                width: 112px;
-                height: 112px;
-            }
-
-            @include mixins.breakpoint(desktop) {
-                left: -85px;
-                top: 55%;
-                width: 180px;
-                height: 180px;
-            }
         }
     }
 
@@ -746,6 +710,25 @@
             width: auto;
             max-width: 170px;
             height: 38px;
+        }
+
+        &__follow {
+            bottom: -82px;
+            width: 72px;
+            height: 72px;
+        }
+
+        &__float-places {
+            right: -30px;
+            bottom: 34px;
+            padding: 9px 15px;
+        }
+
+        &__arrows-grid {
+            display: block;
+            left: -2px;
+            bottom: -5px;
+            width: 42px;
         }
     }
 }
