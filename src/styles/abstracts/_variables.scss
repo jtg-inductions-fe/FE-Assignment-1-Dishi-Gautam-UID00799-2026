@@ -4,24 +4,71 @@ $breakpoints: (
     tablet: 1024px,
     desktop: 1440px,
 );
+
 $container-max-width: 75rem;
 
 $container-padding-mobile: 1rem;
 $container-padding-desktop: 2rem;
+
+// Colors
 $color-white: #ffffff;
-$color-button-text: #eeeeee;
+$color-black: #000000;
+
 $color-primary: #5d50c6;
 $color-secondary: #f85e9f;
-$color-text: #19182580;
-$color-heading: #191825;
-$color-nav-link: rgba(25, 24, 37, 0.5);
-$color-tab-highlighter: #222831;
 $color-orange: #ff5722;
-$color-foot-highlighter: #191825bf;
-$color-shadow: rgba(0, 0, 0, 0.3);
 
+$color-heading: #191825;
+$color-heading-muted: rgba($color-heading, 0.5);
+$color-text: $color-heading-muted;
+$color-text-muted: rgba($color-heading, 0.5);
+$color-secondary-light: rgba($color-secondary, 0.14);
+
+$color-nav-link: $color-heading-muted;
+$color-button-text: #eeeeee;
+
+$color-tab-highlighter: #222831;
+$color-foot-highlighter: rgba($color-heading, 0.75);
+
+$color-border: #e4e4e4;
+$color-shadow: rgba($color-black, 0.3);
+
+// Gradient
+$color-gradient-pink: rgba(248, 94, 159, 0.14);
+$color-transparent: rgba(255, 255, 255, 0);
+
+// Shadows
+$shadow-button: 0 0 1px 1px $color-shadow;
+$shadow-button-hover: 0 8px 20px rgba($color-primary, 0.25);
+
+$shadow-button-secondary: 0 4px 12px rgba($color-black, 0.05);
+$shadow-button-secondary-hover: 0 6px 16px rgba($color-black, 0.08);
+
+// Border radius
+$radius-pill: 999px;
+
+// Z-index
+$z-index-header: 100;
+$z-index-navigation-drawer: 200;
+
+// Header
+$header-padding: 2rem;
+$navbar-height: 5rem;
+
+$navbar-padding-mobile: 1rem;
+$navbar-padding-tablet: 1rem 2rem;
+$navbar-padding-desktop: 1rem 4vw;
+
+$navbar-logo-size: 2.5rem;
+$navbar-menu-size: 3rem;
+
+$navigation-drawer-width: 20rem;
+$navigation-drawer-padding: 2rem;
+
+// Fonts
 $font-family-body: 'Inter', sans-serif;
 $font-family-heading: 'Circular Std', sans-serif;
+
 $font-weights: (
     regular: 400,
     medium: 500,
@@ -41,6 +88,7 @@ $font-configs: (
         font-path: '/assets/fonts',
         font-name: 'circular-std',
     ),
+
     icomoon: (
         font-family: 'icomoon',
         font-path: '/assets/fonts/icomoon/fonts',
