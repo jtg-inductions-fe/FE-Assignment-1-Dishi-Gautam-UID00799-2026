@@ -1,86 +1,41 @@
-
-
-
-@use 'sass:map';
 @use '@styles/abstracts/variables' as variables;
 @use '@styles/abstracts/mixins' as mixins;
 
-.header {
-    position: relative;
-    z-index: 100;
-    width: 100%;
-    background: transparent;
-}
-
-.hero__layout-gradient-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    width: 420px;
-    height: 420px;
-    pointer-events: none;
-    user-select: none;
-    background: radial-gradient(
-        circle at 0% 0%,
-        variables.$color-orange 0.01%,
-        rgba(248, 94, 159, 0.14) 40%,
-        rgba(255, 255, 255, 0) 75%
-    );
-    filter: blur(90px);
-
-    @include mixins.breakpoint(tablet) {
-        width: 650px;
-        height: 650px;
-        filter: blur(130px);
-    }
-
-    @include mixins.breakpoint(desktop) {
-        width: 900px;
-        height: 900px;
-        filter: blur(195px);
-    }
-}
-
 .hero {
     position: relative;
-    z-index: 10;
     width: 100%;
-    max-width: 1240px;
+    max-width: variables.$container-max-width;
     margin: 0 auto;
-    padding: 24px 16px 40px;
+    padding: 24px variables.$container-padding-mobile 40px;
     box-sizing: border-box;
+    overflow: visible;
 
-    @include mixins.breakpoint(tablet) {
+    @include mixins.breakpoint-min(tablet) {
         padding: 32px 24px 44px;
     }
 
-    @include mixins.breakpoint(desktop) {
-        max-width: 1200px;
+    @include mixins.breakpoint-min(desktop) {
         padding: 32px 16px 48px;
     }
 
-    /* Orange Decorative Arrows */
     &__arrows-grid {
         position: absolute;
         z-index: 1;
-        pointer-events: none;
         display: none;
+        pointer-events: none;
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(tablet) {
             display: block;
-            left: -110px;
-            bottom: -180px;
-            width: 65px;
-            height: auto;
+            left: -5px;
+            bottom: -20px;
+            width: 45px;
         }
 
-        @include mixins.breakpoint(tablet) {
-        display: block;
-        left: -5px;
-        bottom: -20px;
-        width: 45px;
-    }
+        @include mixins.breakpoint-min(desktop) {
+            left: -35px;
+            bottom: -200px;
+            width: 65px;
+        }
 
         img {
             display: block;
@@ -91,6 +46,8 @@
     }
 
     &__grid-container {
+        position: relative;
+        z-index: 2;
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
@@ -100,27 +57,25 @@
             gap: 32px;
         }
 
-        @include mixins.breakpoint(tablet) {
+        @include mixins.breakpoint-min(tablet) {
             gap: 44px;
         }
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             display: grid;
-            grid-template-columns: 440px 1fr;
+            grid-template-columns: 440px minmax(0, 1fr);
             align-items: center;
-            justify-content: space-between;
             gap: 48px;
         }
     }
 
-    /* Left Content Column */
     &__content-wrap {
         position: relative;
         display: flex;
         justify-content: center;
         width: 100%;
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             justify-content: flex-start;
         }
     }
@@ -133,13 +88,13 @@
         margin: 0 auto;
         text-align: center;
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             margin: 0;
             text-align: left;
         }
     }
 
-    &__eyebrow {
+    &__badge {
         display: inline-flex;
         align-items: center;
         gap: 12px;
@@ -147,10 +102,10 @@
         margin: 0 auto 20px;
         padding: 0 24px;
         box-sizing: border-box;
-        background: #ffffff;
-        border-radius: 100px;
+        background: transparent;
+        border-radius: variables.$radius-pill;
         box-shadow: 0 10px 30px rgba(248, 94, 159, 0.12);
-        color: #f85e9f;
+        color: variables.$color-secondary;
         font-family: variables.$font-family-heading;
         font-size: 13px;
         font-weight: 700;
@@ -162,7 +117,7 @@
             object-fit: contain;
         }
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             height: 56px;
             margin: 0 0 28px;
             padding: 0 32px;
@@ -174,42 +129,78 @@
             }
         }
     }
+    &__layout-gradient-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 420px;
+        height: 420px;
+        pointer-events: none;
+        user-select: none;
+        background: radial-gradient(
+            circle at 0% 0%,
+            variables.$color-orange 0.01%,
+            variables.$color-gradient-pink 40%,
+            variables.$color-transparent 75%
+        );
+        filter: blur(90px);
+
+        @include mixins.breakpoint-min(tablet) {
+            width: 650px;
+            height: 650px;
+            filter: blur(130px);
+        }
+
+        @include mixins.breakpoint-min(desktop) {
+            width: 900px;
+            height: 900px;
+            filter: blur(195px);
+        }
+    }
     &__title {
-    max-width: 620px;
-    margin: 0 auto 20px;
-    color: #191825;
-    font-family: variables.$font-family-heading;
-    font-size: 40px;
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-
-    @media (max-width: 479px) {
-        max-width: 270px;
-        margin-bottom: 28px;
-        font-size: 30px;
-        line-height: 1.08;
-        letter-spacing: -0.025em;
-    }
-
-    @include mixins.breakpoint(tablet) {
         max-width: 620px;
+        margin: 0 auto 20px;
+        color: variables.$color-heading;
+        font-family: variables.$font-family-heading;
         font-size: 40px;
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+
+        span {
+            display: block;
+        }
+
+        .highlight {
+            color: variables.$color-secondary;
+        }
+
+        @media (max-width: 479px) {
+            max-width: 300px;
+            margin-bottom: 28px;
+            font-size: 30px;
+            line-height: 1.08;
+            letter-spacing: -0.025em;
+        }
+
+        @include mixins.breakpoint-min(tablet) {
+            max-width: 620px;
+            font-size: 40px;
+        }
+
+        @include mixins.breakpoint-min(desktop) {
+            margin-bottom: 26px;
+            font-size: 48px;
+        }
     }
 
-    @include mixins.breakpoint(desktop) {
-        max-width: 620px;
-        font-size: 48px;
-        margin-bottom: 26px;
-    }
-
-    .highlight {
-        color: #f85e9f;
-    }
-}
     &__description {
-        margin: 0 0 20px;
-        color: rgba(25, 24, 37, 0.6);
+        max-width: 400px;
+        margin: 0 auto 20px;
+        padding: 0;
+        color: variables.$color-text;
+        font-family: variables.$font-family-body;
         font-size: 15px;
         line-height: 1.6;
 
@@ -220,16 +211,11 @@
             line-height: 1.5;
         }
 
-        br {
-            @media (max-width: 1023px) {
-                display: none;
-            }
-        }
-
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
+            max-width: 420px;
+            margin: 0 0 32px;
             font-size: 16px;
             line-height: 1.65;
-            margin: 0 0 32px;
         }
     }
 
@@ -247,68 +233,18 @@
             gap: 16px;
         }
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             justify-content: flex-start;
-        }
-
-        .button--primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 30px;
-            background-color: #5d50c6;
-            color: #ffffff;
-            border-radius: 100px;
-            border: none;
-            font-family: variables.$font-family-heading;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 16px 32px rgba(93, 80, 198, 0.28);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-            &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 20px 36px rgba(93, 80, 198, 0.35);
-            }
-        }
-
-        .button--secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 26px;
-            background-color: #ffffff;
-            color: #191825;
-            border: 1px solid #f0f0f0;
-            border-radius: 100px;
-            font-family: variables.$font-family-heading;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-            transition: transform 0.2s ease;
-
-            &:hover {
-                transform: translateY(-2px);
-            }
-
-            .button__icon {
-                width: 18px;
-                height: 18px;
-            }
         }
     }
 
-    /* Right Visual Composition */
     &__visual {
         position: relative;
         display: flex;
         justify-content: center;
         width: 100%;
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             justify-content: flex-end;
         }
     }
@@ -316,23 +252,22 @@
     &__visual-inner {
         position: relative;
         width: 100%;
-        max-width: 300px;
+        max-width: 340px;
 
         @media (min-width: 480px) and (max-width: 1023px) {
             max-width: 410px;
         }
 
-        @include mixins.breakpoint(tablet) {
+        @include mixins.breakpoint-min(tablet) {
             max-width: 440px;
         }
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             width: 580px;
             max-width: 580px;
         }
     }
 
-    /* Background Flight Map Layer */
     &__layer {
         position: absolute;
         top: -8%;
@@ -344,30 +279,29 @@
         pointer-events: none;
         user-select: none;
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             top: -24px;
             left: -80px;
             width: 136%;
         }
     }
 
-    /* 2-Column Responsive Image Grid */
     &__images-grid {
         position: relative;
         z-index: 2;
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: center;
-        gap: 16px;
+        gap: 12px;
         margin-top: 16px;
 
-        @include mixins.breakpoint(tablet) {
+        @include mixins.breakpoint-min(tablet) {
             gap: 24px;
             margin-top: 24px;
         }
 
-        @include mixins.breakpoint(desktop) {
-            grid-template-columns: 272px 272px;
+        @include mixins.breakpoint-min(desktop) {
+            grid-template-columns: repeat(2, minmax(0, 272px));
             gap: 32px;
             margin-top: 36px;
         }
@@ -378,48 +312,14 @@
         z-index: 3;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 12px;
 
-        @include mixins.breakpoint(tablet) {
+        @include mixins.breakpoint-min(tablet) {
             gap: 24px;
         }
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             gap: 32px;
-        }
-
-        /* Pink Telegram Icon */
-        > img:last-child {
-            position: absolute;
-            left: -30px;
-            top: 55%;
-            transform: translateY(-50%);
-            z-index: 10;
-            width: 82px;
-            height: 82px;
-            cursor: pointer;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 20px rgba(248, 94, 159, 0.40));
-            transition: transform 0.2s ease, filter 0.2s ease;
-
-            &:hover {
-                transform: translateY(calc(-50% - 2px));
-                filter: drop-shadow(0 14px 24px rgba(248, 94, 159, 0.50));
-            }
-
-            @include mixins.breakpoint(tablet) {
-                left: -48px;
-                top: 55%;
-                width: 112px;
-                height: 112px;
-            }
-
-            @include mixins.breakpoint(desktop) {
-                left: -85px;
-                top: 55%;
-                width: 180px;
-                height: 180px;
-            }
         }
     }
 
@@ -428,93 +328,145 @@
         z-index: 3;
         display: flex;
         flex-direction: column;
-
-        > img:last-child {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: -92px;
-            z-index: 10;
-            width: 82px;
-            height: 82px;
-            cursor: pointer;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 22px rgba(255, 87, 34, 0.40));
-            transition: transform 0.2s ease, filter 0.2s ease;
-
-            &:hover {
-                transform: translateX(-50%) translateY(-2px);
-                filter: drop-shadow(0 14px 26px rgba(255, 87, 34, 0.50));
-            }
-
-            @include mixins.breakpoint(tablet) {
-                bottom: -138px;
-                width: 112px;
-                height: 112px;
-            }
-
-            @include mixins.breakpoint(desktop) {
-                left: 50%;
-                bottom: -240px;
-                width: 180px;
-                height: 180px;
-            }
-        }
     }
 
     &__image {
         position: relative;
         display: block;
         width: 100%;
+        height: auto;
         object-fit: cover;
         border-radius: 24px;
         box-shadow: 0 16px 32px rgba(0, 0, 0, 0.05);
 
-        @include mixins.breakpoint(tablet) {
+        @include mixins.breakpoint-min(tablet) {
             border-radius: 28px;
             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
         }
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             border-radius: 32px;
             box-shadow: 0 20px 48px rgba(0, 0, 0, 0.07);
         }
+    }
 
-        &--one,
-        &--two {
-            height: 154px;
-            width:140px;
+    &__images-left &__image {
+        height: 174px;
 
-            @include mixins.breakpoint(tablet) {
-                height: 220px;
-                width:auto;
-            }
-
-            @include mixins.breakpoint(desktop) {
-                width: 272px;
-                height: 300px;
-            }
+        @include mixins.breakpoint-min(tablet) {
+            height: 240px;
         }
 
-        &--three {
-            height: 205px;
-            width: 140px;
-
-            @include mixins.breakpoint(tablet) {
-                height: 400px;
-                width:272px;
-
-            }
-
-            @include mixins.breakpoint(desktop) {
-                width: 272px;
-                height: 400px; 
-            }
+        @include mixins.breakpoint-min(desktop) {
+            width: 272px;
+            height: 300px;
         }
     }
 
-    /* Floating "Top Places" Pill Badge */
-    &__float--places {
+    &__images-right &__image {
+        height: 205px;
+
+        @include mixins.breakpoint-min(tablet) {
+            height: 400px;
+        }
+
+        @include mixins.breakpoint-min(desktop) {
+            width: 272px;
+            height: 400px;
+        }
+    }
+
+    &__share,
+    &__follow {
+        position: absolute;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__share {
+        left: -30px;
+        top: 55%;
+        width: 82px;
+        height: 82px;
+        transform: translateY(-50%);
+        filter: drop-shadow(0 10px 20px rgba(248, 94, 159, 0.4));
+        transition:
+            transform 0.2s ease,
+            filter 0.2s ease;
+
+        &:hover {
+            transform: translateY(calc(-50% - 2px));
+            filter: drop-shadow(0 14px 24px rgba(248, 94, 159, 0.5));
+        }
+
+        &:focus-visible {
+            outline: 3px solid variables.$color-secondary;
+            outline-offset: 4px;
+            border-radius: 50%;
+        }
+
+        @include mixins.breakpoint-min(tablet) {
+            left: -48px;
+            width: 112px;
+            height: 112px;
+        }
+
+        @include mixins.breakpoint-min(desktop) {
+            left: -85px;
+            width: 180px;
+            height: 180px;
+        }
+    }
+
+    &__follow {
+        left: 50%;
+        bottom: -92px;
+        width: 82px;
+        height: 82px;
+        transform: translateX(-50%);
+        filter: drop-shadow(0 10px 22px rgba(255, 87, 34, 0.4));
+        transition:
+            transform 0.2s ease,
+            filter 0.2s ease;
+
+        &:hover {
+            transform: translateX(-50%) translateY(-2px);
+            filter: drop-shadow(0 14px 26px rgba(255, 87, 34, 0.5));
+        }
+
+        &:focus-visible {
+            outline: 3px solid variables.$color-orange;
+            outline-offset: 4px;
+            border-radius: 50%;
+        }
+
+        @include mixins.breakpoint-min(tablet) {
+            bottom: -138px;
+            width: 112px;
+            height: 112px;
+        }
+
+        @include mixins.breakpoint-min(desktop) {
+            bottom: -240px;
+            width: 180px;
+            height: 180px;
+        }
+    }
+
+    &__float-places {
         position: absolute;
         right: -35px;
         bottom: 38px;
@@ -525,19 +477,19 @@
         gap: 8px;
         padding: 10px 18px;
         box-sizing: border-box;
-        background: #ffffff;
-        border-radius: 100px;
+        background: variables.$color-white;
+        border-radius: variables.$radius-pill;
         box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
         white-space: nowrap;
 
-        @include mixins.breakpoint(tablet) {
+        @include mixins.breakpoint-min(tablet) {
             right: -48px;
             bottom: 48px;
             gap: 9px;
             padding: 12px 22px;
         }
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             right: -64px;
             bottom: 64px;
             gap: 10px;
@@ -546,110 +498,227 @@
         }
 
         span {
-            color: #191825;
+            color: variables.$color-heading;
             font-family: variables.$font-family-heading;
             font-size: 12px;
             font-weight: 700;
 
-            @include mixins.breakpoint(desktop) {
+            @include mixins.breakpoint-min(desktop) {
                 font-size: 14px;
             }
         }
     }
 
-    &__float-icon--pin {
+    &__float-icon-pin {
         display: block;
         flex: 0 0 auto;
         width: 14px;
         height: 14px;
         object-fit: contain;
 
-        @include mixins.breakpoint(tablet) {
+        @include mixins.breakpoint-min(tablet) {
             width: 16px;
             height: 16px;
         }
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             width: 18px;
             height: 18px;
         }
     }
 }
 
-/* Brand Partners Row */
-.partner-logo {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 20px 28px;
+.partners {
     width: 100%;
-    margin-top: 48px;
-    padding: 16px 0;
+    max-width: variables.$container-max-width;
+    margin: 48px auto 0;
+    padding: 16px variables.$container-padding-mobile;
+    box-sizing: border-box;
 
-   @media (max-width: 479px) {
-    .hero__visual-inner {
-        width: 340px;
-        max-width: 340px;
-    }
-
-    .hero__images-grid {
-        display: grid;
-        grid-template-columns: 150px 150px;
-        gap: 12px;
-        margin-top: 0;
+    &__logos {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
         justify-content: center;
+        gap: 20px 28px;
+        width: 100%;
     }
 
-    .hero__images-left {
-        gap: 12px;
-    }
-
-    .hero__image--one,
-    .hero__image--two {
-        width: 150px !important;
-        height: 115px !important;
-    }
-
-    .hero__image--three {
-        width: 150px !important;
-        height: 230px !important;
-    }
-}
-    @include mixins.breakpoint(tablet) {
-        gap: 24px 36px;
-        margin-top: 64px;
-    }
-
-    @include mixins.breakpoint(desktop) {
-        justify-content: space-between;
-        margin-top: 84px;
-        padding: 0;
-        gap: 32px;
-    }
-
-    img {
+    &__logo {
         display: block;
         max-width: 80px;
         height: 20px;
         object-fit: contain;
         opacity: 0.6;
-        transition: opacity 0.2s ease, transform 0.2s ease;
 
-        &:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-
-        @include mixins.breakpoint(tablet) {
+        @include mixins.breakpoint-min(tablet) {
             max-width: 100px;
             height: 24px;
         }
 
-        @include mixins.breakpoint(desktop) {
+        @include mixins.breakpoint-min(desktop) {
             max-width: 130px;
             height: 32px;
-            opacity: 0.65;
+        }
+    }
+
+    @include mixins.breakpoint-min(tablet) {
+        margin-top: 64px;
+        padding: 0 24px;
+
+        &__logos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            align-items: center;
+            justify-items: center;
+            gap: 28px 24px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        &__logo {
+            width: 100%;
+            max-width: 100px;
+            height: 24px;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+    }
+
+    @include mixins.breakpoint-min(desktop) {
+        margin-top: 84px;
+        padding: 0 16px;
+
+        &__logos {
+            display: flex;
+            justify-content: space-between;
+            gap: 32px;
+            max-width: none;
+        }
+
+        &__logo {
+            max-width: 130px;
+            height: 32px;
+        }
+    }
+}
+
+@media (max-width: 479px) {
+    .hero {
+        &__visual-inner {
+            width: 340px;
+            max-width: 340px;
+        }
+
+        &__images-grid {
+            grid-template-columns: 150px 150px;
+            gap: 12px;
+            margin-top: 0;
+            justify-content: center;
+        }
+
+        &__images-left {
+            gap: 12px;
+        }
+
+        &__images-left &__image {
+            width: 150px;
+            height: 135px;
+        }
+
+        &__images-right &__image {
+            width: 150px;
+            height: 200px;
+        }
+
+        &__share {
+            left: -28px;
+            width: 70px;
+            height: 70px;
+        }
+
+        &__follow {
+            bottom: -78px;
+            width: 70px;
+            height: 70px;
+        }
+
+        &__float-places {
+            right: -28px;
+            bottom: 28px;
+            padding: 8px 14px;
+        }
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+    .hero {
+        &__images-left &__image {
+            height: 180px;
+        }
+
+        &__images-right &__image {
+            height: 260px;
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero {
+        &__grid-container {
+            gap: 32px;
+        }
+
+        &__visual-inner {
+            width: 420px;
+            max-width: 420px;
+        }
+
+        &__images-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        &__images-left {
+            gap: 16px;
+        }
+
+        &__images-left &__image {
+            width: 100%;
+            height: 180px;
+        }
+
+        &__images-right &__image {
+            width: 100%;
+            height: 300px;
+        }
+
+        &__share {
+            left: -38px;
+            top: 55%;
+            width: 72px;
+            height: 72px;
+        }
+
+        &__follow {
+            bottom: -82px;
+            width: 72px;
+            height: 72px;
+        }
+
+        &__float-places {
+            right: -30px;
+            bottom: 34px;
+            padding: 9px 15px;
+        }
+
+        &__arrows-grid {
+            display: block;
+            left: -2px;
+            bottom: -5px;
+            width: 42px;
         }
     }
 }

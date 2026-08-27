@@ -1,17 +1,9 @@
-@use 'sass:map';
 @use '@styles/abstracts/variables' as var;
-@use '@styles/abstracts/mixins' as mixins;
-
-@include mixins.font-face(
-    map.get(var.$font-configs, icomoon),
-    map.get(var.$font-weights, regular)
-);
 
 [class^='icon-'],
 [class*=' icon-'] {
-    font-family: 'icomoon';
     font-style: normal;
-    font-weight: map.get(var.$font-weights, regular);
+    font-weight: 400;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
