@@ -1,0 +1,34 @@
+@use 'sass:map';
+@use '@styles/abstracts/variables' as var;
+@use '@styles/abstracts/mixins' as mixins;
+
+@include mixins.font-face(
+    map.get(var.$font-configs, icomoon),
+    map.get(var.$font-weights, regular)
+);
+
+[class^='icon-'],
+[class*=' icon-'] {
+    font-family: 'icomoon';
+    font-style: normal;
+    font-weight: map.get(var.$font-weights, regular);
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-th-menu::before {
+    content: '\e900';
+}
+
+.icon-facebook::before {
+    content: '\ea90';
+}
+
+.icon-instagram::before {
+    content: '\ea92';
+}
+
+.icon-twitter::before {
+    content: '\ea96';
+}

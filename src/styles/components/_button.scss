@@ -1,0 +1,63 @@
+@use '@styles/abstracts/functions' as function;
+@use '@styles/abstracts/variables' as variables;
+@use '@styles/abstracts/mixins' as mixins;
+
+.button {
+    @include mixins.flex(center, center);
+    @include mixins.text-style(
+        variables.$font-family-body,
+        function.px-to-rem(16px),
+        bold
+    );
+    min-height: function.px-to-rem(49px);
+    padding: 0 function.px-to-rem(32px);
+    border: function.px-to-rem(1px) solid transparent;
+    border-radius: variables.$radius-pill;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+
+    &:focus-visible {
+        outline: function.px-to-rem(2px) solid variables.$color-primary;
+        outline-offset: function.px-to-rem(3px);
+    }
+
+    &:active {
+        transform: translateY(function.px-to-rem(1px));
+    }
+
+    &__icon {
+        display: block;
+        width: function.px-to-rem(17px);
+        height: function.px-to-rem(17px);
+        margin-right: function.px-to-rem(8px);
+        object-fit: contain;
+        flex: 0 0 function.px-to-rem(17px);
+    }
+
+    &--primary {
+        background-color: variables.$color-primary;
+        color: variables.$color-white;
+        border-color: variables.$color-primary;
+        box-shadow: variables.$shadow-button;
+
+        &:hover {
+            box-shadow: variables.$shadow-button-hover;
+        }
+    }
+
+    &--secondary {
+        background-color: variables.$color-white;
+        color: variables.$color-heading;
+        border-color: variables.$color-border;
+        box-shadow: variables.$shadow-button-secondary;
+
+        &:hover {
+            box-shadow: variables.$shadow-button-secondary-hover;
+        }
+    }
+}

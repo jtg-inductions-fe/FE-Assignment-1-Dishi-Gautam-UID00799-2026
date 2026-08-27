@@ -1,0 +1,45 @@
+@use 'sass:map';
+@use '@styles/abstracts/variables' as variables;
+
+@mixin flex($justify-content: center, $align-items: center, $direction: row) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $direction;
+}
+
+@mixin breakpoint-min($device) {
+    @media (min-width: map.get(variables.$breakpoints, $device)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-max($device) {
+    @media (max-width: map.get(variables.$breakpoints, $device)) {
+        @content;
+    }
+}
+
+@mixin font-face($font-config, $font-weight: 400, $font-style: normal) {
+    $font-family: map.get($font-config, font-family);
+    $font-path: map.get($font-config, font-path);
+    $font-name: map.get($font-config, font-name);
+
+    @font-face {
+        font-family: $font-family;
+        src:
+            url('#{$font-path}/#{$font-name}.woff2') format('woff2'),
+            url('#{$font-path}/#{$font-name}.woff') format('woff'),
+            url('#{$font-path}/#{$font-name}.ttf') format('truetype'),
+            url('#{$font-path}/#{$font-name}.svg##{$font-name}') format('svg');
+        font-weight: $font-weight;
+        font-style: $font-style;
+        font-display: swap;
+    }
+}
+
+@mixin text-style($family, $size, $weight) {
+    font-family: $family;
+    font-size: $size;
+    font-weight: map.get(variables.$font-weights, $weight);
+}
