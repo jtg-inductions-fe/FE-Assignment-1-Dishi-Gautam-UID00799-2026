@@ -1,20 +1,14 @@
 @use 'sass:map';
+
 @use '@styles/abstracts/functions' as function;
 @use '@styles/abstracts/variables' as variables;
 @use '@styles/abstracts/mixins' as mixins;
 
 @include mixins.font-face(map.get(variables.$font-configs, inter), 100 900);
+
 @include mixins.font-face(
-    map.get(variables.$font-configs, circular-medium),
-    map.get(variables.$font-weights, medium)
-);
-@include mixins.font-face(
-    map.get(variables.$font-configs, circular-bold),
-    map.get(variables.$font-weights, bold)
-);
-@include mixins.font-face(
-    map.get(variables.$font-configs, circular-black),
-    map.get(variables.$font-weights, black)
+    map.get(variables.$font-configs, circular-std),
+    100 900
 );
 
 body {
@@ -23,6 +17,7 @@ body {
         function.px-to-rem(16px),
         regular
     );
+
     color: variables.$color-text;
 }
 
@@ -47,6 +42,7 @@ a {
         function.px-to-rem(16px),
         medium
     );
+
     text-decoration: none;
 }
 
