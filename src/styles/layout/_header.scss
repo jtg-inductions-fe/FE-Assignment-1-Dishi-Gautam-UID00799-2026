@@ -4,9 +4,11 @@
 @use '@styles/abstracts/mixins' as mixins;
 
 .header {
+    position: relative;
+    z-index: variables.$z-index-header;
     width: 100%;
-    background: variables.$color-white;
     padding: variables.$header-padding 0;
+    background: variables.$color-white;
 
     .navbar {
         position: relative;
@@ -16,25 +18,6 @@
         height: function.px-to-rem(80px);
         padding: 0 function.px-to-rem(72px);
         box-sizing: border-box;
-
-        &__menu {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: function.px-to-rem(48px);
-            height: function.px-to-rem(48px);
-            padding: 0;
-            border: 0;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        &__menu-image {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
 
         &__logo {
             display: block;
@@ -69,7 +52,6 @@
         &__login {
             color: variables.$color-heading;
             text-decoration: none;
-            border: none;
         }
 
         &__signup {
@@ -87,7 +69,25 @@
             text-decoration: none;
         }
 
-        // Mobile menu
+        &__menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: function.px-to-rem(48px);
+            height: function.px-to-rem(48px);
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        &__menu-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         &__mobile-menu {
             position: fixed;
             top: 0;
@@ -171,7 +171,6 @@
             }
         }
 
-        // Open state
         &--open {
             .navbar__mobile-menu {
                 visibility: visible;
@@ -180,12 +179,14 @@
             }
         }
     }
+}
 
-    .u-overflow-hidden {
-        overflow: hidden;
-    }
+.u-overflow-hidden {
+    overflow: hidden;
+}
 
-    @include mixins.breakpoint-max(desktop) {
+@include mixins.breakpoint-max(desktop) {
+    .header {
         .navbar {
             height: function.px-to-rem(132px);
             padding: 0 function.px-to-rem(72px);
@@ -203,13 +204,14 @@
 
             &__actions {
                 order: 2;
-                margin-left: auto;
                 gap: function.px-to-rem(8px);
             }
         }
     }
+}
 
-    @include mixins.breakpoint-max(mobile) {
+@include mixins.breakpoint-max(mobile) {
+    .header {
         .navbar {
             justify-content: space-between;
             height: function.px-to-rem(100px);
@@ -247,19 +249,16 @@
                     transform: translateX(0);
                 }
 
-                .navbar__menu-image {
-                    // Keep existing menu icon/design.
-                    display: block;
-                }
-
                 .navbar__mobile-actions {
                     display: flex;
                 }
             }
         }
     }
+}
 
-    @include mixins.breakpoint-min(desktop) {
+@include mixins.breakpoint-min(desktop) {
+    .header {
         .navbar {
             height: function.px-to-rem(80px);
             padding: 0 function.px-to-rem(72px);
@@ -296,10 +295,15 @@
                         color: variables.$color-heading;
                     }
 
-                    &:hover {
+                    &:hover,
+                    &:focus-visible {
                         color: variables.$color-primary;
                     }
                 }
+            }
+
+            &__actions {
+                display: flex;
             }
 
             &__mobile-menu {

@@ -7,20 +7,19 @@ if (menuButton && closeButton && navbar && mobileMenu) {
     const toggleMenu = (isOpen) => {
         navbar.classList.toggle('navbar--open', isOpen);
 
-        document.body.classList.toggle(
-            'u-overflow-hidden',
-            isOpen,
-        );
+        document.body.classList.toggle('u-overflow-hidden', isOpen);
 
-        menuButton.setAttribute(
-            'aria-expanded',
-            String(isOpen),
-        );
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+
+        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
     };
 
-    const closeMenu = () => {
+    const closeMenu = (shouldFocus = true) => {
         toggleMenu(false);
-        menuButton.focus();
+
+        if (shouldFocus) {
+            menuButton.focus();
+        }
     };
 
     menuButton.addEventListener('click', () => {
@@ -33,10 +32,14 @@ if (menuButton && closeButton && navbar && mobileMenu) {
         }
     });
 
-    closeButton.addEventListener('click', closeMenu);
+    closeButton.addEventListener('click', () => {
+        closeMenu();
+    });
 
     mobileMenu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
+        link.addEventListener('click', () => {
+            closeMenu(false);
+        });
     });
 
     document.addEventListener('keydown', (event) => {
@@ -44,17 +47,12 @@ if (menuButton && closeButton && navbar && mobileMenu) {
             return;
         }
 
-        const elements = [
-            closeButton,
-            ...mobileMenu.querySelectorAll('a'),
-        ];
+        const elements = [closeButton, ...mobileMenu.querySelectorAll('a')];
 
-        const currentIndex = elements.indexOf(
-            document.activeElement,
-        );
+        const currentIndex = elements.indexOf(document.activeElement);
 
         const menuActions = new Map([
-            ['Escape', closeMenu],
+            ['Escape', () => closeMenu()],
 
             [
                 'ArrowDown',
@@ -104,7 +102,6 @@ if (menuButton && closeButton && navbar && mobileMenu) {
         const action = menuActions.get(event.key);
 
         if (action) {
-            event.preventDefault();
             action();
         }
     });

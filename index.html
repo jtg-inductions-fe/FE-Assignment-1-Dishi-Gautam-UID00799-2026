@@ -3,25 +3,29 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <meta
             name="description"
-            content="Discover amazing destinations and travel experiences with Travlog."
+            content="Travlog - Discover amazing destinations and special travel deals."
         />
-        <title>Travlog</title>
+        <meta
+            name="keywords"
+            content="travel, destinations, vacation, travel deals, Travlog"
+        />
+        <meta name="author" content="Travlog" />
+        <meta name="robots" content="index, follow" />
+
+        <title>Travlog - Explore the World</title>
     </head>
 
     <body>
         <header class="header">
             <nav class="navbar" aria-label="Main navigation">
-                <a
-                    href="/"
-                    class="navbar__logo"
-                    aria-label="Travlog home"
-                >
+                <a href="/" class="navbar__logo" aria-label="Travlog home">
                     <img
                         class="navbar__logo-image"
                         src="/assets/svgs/logo.svg"
-                        alt=""
+                        alt="Travlog"
                     />
                 </a>
 
@@ -53,6 +57,7 @@
                     type="button"
                     aria-label="Open navigation menu"
                     aria-expanded="false"
+                    aria-controls="mobile-navigation"
                 >
                     <img
                         class="navbar__menu-image"
@@ -61,9 +66,13 @@
                     />
                 </button>
 
-                <div class="navbar__mobile-menu">
+                <div
+                    id="mobile-navigation"
+                    class="navbar__mobile-menu"
+                    aria-hidden="true"
+                >
                     <div class="navbar__mobile-header">
-                        <span class="navbar__mobile-title">Menu</span>
+                        <span class="navbar__mobile-title"> Menu </span>
 
                         <button
                             class="navbar__mobile-close"
@@ -82,17 +91,11 @@
                     </div>
 
                     <div class="navbar__mobile-actions">
-                        <a
-                            href="/login"
-                            class="button button--secondary"
-                        >
+                        <a href="/login" class="button button--secondary">
                             Log In
                         </a>
 
-                        <a
-                            href="/signup"
-                            class="button button--primary"
-                        >
+                        <a href="/signup" class="button button--primary">
                             Sign Up
                         </a>
                     </div>
