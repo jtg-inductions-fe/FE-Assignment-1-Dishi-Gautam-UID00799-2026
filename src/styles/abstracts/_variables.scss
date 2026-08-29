@@ -2,7 +2,7 @@ $breakpoints: (
     mobile-small: 430px,
     mobile: 768px,
     tablet: 1024px,
-    desktop: 1440px,
+    desktop: 1025px,
 );
 
 $container-max-width: 75rem;
@@ -38,11 +38,11 @@ $color-gradient-pink: rgba(248, 94, 159, 0.14);
 $color-transparent: rgba(255, 255, 255, 0);
 
 // Shadows
-$shadow-button: 0 0 1px 1px $color-shadow;
-$shadow-button-hover: 0 8px 20px rgba($color-primary, 0.25);
+$shadow-button: 0 16px 32px rgba(93, 80, 198, 0.25);
+$shadow-button-hover: 0 20px 36px rgba(93, 80, 198, 0.35);
 
-$shadow-button-secondary: 0 4px 12px rgba($color-black, 0.05);
-$shadow-button-secondary-hover: 0 6px 16px rgba($color-black, 0.08);
+$shadow-button-secondary: 0 4px 16px rgba(0, 0, 0, 0.04);
+$shadow-button-secondary-hover: 0 6px 20px rgba(0, 0, 0, 0.08);
 
 // Border radius
 $radius-pill: 999px;
