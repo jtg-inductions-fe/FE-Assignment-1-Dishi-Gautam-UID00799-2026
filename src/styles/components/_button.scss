@@ -5,11 +5,11 @@
 .button {
     @include mixins.flex(center, center);
     @include mixins.text-style(
-        variables.$font-family-body,
-        function.px-to-rem(16px),
+        variables.$font-family-heading,
+        function.px-to-rem(14px),
         bold
     );
-    min-height: function.px-to-rem(49px);
+    min-height: function.px-to-rem(52px);
     padding: 0 function.px-to-rem(32px);
     border: function.px-to-rem(1px) solid transparent;
     border-radius: variables.$radius-pill;
@@ -32,11 +32,11 @@
 
     &__icon {
         display: block;
-        width: function.px-to-rem(17px);
-        height: function.px-to-rem(17px);
-        margin-right: function.px-to-rem(8px);
+        width: function.px-to-rem(24px);
+        height: function.px-to-rem(24px);
+        margin-right: function.px-to-rem(10px);
         object-fit: contain;
-        flex: 0 0 function.px-to-rem(17px);
+        flex: 0 0 function.px-to-rem(24px);
     }
 
     &--primary {
@@ -53,7 +53,7 @@
     &--secondary {
         background-color: variables.$color-white;
         color: variables.$color-heading;
-        border-color: variables.$color-border;
+        border-color: #eeeeee;
         box-shadow: variables.$shadow-button-secondary;
 
         &:hover {
