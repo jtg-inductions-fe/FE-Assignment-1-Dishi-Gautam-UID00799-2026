@@ -3,8 +3,8 @@
 @use '../abstracts/mixins' as mixins;
 
 .travel-point {
+    position: relative;
     width: 100%;
-    overflow: hidden;
     background-color: variables.$color-white;
 
     &__container {
@@ -348,8 +348,44 @@
         }
     }
 
+    &__blur {
+        display: none;
+
+        @include mixins.breakpoint(tablet) {
+            display: block;
+            position: absolute;
+            top: -240px;
+            right: -260px;
+            z-index: 0;
+            width: 406px;
+            height: 406px;
+            border-radius: 50%;
+            background-color: #facd49;
+            opacity: 0.5;
+            filter: blur(140px);
+            pointer-events: none;
+        }
+
+        @include mixins.breakpoint(desktop) {
+            display: block;
+            position: absolute;
+            top: -240px;
+            right: -250px;
+            z-index: 0;
+            width: 504px;
+            height: 495px;
+            border-radius: 50%;
+            background-color: #facd49;
+            opacity: 0.5;
+            filter: blur(160px);
+            pointer-events: none;
+        }
+    }
+
     @include mixins.breakpoint(desktop) {
         &__container {
+            position: relative;
+            z-index: 2;
             transform: translateY(48px);
         }
     }
