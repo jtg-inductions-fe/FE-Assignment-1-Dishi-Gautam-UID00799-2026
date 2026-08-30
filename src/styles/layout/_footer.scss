@@ -262,7 +262,7 @@
     }
 
     @include mixins.breakpoint(mobile) {
-        padding: 64px 0 64px;
+        padding: 96px 0 64px;
 
         &__bg-grid,
         &__bg-graphic {
@@ -271,26 +271,27 @@
 
         &__container {
             flex-direction: column;
-            gap: 56px;
+            gap: 64px;
             padding: 0 32px;
         }
 
         &__brand {
+            margin-top: 0;
             max-width: 100%;
         }
 
         &__description {
-            margin: 16px 0 24px;
+            margin: 24px 0 32px;
             font-size: 15px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: rgba(25, 24, 37, 0.6);
-            max-width: 100%;
+            max-width: 310px;
         }
 
         &__socials {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 16px;
         }
 
         &__social-link {
@@ -303,7 +304,7 @@
 
         &__columns {
             flex-direction: column;
-            gap: 56px;
+            gap: 52px;
             width: 100%;
         }
 
