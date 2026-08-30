@@ -12,14 +12,14 @@
 
     &__background {
         position: absolute;
-        top: -140px;
-        left: 50%;
+        top: -160px;
+        left: 0;
         z-index: 1;
         width: 100%;
-        max-width: 1440px;
-        height: calc(100% + 140px);
+        max-width: 100%;
+        height: calc(100% + 360px);
         pointer-events: none;
-        transform: translateX(-50%);
+        transform: none;
     }
 
     &__wave {
@@ -96,13 +96,24 @@
         height: 64px;
         padding: 0;
         border-radius: 50%;
+        opacity: 1;
         cursor: pointer;
         transition:
             background-color 0.3s ease,
             color 0.3s ease,
             box-shadow 0.3s ease,
-            transform 0.3s ease;
+            transform 0.3s ease,
+            opacity 0.3s ease;
         transform: translateY(-50%);
+
+        &:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+
+            &:hover {
+                transform: translateY(-50%);
+            }
+        }
 
         &--prev {
             left: 0;
@@ -111,7 +122,7 @@
             border: 1px solid rgba(25, 25, 37, 0.08);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 
-            &:hover {
+            &:hover:not(:disabled) {
                 color: variables.$color-white;
                 background-color: variables.$color-primary;
                 border-color: variables.$color-primary;
@@ -126,7 +137,7 @@
             border: none;
             box-shadow: 0 15px 35px rgba(93, 80, 198, 0.35);
 
-            &:hover {
+            &:hover:not(:disabled) {
                 background-color: darken(#5d50c6, 8%);
                 transform: translateY(-50%) scale(1.04);
             }
@@ -144,6 +155,7 @@
         align-items: center;
         width: 100%;
         max-width: 640px;
+        margin: 0 auto;
         text-align: center;
     }
 
@@ -212,7 +224,8 @@
         );
 
         max-width: 560px;
-        margin: 0;
+        min-height: 80px;
+        margin: 0 auto;
         color: variables.$color-text;
         line-height: 1.6;
     }
@@ -339,12 +352,12 @@
 
         &__background {
             display: block;
-            top: -110px;
-            height: calc(100% + 110px);
-        }
-
-        &__wave {
-            object-position: center top;
+            top: -160px;
+            left: 0;
+            width: 100%;
+            max-width: 100%;
+            height: calc(100% + 360px);
+            transform: none;
         }
 
         &__header {
@@ -418,6 +431,15 @@
 
     @include mixins.breakpoint(desktop) {
         margin-top: 120px;
+
+        &__background {
+            top: -180px;
+            left: 0;
+            width: 100%;
+            max-width: 100%;
+            height: calc(100% + 380px);
+            transform: none;
+        }
 
         &__carousel {
             max-width: 1200px;
