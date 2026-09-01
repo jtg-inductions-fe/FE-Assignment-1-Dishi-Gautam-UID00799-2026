@@ -2,313 +2,314 @@
 @use '@styles/abstracts/variables' as variables;
 @use '@styles/abstracts/functions' as function;
 @use '@styles/abstracts/mixins' as mixins;
+@use '@styles/utilities' as utilities;
 
-.header {
+$z-index-header: 100;
+$z-index-navigation-drawer: 200;
+$header-padding: 2rem;
+$navigation-drawer-width: 20rem;
+$navigation-drawer-padding: 2rem;
+
+.navbar {
     position: relative;
-    z-index: variables.$z-index-header;
+    z-index: $z-index-header;
+    @include mixins.flex(flex-start, center);
     width: 100%;
-    padding: variables.$header-padding 0;
+    height: function.px-to-rem(80px);
+    margin-top: $header-padding;
+    padding: 0 function.px-to-rem(72px);
+    box-sizing: border-box;
     background: variables.$color-white;
 
-    .navbar {
-        position: relative;
-        display: flex;
-        align-items: center;
+    &__logo {
+        display: block;
+        width: function.px-to-rem(48px);
+        height: function.px-to-rem(48px);
+        flex-shrink: 0;
+    }
+
+    &__logo-image {
+        display: block;
         width: 100%;
-        height: function.px-to-rem(80px);
-        padding: 0 function.px-to-rem(72px);
+        height: 100%;
+        object-fit: contain;
+    }
+
+    &__menu {
+        @include mixins.flex(center, center);
+        width: function.px-to-rem(48px);
+        height: function.px-to-rem(48px);
+        padding: 0;
+        border: 0;
+        background: transparent;
+        font-size: function.px-to-rem(24px);
+        cursor: pointer;
+    }
+
+    &__menu-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    &__mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: $z-index-navigation-drawer;
+        width: min($navigation-drawer-width, 85vw);
+        height: 100vh;
+        padding: $navigation-drawer-padding;
         box-sizing: border-box;
+        background: variables.$color-white;
+        box-shadow: function.px-to-rem(4px) 0 function.px-to-rem(20px)
+            variables.$color-shadow;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateX(-100%);
+        transition:
+            transform 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+    &__mobile-header {
+        @include mixins.flex(space-between, center);
+        margin-bottom: function.px-to-rem(40px);
+    }
+
+    &__mobile-title {
+        color: variables.$color-heading;
+        font-family: variables.$font-family-heading;
+        font-size: function.px-to-rem(20px);
+        font-weight: map.get(variables.$font-weights, bold);
+    }
+
+    &__mobile-close {
+        @include mixins.flex(center, center);
+        width: function.px-to-rem(40px);
+        height: function.px-to-rem(40px);
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: variables.$color-heading;
+        font-size: function.px-to-rem(28px);
+        cursor: pointer;
+    }
+
+    &__links {
+        @include mixins.flex(flex-start, stretch, column);
+        gap: function.px-to-rem(24px);
+    }
+
+    &__link {
+        color: variables.$color-heading;
+        font-family: variables.$font-family-heading;
+        font-size: function.px-to-rem(14px);
+        font-weight: map.get(variables.$font-weights, medium);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            color: variables.$color-primary;
+        }
+
+        &[aria-current='page'] {
+            color: variables.$color-heading;
+        }
+    }
+
+    &__actions {
+        @include mixins.flex(flex-start, stretch, column);
+        gap: function.px-to-rem(16px);
+        margin-top: function.px-to-rem(40px);
+    }
+
+    &__login,
+    &__signup {
+        font-family: variables.$font-family-heading;
+        font-size: function.px-to-rem(14px);
+        width: 100%;
+    }
+
+    &__signup {
+        @include mixins.flex(center, center);
+
+        height: function.px-to-rem(48px);
+        padding: 0 function.px-to-rem(28px);
+        border: 1px solid variables.$color-primary;
+        border-radius: variables.$radius-pill;
+        box-sizing: border-box;
+        color: variables.$color-white;
+        background: variables.$color-primary;
+        font-family: variables.$font-family-heading;
+        font-weight: map.get(variables.$font-weights, medium);
+        text-decoration: none;
+    }
+
+    &--open {
+        .navbar__mobile-menu {
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(0);
+        }
+    }
+}
+
+@include mixins.breakpoint-max(tablet) {
+    .navbar {
+        height: function.px-to-rem(132px);
+        padding: 0 function.px-to-rem(72px);
 
         &__logo {
-            display: block;
-            width: function.px-to-rem(48px);
-            height: function.px-to-rem(48px);
-            flex-shrink: 0;
-        }
-
-        &__logo-image {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        &__links {
-            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         &__actions {
-            display: flex;
-            align-items: center;
-            gap: function.px-to-rem(20px);
+            @include mixins.flex(flex-start, center, row);
+            gap: function.px-to-rem(8px);
+            margin-top: 0;
             margin-left: auto;
         }
 
         &__login,
         &__signup {
-            font-size: function.px-to-rem(14px);
-        }
-
-        &__login {
-            color: variables.$color-heading;
-            text-decoration: none;
-        }
-
-        &__signup {
-            @include mixins.flex(center, center);
-
-            height: function.px-to-rem(48px);
-            padding: 0 function.px-to-rem(28px);
-            border: 1px solid variables.$color-primary;
-            border-radius: variables.$radius-pill;
-            box-sizing: border-box;
-            color: variables.$color-white;
-            background: variables.$color-primary;
-            font-family: variables.$font-family-heading;
-            font-weight: map.get(variables.$font-weights, medium);
-            text-decoration: none;
-        }
-
-        &__menu {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: function.px-to-rem(48px);
-            height: function.px-to-rem(48px);
-            padding: 0;
-            border: 0;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        &__menu-image {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        &__mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: variables.$z-index-navigation-drawer;
-            width: min(variables.$navigation-drawer-width, 85vw);
-            height: 100vh;
-            padding: variables.$navigation-drawer-padding;
-            box-sizing: border-box;
-            background: variables.$color-white;
-            box-shadow: function.px-to-rem(4px) 0 function.px-to-rem(20px)
-                variables.$color-shadow;
-            visibility: hidden;
-            pointer-events: none;
-            transform: translateX(-100%);
-            transition:
-                transform 0.3s ease,
-                visibility 0.3s ease;
-        }
-
-        &__mobile-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: function.px-to-rem(40px);
-        }
-
-        &__mobile-title {
-            color: variables.$color-heading;
-            font-family: variables.$font-family-heading;
-            font-size: function.px-to-rem(20px);
-            font-weight: map.get(variables.$font-weights, bold);
-        }
-
-        &__mobile-close {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: function.px-to-rem(40px);
-            height: function.px-to-rem(40px);
-            padding: 0;
-            border: 0;
-            background: transparent;
-            color: variables.$color-heading;
-            font-size: function.px-to-rem(28px);
-            cursor: pointer;
-        }
-
-        &__mobile-links {
-            display: flex;
-            flex-direction: column;
-            gap: function.px-to-rem(24px);
-
-            a {
-                color: variables.$color-heading;
-                font-family: variables.$font-family-heading;
-                font-size: function.px-to-rem(14px);
-                font-weight: map.get(variables.$font-weights, medium);
-                text-decoration: none;
-                transition: color 0.2s ease;
-
-                &:hover,
-                &:focus-visible {
-                    color: variables.$color-primary;
-                }
-
-                &[aria-current='page'] {
-                    color: variables.$color-heading;
-                }
-            }
-        }
-
-        &__mobile-actions {
-            display: none;
-            flex-direction: column;
-            gap: function.px-to-rem(16px);
-            margin-top: function.px-to-rem(40px);
-
-            a {
-                width: 100%;
-            }
-        }
-
-        &--open {
-            .navbar__mobile-menu {
-                visibility: visible;
-                pointer-events: auto;
-                transform: translateX(0);
-            }
-        }
-    }
-}
-
-.u-overflow-hidden {
-    overflow: hidden;
-}
-
-@include mixins.breakpoint-max(desktop) {
-    .header {
-        .navbar {
-            height: function.px-to-rem(132px);
-            padding: 0 function.px-to-rem(72px);
-
-            &__menu {
-                order: 1;
-            }
-
-            &__logo {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-
-            &__actions {
-                order: 2;
-                gap: function.px-to-rem(8px);
-            }
+            width: auto;
         }
     }
 }
 
 @include mixins.breakpoint-max(mobile) {
-    .header {
-        .navbar {
-            justify-content: space-between;
-            height: function.px-to-rem(100px);
-            padding: 0 function.px-to-rem(24px);
+    .navbar {
+        @include mixins.flex(space-between, center, row-reverse);
+        height: function.px-to-rem(100px);
+        padding: 0 function.px-to-rem(24px);
 
-            &__logo {
-                position: static;
-                order: 1;
-                width: function.px-to-rem(44px);
-                height: function.px-to-rem(44px);
-                transform: none;
+        &__logo {
+            position: static;
+            width: function.px-to-rem(44px);
+            height: function.px-to-rem(44px);
+            transform: none;
+        }
+
+        &__menu {
+            width: function.px-to-rem(48px);
+            height: function.px-to-rem(48px);
+            margin-left: 0;
+        }
+
+        &__actions {
+            display: none;
+        }
+
+        &__mobile-menu {
+            right: 0;
+            left: auto;
+            box-shadow: function.px-to-rem(-4px) 0 function.px-to-rem(20px)
+                variables.$color-shadow;
+            transform: translateX(100%);
+        }
+
+        &--open {
+            .navbar__mobile-menu {
+                transform: translateX(0);
             }
 
-            &__menu {
-                order: 2;
-                width: function.px-to-rem(48px);
-                height: function.px-to-rem(48px);
-                margin-left: auto;
+            .navbar__actions {
+                @include mixins.flex(flex-start, stretch, column);
+                position: fixed;
+                top: function.px-to-rem(300px);
+                right: $navigation-drawer-padding;
+                z-index: $z-index-navigation-drawer + 1;
+                width: calc(
+                    min($navigation-drawer-width, 85vw) -
+                        ($navigation-drawer-padding * 2)
+                );
+                gap: function.px-to-rem(16px);
             }
 
-            &__actions {
-                display: none;
-            }
-
-            &__mobile-menu {
-                right: 0;
-                left: auto;
-                box-shadow: function.px-to-rem(-4px) 0 function.px-to-rem(20px)
-                    variables.$color-shadow;
-                transform: translateX(100%);
-            }
-
-            &--open {
-                .navbar__mobile-menu {
-                    transform: translateX(0);
-                }
-
-                .navbar__mobile-actions {
-                    display: flex;
-                }
+            .navbar__login,
+            .navbar__signup {
+                width: 100%;
             }
         }
     }
 }
 
-@include mixins.breakpoint-min(desktop) {
-    .header {
-        .navbar {
-            height: function.px-to-rem(80px);
-            padding: 0 function.px-to-rem(72px);
+@media (min-width: 1025px) {
+    .navbar {
+        height: function.px-to-rem(80px);
+        padding: 0 function.px-to-rem(72px);
 
-            &__menu {
-                display: none;
+        &__menu {
+            display: none;
+        }
+
+        &__logo {
+            position: static;
+            width: function.px-to-rem(48px);
+            height: function.px-to-rem(48px);
+            transform: none;
+        }
+
+        &__mobile-menu {
+            position: static;
+            @include mixins.flex(flex-start, center);
+            width: auto;
+            height: auto;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+            visibility: visible;
+            pointer-events: auto;
+            transform: none;
+        }
+
+        &__mobile-header {
+            display: none;
+        }
+
+        &__links {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include mixins.flex(flex-start, center, row);
+            gap: function.px-to-rem(42px);
+            transform: translate(-50%, -50%);
+        }
+
+        &__link {
+            color: variables.$color-nav-link;
+            font-family: variables.$font-family-heading;
+            font-size: function.px-to-rem(14px);
+            font-weight: map.get(variables.$font-weights, bold);
+            text-decoration: none;
+            white-space: nowrap;
+
+            &[aria-current='page'] {
+                color: variables.$color-heading;
             }
 
-            &__logo {
-                position: static;
-                width: function.px-to-rem(48px);
-                height: function.px-to-rem(48px);
-                transform: none;
+            &:hover,
+            &:focus-visible {
+                color: variables.$color-primary;
             }
+        }
 
-            &__links {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                display: flex;
-                align-items: center;
-                gap: function.px-to-rem(42px);
-                transform: translate(-50%, -50%);
+        &__actions {
+            @include mixins.flex(flex-start, center, row);
+            gap: function.px-to-rem(20px);
+            margin-top: 0;
+            margin-left: auto;
+        }
 
-                a {
-                    color: variables.$color-nav-link;
-                    font-family: variables.$font-family-heading;
-                    font-size: function.px-to-rem(14px);
-                    font-weight: map.get(variables.$font-weights, bold);
-                    text-decoration: none;
-                    white-space: nowrap;
-
-                    &[aria-current='page'] {
-                        color: variables.$color-heading;
-                    }
-
-                    &:hover,
-                    &:focus-visible {
-                        color: variables.$color-primary;
-                    }
-                }
-            }
-
-            &__actions {
-                display: flex;
-            }
-
-            &__mobile-menu {
-                display: none;
-            }
+        &__login,
+        &__signup {
+            width: auto;
         }
     }
 }

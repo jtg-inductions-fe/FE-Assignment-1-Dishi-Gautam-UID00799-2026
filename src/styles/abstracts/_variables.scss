@@ -1,5 +1,6 @@
 $breakpoints: (
-    mobile: 430px,
+    mobile-min: 320px,
+    mobile: 768px,
     tablet: 1024px,
     desktop: 1440px,
 );
@@ -16,6 +17,7 @@ $font-weights: (
     bold: 700,
     black: 900,
 );
+$font-weight-range: 100 900;
 
 $font-configs: (
     inter: (
@@ -57,18 +59,4 @@ $shadow-button-secondary-hover: 0 6px 16px rgba($color-black, 0.08);
 
 // Border radius
 $radius-pill: 999px;
-$color-text-muted: rgba(25, 24, 37, 0.5);
-
-$z-index-header: 100;
-$z-index-navigation-drawer: 200;
-
-$header-padding: 2rem;
-$navbar-height: 5rem;
-$navbar-padding-mobile: 1rem;
-$navbar-padding-tablet: 1rem 2rem;
-$navbar-padding-desktop: 1rem 4vw;
-$navbar-logo-size: 2.5rem;
-$navbar-menu-size: 3rem;
-
-$navigation-drawer-width: 20rem;
-$navigation-drawer-padding: 2rem;
+$color-text-muted: rgba($color-heading, 0.5);

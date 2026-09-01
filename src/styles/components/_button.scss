@@ -60,4 +60,15 @@
             box-shadow: variables.$shadow-button-secondary-hover;
         }
     }
+
+    &--tertiary {
+        background-color: transparent;
+        color: variables.$color-heading;
+        border-color: transparent;
+        box-shadow: none;
+
+        &:hover {
+            color: variables.$color-primary;
+        }
+    }
 }
