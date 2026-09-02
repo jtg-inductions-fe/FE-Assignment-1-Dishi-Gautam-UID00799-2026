@@ -37,7 +37,7 @@
         );
         filter: blur(40px);
 
-        @include mixins.breakpoint-min(mobile) {
+        @include mixins.breakpoint(tablet) {
             top: -150px;
             left: -150px;
             width: 500px;

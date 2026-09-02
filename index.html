@@ -18,17 +18,29 @@
     </head>
 
     <body>
-        <div class="hero__layout-gradient-bg" aria-hidden="true"></div>
+        <nav class="navbar" aria-label="Main navigation">
+            <button
+                class="navbar__menu"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobile-navigation"
+            >
+                <img
+                    class="navbar__menu-image"
+                    src="/assets/svgs/menu.svg"
+                    alt=""
+                    aria-hidden="true"
+                />
+            </button>
 
-        <header class="header">
-            <nav class="navbar" aria-label="Main navigation">
-                <a href="/" class="navbar__logo" aria-label="Travlog home">
-                    <img
-                        class="navbar__logo-image"
-                        src="/assets/svgs/logo.svg"
-                        alt="Travlog"
-                    />
-                </a>
+            <a href="/" class="navbar__logo" aria-label="Travlog home">
+                <img
+                    class="navbar__logo-image"
+                    src="/assets/svgs/logo.svg"
+                    alt="Travlog"
+                />
+            </a>
 
                 <button
                     class="navbar__menu-btn"
