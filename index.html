@@ -19,69 +19,92 @@
     </head>
 
     <body>
-        <nav class="navbar" aria-label="Main navigation">
-            <button
-                class="navbar__menu"
-                type="button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="mobile-navigation"
-            >
-                <img
-                    class="navbar__menu-image"
-                    src="/assets/svgs/menu.svg"
-                    alt=""
+        <header class="header">
+            <nav class="navbar" aria-label="Main navigation">
+                <a href="/" class="navbar__logo" aria-label="Travlog home">
+                    <img
+                        class="navbar__logo-image"
+                        src="/assets/svgs/logo.svg"
+                        alt="Travlog"
+                    />
+                </a>
+
+                <button
+                    class="navbar__menu-btn"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="navigation-drawer"
+                >
+                    <span class="icon-menu" aria-hidden="true"></span>
+                </button>
+
+                <div
+                    id="navigation-drawer"
+                    class="navbar__menu-drawer"
                     aria-hidden="true"
-                />
-            </button>
+                >
+                    <div class="navbar__menu-header">
+                        <span class="navbar__menu-title">Menu</span>
 
-            <a href="/" class="navbar__logo" aria-label="Travlog home">
-                <img
-                    class="navbar__logo-image"
-                    src="/assets/svgs/logo.svg"
-                    alt="Travlog"
-                />
-            </a>
+                        <button
+                            class="navbar__menu-close-btn"
+                            type="button"
+                            aria-label="Close navigation menu"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
-            <div
-                id="mobile-navigation"
-                class="navbar__mobile-menu"
-                aria-hidden="true"
-            >
-                <div class="navbar__mobile-header">
-                    <span class="navbar__mobile-title"> Menu </span>
+                    <div class="navbar__nav-links">
+                        <a href="/" class="navbar__link" aria-current="page"
+                            >Home</a
+                        >
+                        <a href="/discover" class="navbar__link">Discover</a>
+                        <a href="/special-deals" class="navbar__link"
+                            >Special Deals</a
+                        >
+                        <a href="/contact" class="navbar__link">Contact</a>
+                    </div>
+
+                    <div
+                        class="navbar__action-buttons navbar__action-buttons--drawer"
+                    >
+                        <button
+                            type="button"
+                            class="navbar__login button button--ghost"
+                        >
+                            Log In
+                        </button>
+
+                        <button
+                            type="button"
+                            class="navbar__signup button button--filled"
+                        >
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="navbar__action-buttons navbar__action-buttons--header"
+                >
+                    <button
+                        type="button"
+                        class="navbar__login button button--ghost"
+                    >
+                        Log In
+                    </button>
 
                     <button
-                        class="navbar__mobile-close"
                         type="button"
-                        aria-label="Close navigation menu"
+                        class="navbar__signup button button--filled"
                     >
-                        <span aria-hidden="true">&times;</span>
+                        Sign Up
                     </button>
                 </div>
-
-                <div class="navbar__links">
-                    <a href="/" class="navbar__link" aria-current="page"
-                        >Home</a
-                    >
-                    <a href="/discover" class="navbar__link">Discover</a>
-                    <a href="/special-deals" class="navbar__link"
-                        >Special Deals</a
-                    >
-                    <a href="/contact" class="navbar__link">Contact</a>
-                </div>
-            </div>
-
-            <div class="navbar__actions">
-                <a href="/login" class="navbar__login button button--tertiary">
-                    Log In
-                </a>
-
-                <a href="/signup" class="navbar__signup button button--primary">
-                    Sign Up
-                </a>
-            </div>
-        </nav>
+            </nav>
+        </header>
 
         <script type="module" src="/src/script/index.js"></script>
     </body>

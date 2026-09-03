@@ -7,23 +7,122 @@ const KEYS = {
     TAB: 'Tab',
 };
 
-const menuButton = document.querySelector('.navbar__menu');
-const closeButton = document.querySelector('.navbar__mobile-close');
+const menuButton = document.querySelector('.navbar__menu-btn');
+const closeButton = document.querySelector('.navbar__menu-close-btn');
 const navbar = document.querySelector('.navbar');
-const mobileMenu = document.querySelector('.navbar__mobile-menu');
-
+const menuDrawer = document.querySelector('.navbar__menu-drawer');
+const logo = document.querySelector('.navbar__logo');
 const desktopQuery = window.matchMedia('(min-width: 1025px)');
 
+const updateDomOrder = () => {
+    if (!navbar || !logo || !menuButton) return;
+
+    if (window.innerWidth <= 768) {
+        if (navbar.firstElementChild !== logo) {
+            navbar.insertBefore(logo, menuButton);
+        }
+    } else if (window.innerWidth <= 1024) {
+        if (navbar.firstElementChild !== menuButton) {
+            navbar.insertBefore(menuButton, logo);
+        }
+    } else {
+        if (navbar.firstElementChild !== logo) {
+            navbar.insertBefore(logo, menuButton);
+        }
+    }
+};
+
+let cachedFocusableElements = [];
+
+const getFocusableElements = () => {
+    if (!menuDrawer) return [];
+    const FOCUSABLE_SELECTOR =
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    return Array.from(menuDrawer.querySelectorAll(FOCUSABLE_SELECTOR)).filter(
+        (el) =>
+            !el.hasAttribute('disabled') &&
+            el.getAttribute('aria-hidden') !== 'true',
+    );
+};
+
 const updateAriaHidden = () => {
-    if (!mobileMenu) return;
+    if (!menuDrawer) return;
 
     if (desktopQuery.matches) {
-        mobileMenu.setAttribute('aria-hidden', 'false');
+        menuDrawer.setAttribute('aria-hidden', 'false');
     } else {
         const isOpen = navbar
             ? navbar.classList.contains('navbar--open')
             : false;
-        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+        menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    }
+};
+
+const handleKeyboardNav = (event) => {
+    if (!cachedFocusableElements.length) return;
+
+    const currentIndex = cachedFocusableElements.indexOf(
+        document.activeElement,
+    );
+
+    if (event.key === KEYS.TAB) {
+        if (event.shiftKey) {
+            if (currentIndex <= 0) {
+                event.preventDefault();
+                cachedFocusableElements[
+                    cachedFocusableElements.length - 1
+                ]?.focus();
+            }
+        } else {
+            if (
+                currentIndex === cachedFocusableElements.length - 1 ||
+                currentIndex === -1
+            ) {
+                event.preventDefault();
+                cachedFocusableElements[0]?.focus();
+            }
+        }
+        return;
+    }
+
+    const menuActions = {
+        [KEYS.ESCAPE]: () => closeMenu(),
+
+        [KEYS.ARROW_DOWN]: () => {
+            event.preventDefault();
+            const nextIndex =
+                currentIndex === cachedFocusableElements.length - 1
+                    ? 0
+                    : currentIndex + 1;
+            cachedFocusableElements[nextIndex]?.focus();
+        },
+
+        [KEYS.ARROW_UP]: () => {
+            event.preventDefault();
+            const previousIndex =
+                currentIndex <= 0
+                    ? cachedFocusableElements.length - 1
+                    : currentIndex - 1;
+            cachedFocusableElements[previousIndex]?.focus();
+        },
+
+        [KEYS.HOME]: () => {
+            event.preventDefault();
+            cachedFocusableElements[0]?.focus();
+        },
+
+        [KEYS.END]: () => {
+            event.preventDefault();
+            cachedFocusableElements[
+                cachedFocusableElements.length - 1
+            ]?.focus();
+        },
+    };
+
+    const action = menuActions[event.key];
+
+    if (typeof action === 'function') {
+        action();
     }
 };
 
@@ -37,6 +136,15 @@ const toggleMenu = (isOpen) => {
     if (menuButton) {
         menuButton.setAttribute('aria-expanded', String(isOpen));
     }
+
+    if (isOpen) {
+        cachedFocusableElements = getFocusableElements();
+        document.addEventListener('keydown', handleKeyboardNav);
+    } else {
+        cachedFocusableElements = [];
+        document.removeEventListener('keydown', handleKeyboardNav);
+    }
+
     updateAriaHidden();
 };
 
@@ -47,78 +155,17 @@ const closeMenu = (shouldFocus = true) => {
     }
 };
 
-const handleKeyboardNav = (event) => {
-    if (!navbar || !navbar.classList.contains('navbar--open') || !mobileMenu) {
-        return;
-    }
-
-    const links = Array.from(mobileMenu.querySelectorAll('a'));
-    const actionButtons = Array.from(
-        navbar.querySelectorAll('.navbar__actions a, .navbar__actions button'),
-    );
-    const elements = [closeButton, ...links, ...actionButtons].filter(Boolean);
-
-    if (elements.length === 0) {
-        return;
-    }
-
-    const currentIndex = elements.indexOf(document.activeElement);
-
-    if (event.key === KEYS.TAB) {
-        if (event.shiftKey) {
-            if (currentIndex <= 0) {
-                event.preventDefault();
-                elements[elements.length - 1]?.focus();
-            }
-        } else {
-            if (currentIndex === elements.length - 1 || currentIndex === -1) {
-                event.preventDefault();
-                elements[0]?.focus();
-            }
-        }
-        return;
-    }
-
-    const menuActions = {
-        [KEYS.ESCAPE]: () => closeMenu(),
-
-        [KEYS.ARROW_DOWN]: () => {
-            event.preventDefault();
-            const nextIndex =
-                currentIndex === elements.length - 1 ? 0 : currentIndex + 1;
-            elements[nextIndex]?.focus();
-        },
-
-        [KEYS.ARROW_UP]: () => {
-            event.preventDefault();
-            const previousIndex =
-                currentIndex <= 0 ? elements.length - 1 : currentIndex - 1;
-            elements[previousIndex]?.focus();
-        },
-
-        [KEYS.HOME]: () => {
-            event.preventDefault();
-            elements[0]?.focus();
-        },
-
-        [KEYS.END]: () => {
-            event.preventDefault();
-            elements[elements.length - 1]?.focus();
-        },
-    };
-
-    const action = menuActions[event.key];
-
-    if (typeof action === 'function') {
-        action();
-    }
-};
-
 const setupNavigation = () => {
-    if (desktopQuery) {
-        desktopQuery.addEventListener('change', updateAriaHidden);
-    }
+    desktopQuery.addEventListener('change', (e) => {
+        if (e.matches) {
+            closeMenu(false);
+        }
+        updateAriaHidden();
+        updateDomOrder();
+    });
+    window.addEventListener('resize', updateDomOrder);
     updateAriaHidden();
+    updateDomOrder();
 
     if (menuButton) {
         menuButton.addEventListener('click', () => {
@@ -130,9 +177,8 @@ const setupNavigation = () => {
             if (!isOpen) {
                 if (closeButton) {
                     closeButton.focus();
-                } else if (mobileMenu) {
-                    const firstLink = mobileMenu.querySelector('a');
-                    firstLink?.focus();
+                } else if (cachedFocusableElements.length > 0) {
+                    cachedFocusableElements[0].focus();
                 }
             }
         });
@@ -144,25 +190,17 @@ const setupNavigation = () => {
         });
     }
 
-    if (mobileMenu) {
-        mobileMenu.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => {
-                closeMenu(false);
-            });
+    if (menuDrawer) {
+        menuDrawer.querySelectorAll('a, button').forEach((element) => {
+            if (element !== closeButton) {
+                element.addEventListener('click', () => {
+                    if (!desktopQuery.matches) {
+                        closeMenu(false);
+                    }
+                });
+            }
         });
     }
-
-    if (navbar) {
-        navbar.querySelectorAll('.navbar__actions a').forEach((link) => {
-            link.addEventListener('click', () => {
-                if (!desktopQuery.matches) {
-                    closeMenu(false);
-                }
-            });
-        });
-    }
-
-    document.addEventListener('keydown', handleKeyboardNav);
 };
 
 setupNavigation();

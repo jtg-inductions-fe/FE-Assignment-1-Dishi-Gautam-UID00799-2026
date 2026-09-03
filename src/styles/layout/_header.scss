@@ -10,10 +10,14 @@ $header-padding: 2rem;
 $navigation-drawer-width: 20rem;
 $navigation-drawer-padding: 2rem;
 
+.header {
+    width: 100%;
+}
+
 .navbar {
     position: relative;
     z-index: $z-index-header;
-    @include mixins.flex(flex-start, center);
+    @include mixins.flex(space-between, center);
     width: 100%;
     height: function.px-to-rem(80px);
     margin-top: $header-padding;
@@ -35,57 +39,62 @@ $navigation-drawer-padding: 2rem;
         object-fit: contain;
     }
 
-    &__menu {
+    &__menu-btn {
         @include mixins.flex(center, center);
         width: function.px-to-rem(48px);
         height: function.px-to-rem(48px);
         padding: 0;
         border: 0;
         background: transparent;
-        font-size: function.px-to-rem(24px);
+        font-size: function.px-to-rem(48px);
+        color: variables.$color-primary;
         cursor: pointer;
+
+        .icon-menu {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: function.px-to-rem(48px);
+            height: function.px-to-rem(48px);
+            font-size: function.px-to-rem(48px);
+            line-height: 1;
+        }
     }
 
-    &__menu-image {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-    &__mobile-menu {
+    &__menu-drawer {
         position: fixed;
         top: 0;
-        left: 0;
+        right: 0;
         z-index: $z-index-navigation-drawer;
         width: min($navigation-drawer-width, 85vw);
         height: 100vh;
         padding: $navigation-drawer-padding;
         box-sizing: border-box;
         background: variables.$color-white;
-        box-shadow: function.px-to-rem(4px) 0 function.px-to-rem(20px)
+        box-shadow: function.px-to-rem(-4px) 0 function.px-to-rem(20px)
             variables.$color-shadow;
         visibility: hidden;
         pointer-events: none;
-        transform: translateX(-100%);
+        transform: translateX(100%);
         transition:
             transform 0.3s ease,
             visibility 0.3s ease;
+        @include mixins.flex(flex-start, stretch, column);
     }
 
-    &__mobile-header {
+    &__menu-header {
         @include mixins.flex(space-between, center);
         margin-bottom: function.px-to-rem(40px);
     }
 
-    &__mobile-title {
+    &__menu-title {
         color: variables.$color-heading;
         font-family: variables.$font-family-heading;
         font-size: function.px-to-rem(20px);
         font-weight: map.get(variables.$font-weights, bold);
     }
 
-    &__mobile-close {
+    &__menu-close-btn {
         @include mixins.flex(center, center);
         width: function.px-to-rem(40px);
         height: function.px-to-rem(40px);
@@ -97,7 +106,7 @@ $navigation-drawer-padding: 2rem;
         cursor: pointer;
     }
 
-    &__links {
+    &__nav-links {
         @include mixins.flex(flex-start, stretch, column);
         gap: function.px-to-rem(24px);
     }
@@ -120,36 +129,28 @@ $navigation-drawer-padding: 2rem;
         }
     }
 
-    &__actions {
-        @include mixins.flex(flex-start, stretch, column);
-        gap: function.px-to-rem(16px);
-        margin-top: function.px-to-rem(40px);
+    &__action-buttons {
+        &--header {
+            @include mixins.flex(flex-start, center, row);
+            gap: function.px-to-rem(16px);
+        }
+
+        &--drawer {
+            @include mixins.flex(flex-start, stretch, column);
+            gap: function.px-to-rem(16px);
+            margin-top: function.px-to-rem(40px);
+            display: none;
+        }
     }
 
     &__login,
     &__signup {
         font-family: variables.$font-family-heading;
         font-size: function.px-to-rem(14px);
-        width: 100%;
-    }
-
-    &__signup {
-        @include mixins.flex(center, center);
-
-        height: function.px-to-rem(48px);
-        padding: 0 function.px-to-rem(28px);
-        border: 1px solid variables.$color-primary;
-        border-radius: variables.$radius-pill;
-        box-sizing: border-box;
-        color: variables.$color-white;
-        background: variables.$color-primary;
-        font-family: variables.$font-family-heading;
-        font-weight: map.get(variables.$font-weights, medium);
-        text-decoration: none;
     }
 
     &--open {
-        .navbar__mobile-menu {
+        .navbar__menu-drawer {
             visibility: visible;
             pointer-events: auto;
             transform: translateX(0);
@@ -159,8 +160,12 @@ $navigation-drawer-padding: 2rem;
 
 @include mixins.breakpoint-max(tablet) {
     .navbar {
-        height: function.px-to-rem(132px);
-        padding: 0 function.px-to-rem(72px);
+        height: function.px-to-rem(80px);
+        padding: 0 function.px-to-rem(32px);
+
+        &__menu-btn {
+            order: 1;
+        }
 
         &__logo {
             position: absolute;
@@ -169,73 +174,66 @@ $navigation-drawer-padding: 2rem;
             transform: translate(-50%, -50%);
         }
 
-        &__actions {
-            @include mixins.flex(flex-start, center, row);
-            gap: function.px-to-rem(8px);
-            margin-top: 0;
+        &__action-buttons--header {
+            order: 2;
             margin-left: auto;
+            display: flex;
         }
 
-        &__login,
-        &__signup {
-            width: auto;
+        &__action-buttons--drawer {
+            display: none;
+        }
+
+        &__menu-drawer {
+            left: 0;
+            right: auto;
+            transform: translateX(-100%);
+            box-shadow: function.px-to-rem(4px) 0 function.px-to-rem(20px)
+                variables.$color-shadow;
         }
     }
 }
 
-@include mixins.breakpoint-max(mobile) {
+@media (max-width: 768px) {
     .navbar {
-        @include mixins.flex(space-between, center, row-reverse);
-        height: function.px-to-rem(100px);
-        padding: 0 function.px-to-rem(24px);
+        @include mixins.flex(space-between, center);
+        height: function.px-to-rem(80px);
+        margin-top: function.px-to-rem(32px);
+        padding: 0 function.px-to-rem(32px);
 
         &__logo {
             position: static;
-            width: function.px-to-rem(44px);
-            height: function.px-to-rem(44px);
             transform: none;
+            order: 1;
+            margin-right: auto;
         }
 
-        &__menu {
-            width: function.px-to-rem(48px);
-            height: function.px-to-rem(48px);
-            margin-left: 0;
+        &__menu-btn {
+            order: 2;
+            margin-left: auto;
         }
 
-        &__actions {
+        &__action-buttons--header {
             display: none;
         }
 
-        &__mobile-menu {
-            right: 0;
-            left: auto;
-            box-shadow: function.px-to-rem(-4px) 0 function.px-to-rem(20px)
-                variables.$color-shadow;
-            transform: translateX(100%);
-        }
-
-        &--open {
-            .navbar__mobile-menu {
-                transform: translateX(0);
-            }
-
-            .navbar__actions {
-                @include mixins.flex(flex-start, stretch, column);
-                position: fixed;
-                top: function.px-to-rem(300px);
-                right: $navigation-drawer-padding;
-                z-index: $z-index-navigation-drawer + 1;
-                width: calc(
-                    min($navigation-drawer-width, 85vw) -
-                        ($navigation-drawer-padding * 2)
-                );
-                gap: function.px-to-rem(16px);
-            }
+        &__action-buttons--drawer {
+            @include mixins.flex(flex-start, stretch, column);
+            margin-top: function.px-to-rem(32px);
+            gap: function.px-to-rem(16px);
 
             .navbar__login,
             .navbar__signup {
                 width: 100%;
             }
+        }
+
+        &__menu-drawer {
+            right: 0;
+            left: auto;
+            transform: translateX(100%);
+            box-shadow: function.px-to-rem(-4px) 0 function.px-to-rem(20px)
+                variables.$color-shadow;
         }
     }
 }
@@ -245,7 +243,7 @@ $navigation-drawer-padding: 2rem;
         height: function.px-to-rem(80px);
         padding: 0 function.px-to-rem(72px);
 
-        &__menu {
+        &__menu-btn {
             display: none;
         }
 
@@ -256,9 +254,10 @@ $navigation-drawer-padding: 2rem;
             transform: none;
         }
 
-        &__mobile-menu {
+        &__menu-drawer {
             position: static;
-            @include mixins.flex(flex-start, center);
+            @include mixins.flex(flex-start, center, row);
+            flex: 1;
             width: auto;
             height: auto;
             padding: 0;
@@ -269,11 +268,11 @@ $navigation-drawer-padding: 2rem;
             transform: none;
         }
 
-        &__mobile-header {
+        &__menu-header {
             display: none;
         }
 
-        &__links {
+        &__nav-links {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -300,11 +299,15 @@ $navigation-drawer-padding: 2rem;
             }
         }
 
-        &__actions {
+        &__action-buttons--header {
             @include mixins.flex(flex-start, center, row);
             gap: function.px-to-rem(20px);
             margin-top: 0;
             margin-left: auto;
+        }
+
+        &__action-buttons--drawer {
+            display: none;
         }
 
         &__login,

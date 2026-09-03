@@ -39,7 +39,7 @@
         flex: 0 0 function.px-to-rem(17px);
     }
 
-    &--primary {
+    &--filled {
         background-color: variables.$color-primary;
         color: variables.$color-white;
         border-color: variables.$color-primary;
@@ -50,7 +50,7 @@
         }
     }
 
-    &--secondary {
+    &--outline {
         background-color: variables.$color-white;
         color: variables.$color-heading;
         border-color: variables.$color-border;
@@ -61,7 +61,7 @@
         }
     }
 
-    &--tertiary {
+    &--ghost {
         background-color: transparent;
         color: variables.$color-heading;
         border-color: transparent;
