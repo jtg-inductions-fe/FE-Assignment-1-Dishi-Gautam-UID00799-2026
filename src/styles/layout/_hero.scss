@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as variables;
 @use '../abstracts/mixins' as mixins;
 
-.header {
+.hero {
     position: relative;
     width: 100%;
     max-width: variables.$container-max-width;
@@ -37,7 +37,7 @@
         );
         filter: blur(40px);
 
-        @include mixins.breakpoint(tablet) {
+        @include mixins.breakpoint-min(mobile) {
             top: -150px;
             left: -150px;
             width: 500px;
@@ -311,7 +311,7 @@
         }
     }
 
-    &__visual-inner {
+    &__visual {
         position: relative;
         display: flex;
         justify-content: center;
@@ -710,25 +710,6 @@
             width: auto;
             max-width: 170px;
             height: 38px;
-        }
-
-        &__follow {
-            bottom: -82px;
-            width: 72px;
-            height: 72px;
-        }
-
-        &__float-places {
-            right: -30px;
-            bottom: 34px;
-            padding: 9px 15px;
-        }
-
-        &__arrows-grid {
-            display: block;
-            left: -2px;
-            bottom: -5px;
-            width: 42px;
         }
     }
 }

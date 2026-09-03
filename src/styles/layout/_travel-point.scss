@@ -18,6 +18,8 @@
         grid-template-columns: 700px 431px;
         column-gap: 130px;
         align-items: center;
+        position: relative;
+        z-index: 2;
     }
 
     &__visual {
@@ -145,7 +147,22 @@
         object-fit: contain;
     }
 
-    @include mixins.breakpoint(tablet) {
+    &__blur {
+        display: block;
+        position: absolute;
+        top: -240px;
+        right: -250px;
+        z-index: 0;
+        width: 504px;
+        height: 495px;
+        border-radius: 50%;
+        background-color: #facd49;
+        opacity: 0.5;
+        filter: blur(160px);
+        pointer-events: none;
+    }
+
+    @include mixins.breakpoint-max(tablet) {
         padding-top: 48px;
 
         &__container {
@@ -155,6 +172,7 @@
             display: flex;
             flex-direction: column;
             align-items: stretch;
+            transform: none;
         }
 
         &__visual {
@@ -228,9 +246,17 @@
         &__ticket {
             display: none;
         }
+
+        &__blur {
+            top: -240px;
+            right: -260px;
+            width: 406px;
+            height: 406px;
+            filter: blur(140px);
+        }
     }
 
-    @include mixins.breakpoint(mobile) {
+    @include mixins.breakpoint-max(mobile) {
         padding-top: 40px;
 
         &__container {
@@ -346,47 +372,9 @@
         &__ticket {
             display: none;
         }
-    }
 
-    &__blur {
-        display: none;
-
-        @include mixins.breakpoint(tablet) {
-            display: block;
-            position: absolute;
-            top: -240px;
-            right: -260px;
-            z-index: 0;
-            width: 406px;
-            height: 406px;
-            border-radius: 50%;
-            background-color: #facd49;
-            opacity: 0.5;
-            filter: blur(140px);
-            pointer-events: none;
-        }
-
-        @include mixins.breakpoint(desktop) {
-            display: block;
-            position: absolute;
-            top: -240px;
-            right: -250px;
-            z-index: 0;
-            width: 504px;
-            height: 495px;
-            border-radius: 50%;
-            background-color: #facd49;
-            opacity: 0.5;
-            filter: blur(160px);
-            pointer-events: none;
-        }
-    }
-
-    @include mixins.breakpoint(desktop) {
-        &__container {
-            position: relative;
-            z-index: 2;
-            transform: translateY(48px);
+        &__blur {
+            display: none;
         }
     }
 }
