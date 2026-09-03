@@ -1,10 +1,12 @@
 $breakpoints: (
-    mobile: 430px,
+    mobile-small: 430px,
+    mobile: 768px,
     tablet: 1024px,
-    desktop: 1025px,
+    desktop: 1440px,
 );
 
 $container-max-width: 75rem;
+
 $container-padding-mobile: 1rem;
 $container-padding-desktop: 2rem;
 
@@ -73,6 +75,7 @@ $font-weights: (
     bold: 700,
     black: 900,
 );
+$font-weight-range: 100 900;
 
 $font-configs: (
     inter: (
@@ -80,28 +83,38 @@ $font-configs: (
         font-path: '/assets/fonts',
         font-name: 'inter-font',
     ),
-
-    circular-medium: (
+    circular-std: (
         font-family: 'Circular Std',
         font-path: '/assets/fonts',
         font-name: 'circular-std',
     ),
-
-    circular-bold: (
-        font-family: 'Circular Std',
-        font-path: '/assets/fonts',
-        font-name: 'circular-std',
-    ),
-
-    circular-black: (
-        font-family: 'Circular Std',
-        font-path: '/assets/fonts',
-        font-name: 'circular-std',
-    ),
-
     icomoon: (
         font-family: 'icomoon',
-        font-path: '/assets/fonts/icomoon',
+        font-path: '/assets/fonts/icomoon/fonts',
         font-name: 'icomoon',
     ),
 );
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-primary: #5d50c6;
+$color-secondary: #f85e9f;
+$color-orange: #ff5722;
+$color-heading: #191825;
+$color-heading-muted: rgba($color-heading, 0.5);
+$color-text: $color-heading-muted;
+$color-nav-link: $color-heading-muted;
+$color-button-text: #eeeeee;
+$color-tab-highlighter: #222831;
+$color-foot-highlighter: rgba($color-heading, 0.75);
+$color-border: #e4e4e4;
+$color-shadow: rgba($color-black, 0.3);
+
+$shadow-button: 0 0 1px 1px $color-shadow;
+$shadow-button-hover: 0 8px 20px rgba($color-primary, 0.25);
+$shadow-button-secondary: 0 4px 12px rgba($color-black, 0.05);
+$shadow-button-secondary-hover: 0 6px 16px rgba($color-black, 0.08);
+
+// Border radius
+$radius-pill: 999px;
+$color-text-muted: rgba($color-heading, 0.5);
