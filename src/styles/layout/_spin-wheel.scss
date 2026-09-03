@@ -13,11 +13,10 @@ body.modal-open {
     inset: 0;
     z-index: 1000;
     display: none;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding: 80px 16px 24px;
+    padding: 24px;
     box-sizing: border-box;
-    overflow-y: auto;
 
     &--open {
         display: flex;
