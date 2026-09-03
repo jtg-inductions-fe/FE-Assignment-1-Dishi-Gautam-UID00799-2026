@@ -13,9 +13,12 @@ body.modal-open {
     inset: 0;
     z-index: 1000;
     display: none;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    padding: 24px;
+    padding-top: 110px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 24px;
     box-sizing: border-box;
 
     &--open {
@@ -25,7 +28,6 @@ body.modal-open {
     @media (max-width: 768px) {
         align-items: flex-end !important;
         padding: 0 16px 0 16px !important;
-        overflow-y: hidden !important;
     }
 
     &__overlay {
