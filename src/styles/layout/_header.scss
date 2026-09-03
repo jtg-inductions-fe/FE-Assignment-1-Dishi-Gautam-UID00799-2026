@@ -1,8 +1,7 @@
 @use 'sass:map';
-@use '@styles/abstracts/variables' as variables;
-@use '@styles/abstracts/functions' as function;
-@use '@styles/abstracts/mixins' as mixins;
-@use '@styles/utilities' as utilities;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/functions' as function;
+@use '../abstracts/mixins' as mixins;
 
 $z-index-header: 100;
 $z-index-navigation-drawer: 200;

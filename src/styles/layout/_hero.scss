@@ -1,47 +1,56 @@
-@use '@styles/abstracts/variables' as variables;
-@use '@styles/abstracts/mixins' as mixins;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
 
 .hero {
     position: relative;
     width: 100%;
     max-width: variables.$container-max-width;
     margin: 0 auto;
-    padding: 24px variables.$container-padding-mobile 40px;
+    padding: 16px 16px 40px;
     box-sizing: border-box;
-    overflow: visible;
+    overflow: hidden;
 
-    @include mixins.breakpoint-min(tablet) {
-        padding: 32px 24px 44px;
+    @include mixins.breakpoint-min(mobile) {
+        padding: 40px 32px 48px;
     }
 
     @include mixins.breakpoint-min(desktop) {
-        padding: 32px 16px 48px;
+        padding: 64px 32px 64px;
+        overflow: visible;
     }
 
-    &__arrows-grid {
+    &__layout-gradient-bg {
         position: absolute;
-        z-index: 1;
-        display: none;
+        top: -50px;
+        left: -80px;
+        z-index: 0;
+        width: 272px;
+        height: 348px;
+        border-radius: 50%;
         pointer-events: none;
+        user-select: none;
+        background: radial-gradient(
+            circle at 35% 35%,
+            rgba(variables.$color-orange, 0.35) 0%,
+            rgba(variables.$color-secondary, 0.2) 45%,
+            rgba(255, 255, 255, 0) 75%
+        );
+        filter: blur(40px);
 
-        @include mixins.breakpoint-min(tablet) {
-            display: block;
-            left: -5px;
-            bottom: -20px;
-            width: 45px;
+        @include mixins.breakpoint-min(mobile) {
+            top: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            filter: blur(60px);
         }
 
         @include mixins.breakpoint-min(desktop) {
-            left: -35px;
-            bottom: -200px;
-            width: 65px;
-        }
-
-        img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: contain;
+            top: -120px;
+            left: -120px;
+            width: 503.65px;
+            height: 494.93px;
+            filter: blur(60px);
         }
     }
 
@@ -51,21 +60,17 @@
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
-        gap: 28px;
+        gap: 32px;
 
-        @media (max-width: 479px) {
-            gap: 32px;
-        }
-
-        @include mixins.breakpoint-min(tablet) {
+        @include mixins.breakpoint-min(mobile) {
             gap: 44px;
         }
 
         @include mixins.breakpoint-min(desktop) {
             display: grid;
-            grid-template-columns: 440px minmax(0, 1fr);
+            grid-template-columns: 480px minmax(0, 1fr);
             align-items: center;
-            gap: 48px;
+            gap: 56px;
         }
     }
 
@@ -80,15 +85,59 @@
         }
     }
 
+    &__arrows-grid {
+        position: absolute;
+        z-index: 5;
+        display: none;
+        pointer-events: none;
+
+        @include mixins.breakpoint-min(mobile) {
+            display: block;
+            left: 16px;
+            bottom: 40px;
+            top: auto;
+            transform: none;
+            width: 44px;
+        }
+
+        @include mixins.breakpoint-min(desktop) {
+            display: block;
+            left: -55px;
+            bottom: -175px;
+            top: auto;
+            transform: none;
+            width: 65.47px;
+            height: 168.23px;
+
+            img {
+                width: 65.47px;
+                height: 168.23px;
+                object-fit: contain;
+            }
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+
     &__content {
         position: relative;
         z-index: 5;
         width: 100%;
-        max-width: 440px;
+        max-width: 100%;
         margin: 0 auto;
         text-align: center;
 
+        @include mixins.breakpoint-min(mobile) {
+            max-width: 440px;
+        }
+
         @include mixins.breakpoint-min(desktop) {
+            max-width: 480px;
             margin: 0;
             text-align: left;
         }
@@ -97,17 +146,19 @@
     &__badge {
         display: inline-flex;
         align-items: center;
-        gap: 12px;
-        height: 48px;
-        margin: 0 auto 20px;
-        padding: 0 24px;
+        gap: 10px;
+        height: 44px;
+        margin: 28px auto 16px;
+        padding: 0 20px;
         box-sizing: border-box;
         background: transparent;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
         border-radius: variables.$radius-pill;
-        box-shadow: 0 10px 30px rgba(248, 94, 159, 0.12);
         color: variables.$color-secondary;
         font-family: variables.$font-family-heading;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 700;
 
         img {
@@ -115,6 +166,11 @@
             width: 18px;
             height: 18px;
             object-fit: contain;
+        }
+
+        @include mixins.breakpoint-min(mobile) {
+            height: 48px;
+            margin-bottom: 32px;
         }
 
         @include mixins.breakpoint-min(desktop) {
@@ -129,112 +185,129 @@
             }
         }
     }
-    &__layout-gradient-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        width: 420px;
-        height: 420px;
-        pointer-events: none;
-        user-select: none;
-        background: radial-gradient(
-            circle at 0% 0%,
-            variables.$color-orange 0.01%,
-            variables.$color-gradient-pink 40%,
-            variables.$color-transparent 75%
-        );
-        filter: blur(90px);
 
-        @include mixins.breakpoint-min(tablet) {
-            width: 650px;
-            height: 650px;
-            filter: blur(130px);
-        }
-
-        @include mixins.breakpoint-min(desktop) {
-            width: 900px;
-            height: 900px;
-            filter: blur(195px);
-        }
-    }
     &__title {
-        max-width: 620px;
-        margin: 0 auto 20px;
+        margin: 0 auto 16px;
         color: variables.$color-heading;
         font-family: variables.$font-family-heading;
-        font-size: 40px;
+        font-size: 36px;
         font-weight: 700;
         line-height: 1.15;
         letter-spacing: -0.02em;
-
-        span {
-            display: block;
-        }
+        max-width: 360px;
 
         .highlight {
             color: variables.$color-secondary;
+            font-weight: inherit;
         }
 
-        @media (max-width: 479px) {
-            max-width: 300px;
-            margin-bottom: 28px;
-            font-size: 30px;
-            line-height: 1.08;
-            letter-spacing: -0.025em;
+        .u-break-tablet,
+        .u-break-desktop {
+            display: none;
         }
 
-        @include mixins.breakpoint-min(tablet) {
-            max-width: 620px;
-            font-size: 40px;
+        .u-break-mobile {
+            display: block;
+        }
+
+        @include mixins.breakpoint-min(mobile) {
+            max-width: 580px;
+            font-size: 44px;
+            margin-bottom: 24px;
+
+            .u-break-mobile,
+            .u-break-desktop {
+                display: none;
+            }
+
+            .u-break-tablet {
+                display: block;
+            }
         }
 
         @include mixins.breakpoint-min(desktop) {
-            margin-bottom: 26px;
-            font-size: 48px;
+            max-width: 500px;
+            margin: 0 0 28px;
+            font-size: 68px;
+            line-height: 1.15;
+
+            .u-break-mobile,
+            .u-break-tablet {
+                display: none;
+            }
+
+            .u-break-desktop {
+                display: block;
+            }
         }
     }
 
     &__description {
-        max-width: 400px;
-        margin: 0 auto 20px;
+        margin: 0 auto 32px;
         padding: 0;
         color: variables.$color-text;
         font-family: variables.$font-family-body;
         font-size: 15px;
         line-height: 1.6;
+        max-width: 340px;
 
-        @media (max-width: 479px) {
-            max-width: 310px;
-            margin: 0 auto 26px;
-            font-size: 12px;
-            line-height: 1.5;
+        @include mixins.breakpoint-min(mobile) {
+            max-width: 420px;
+            font-size: 16px;
+            margin-bottom: 32px;
         }
 
         @include mixins.breakpoint-min(desktop) {
-            max-width: 420px;
-            margin: 0 0 32px;
-            font-size: 16px;
-            line-height: 1.65;
+            max-width: 440px;
+            margin: 0 0 36px;
+            font-size: 18px;
+            line-height: 1.6;
         }
     }
 
     &__actions {
         display: flex;
         flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
+        align-items: center;
+        gap: 16px;
         width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
 
-        @media (min-width: 480px) {
+        .button {
+            width: 100%;
+            height: 56px;
+            min-height: 56px;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        @include mixins.breakpoint-min(mobile) {
             flex-direction: row;
             align-items: center;
             justify-content: center;
             gap: 16px;
+            max-width: none;
+
+            .button {
+                width: auto;
+                height: auto;
+                min-height: 49px;
+            }
         }
 
         @include mixins.breakpoint-min(desktop) {
+            flex-direction: row;
+            align-items: center;
             justify-content: flex-start;
+            gap: 16px;
+
+            .button {
+                width: auto;
+                height: auto;
+                min-height: 49px;
+            }
         }
     }
 
@@ -243,23 +316,27 @@
         display: flex;
         justify-content: center;
         width: 100%;
+        margin-top: 10px;
+
+        @include mixins.breakpoint-min(mobile) {
+            margin-top: 10px;
+        }
 
         @include mixins.breakpoint-min(desktop) {
             justify-content: flex-end;
+            margin-top: 10px;
         }
     }
 
     &__visual-inner {
         position: relative;
         width: 100%;
-        max-width: 340px;
+        max-width: 360px;
+        margin: 0 auto;
 
-        @media (min-width: 480px) and (max-width: 1023px) {
-            max-width: 410px;
-        }
-
-        @include mixins.breakpoint-min(tablet) {
-            max-width: 440px;
+        @include mixins.breakpoint-min(mobile) {
+            width: 580px;
+            max-width: 580px;
         }
 
         @include mixins.breakpoint-min(desktop) {
@@ -270,19 +347,30 @@
 
     &__layer {
         position: absolute;
-        top: -8%;
-        left: -14%;
+        top: -30px;
+        left: 50%;
         z-index: 0;
-        width: 130%;
+        width: 460px;
         max-width: none;
         height: auto;
+        transform: translateX(-50%);
         pointer-events: none;
         user-select: none;
 
-        @include mixins.breakpoint-min(desktop) {
+        @include mixins.breakpoint-min(mobile) {
             top: -24px;
-            left: -80px;
-            width: 136%;
+            left: -35px;
+            width: 650px;
+            max-width: none;
+            transform: none;
+        }
+
+        @include mixins.breakpoint-min(desktop) {
+            top: -55px;
+            left: -65px;
+            width: 710px;
+            max-width: none;
+            transform: none;
         }
     }
 
@@ -290,20 +378,22 @@
         position: relative;
         z-index: 2;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: calc(50% - 9px) calc(50% - 9px);
+        justify-content: center;
         align-items: center;
-        gap: 12px;
-        margin-top: 16px;
+        gap: 18px;
+        margin-top: 12px;
 
-        @include mixins.breakpoint-min(tablet) {
-            gap: 24px;
+        @include mixins.breakpoint-min(mobile) {
+            grid-template-columns: repeat(2, 272px);
+            gap: 32px;
             margin-top: 24px;
         }
 
         @include mixins.breakpoint-min(desktop) {
-            grid-template-columns: repeat(2, minmax(0, 272px));
+            grid-template-columns: repeat(2, 272px);
             gap: 32px;
-            margin-top: 36px;
+            margin-top: 24px;
         }
     }
 
@@ -312,10 +402,10 @@
         z-index: 3;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 18px;
 
-        @include mixins.breakpoint-min(tablet) {
-            gap: 24px;
+        @include mixins.breakpoint-min(mobile) {
+            gap: 32px;
         }
 
         @include mixins.breakpoint-min(desktop) {
@@ -328,6 +418,17 @@
         z-index: 3;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        margin-top: 24px;
+
+        @include mixins.breakpoint-min(mobile) {
+            margin-top: 0;
+        }
+
+        @include mixins.breakpoint-min(desktop) {
+            justify-content: center;
+            margin-top: 0;
+        }
     }
 
     &__image {
@@ -336,12 +437,12 @@
         width: 100%;
         height: auto;
         object-fit: cover;
-        border-radius: 24px;
-        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.05);
+        border-radius: 28px;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
 
-        @include mixins.breakpoint-min(tablet) {
-            border-radius: 28px;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+        @include mixins.breakpoint-min(mobile) {
+            border-radius: 32px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.07);
         }
 
         @include mixins.breakpoint-min(desktop) {
@@ -351,10 +452,11 @@
     }
 
     &__images-left &__image {
-        height: 174px;
+        height: 160px;
 
-        @include mixins.breakpoint-min(tablet) {
-            height: 240px;
+        @include mixins.breakpoint-min(mobile) {
+            width: 272px;
+            height: 300px;
         }
 
         @include mixins.breakpoint-min(desktop) {
@@ -364,9 +466,10 @@
     }
 
     &__images-right &__image {
-        height: 205px;
+        height: 255px;
 
-        @include mixins.breakpoint-min(tablet) {
+        @include mixins.breakpoint-min(mobile) {
+            width: 272px;
             height: 400px;
         }
 
@@ -380,9 +483,9 @@
     &__follow {
         position: absolute;
         z-index: 10;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
+        height: 33px;
+        width: 33px;
         padding: 0;
         border: 0;
         background: transparent;
@@ -391,117 +494,129 @@
         img {
             display: block;
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: contain;
         }
     }
 
     &__share {
-        left: -30px;
-        top: 55%;
-        width: 82px;
-        height: 82px;
-        transform: translateY(-50%);
-        filter: drop-shadow(0 10px 20px rgba(248, 94, 159, 0.4));
-        transition:
-            transform 0.2s ease,
-            filter 0.2s ease;
+        left: -12px;
+        top: 135px;
+        width: 65px;
+        height: auto;
+        transition: transform 0.2s ease;
 
         &:hover {
-            transform: translateY(calc(-50% - 2px));
-            filter: drop-shadow(0 14px 24px rgba(248, 94, 159, 0.5));
+            transform: translateY(-2px);
         }
 
-        &:focus-visible {
-            outline: 3px solid variables.$color-secondary;
-            outline-offset: 4px;
-            border-radius: 50%;
-        }
+        @include mixins.breakpoint-min(mobile) {
+            top: 300px;
+            width: 126px;
+            height: auto;
+            left: 0;
+            transform: translate(-50%, -18.6%);
 
-        @include mixins.breakpoint-min(tablet) {
-            left: -48px;
-            width: 112px;
-            height: 112px;
+            &:hover {
+                transform: translate(-50%, calc(-18.6% - 4px));
+            }
         }
 
         @include mixins.breakpoint-min(desktop) {
-            left: -85px;
-            width: 180px;
-            height: 180px;
+            top: 300px;
+            width: 126px;
+            height: auto;
+            left: 0;
+            transform: translate(-50%, -18.6%);
         }
     }
 
     &__follow {
         left: 50%;
-        bottom: -92px;
-        width: 82px;
-        height: 82px;
+        right: auto;
+        bottom: -24px;
+        top: 300px;
+        width: 65px;
+        height: auto;
         transform: translateX(-50%);
-        filter: drop-shadow(0 10px 22px rgba(255, 87, 34, 0.4));
-        transition:
-            transform 0.2s ease,
-            filter 0.2s ease;
+        transition: transform 0.2s ease;
 
         &:hover {
-            transform: translateX(-50%) translateY(-2px);
-            filter: drop-shadow(0 14px 26px rgba(255, 87, 34, 0.5));
+            transform: translate(-50%, -2px);
         }
 
-        &:focus-visible {
-            outline: 3px solid variables.$color-orange;
-            outline-offset: 4px;
-            border-radius: 50%;
-        }
+        @include mixins.breakpoint-min(mobile) {
+            left: 50%;
+            top: 490px;
+            bottom: auto;
+            width: 126px;
+            height: auto;
+            transform: translate(-50%, -8.6%);
 
-        @include mixins.breakpoint-min(tablet) {
-            bottom: -138px;
-            width: 112px;
-            height: 112px;
+            &:hover {
+                transform: translate(-50%, calc(-8.6% - 4px));
+            }
         }
 
         @include mixins.breakpoint-min(desktop) {
-            bottom: -240px;
-            width: 180px;
-            height: 180px;
+            left: 50%;
+            top: 460px;
+            bottom: auto;
+            width: 126px;
+            height: auto;
+            transform: translateX(-50%);
+
+            &:hover {
+                transform: translate(-50%, -4px);
+            }
         }
     }
 
     &__float-places {
         position: absolute;
-        right: -35px;
-        bottom: 38px;
+        right: -40px;
+        bottom: 36px;
         z-index: 20;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        padding: 10px 18px;
+        gap: 5px;
+        height: 32px;
+        padding: 0 12px;
         box-sizing: border-box;
         background: variables.$color-white;
         border-radius: variables.$radius-pill;
-        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
         white-space: nowrap;
 
-        @include mixins.breakpoint-min(tablet) {
-            right: -48px;
-            bottom: 48px;
-            gap: 9px;
-            padding: 12px 22px;
+        @include mixins.breakpoint-min(mobile) {
+            right: -82px;
+            bottom: 40px;
+            width: 166px;
+            height: 56px;
+            padding: 0;
+            gap: 10px;
         }
 
         @include mixins.breakpoint-min(desktop) {
-            right: -64px;
-            bottom: 64px;
+            right: -82px;
+            bottom: 50px;
+            width: 166px;
+            height: 56px;
+            padding: 0;
             gap: 10px;
-            padding: 14px 26px;
-            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.08);
         }
 
         span {
             color: variables.$color-heading;
             font-family: variables.$font-family-heading;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
+
+            @include mixins.breakpoint-min(mobile) {
+                font-size: 14px;
+            }
 
             @include mixins.breakpoint-min(desktop) {
                 font-size: 14px;
@@ -512,11 +627,11 @@
     &__float-icon-pin {
         display: block;
         flex: 0 0 auto;
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
         object-fit: contain;
 
-        @include mixins.breakpoint-min(tablet) {
+        @include mixins.breakpoint-min(mobile) {
             width: 16px;
             height: 16px;
         }
@@ -527,10 +642,11 @@
         }
     }
 }
+
 .partners {
     width: 100%;
     max-width: variables.$container-max-width;
-    margin: 32px auto 0;
+    margin: 36px auto 0;
     padding: 0 16px;
     box-sizing: border-box;
 
@@ -539,21 +655,21 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        gap: 16px 20px;
+        gap: 20px 24px;
         width: 100%;
-        max-width: 320px;
+        max-width: 340px;
         margin: 0 auto;
     }
 
     &__logo {
         display: block;
         width: auto;
-        height: 20px;
-        max-width: 85px;
+        height: 22px;
+        max-width: 100px;
         object-fit: contain;
     }
 
-    @include mixins.breakpoint-max(tablet) {
+    @include mixins.breakpoint-min(mobile) {
         margin-top: 48px;
 
         &__logos {
