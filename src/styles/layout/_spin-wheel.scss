@@ -30,7 +30,7 @@ body.modal-open {
     &__overlay {
         position: absolute;
         inset: 0;
-        background-color: rgba($color-black, 0.5);
+        background-color: rgba($color-black, 0.4);
         backdrop-filter: blur(4px);
         touch-action: none;
     }
@@ -42,8 +42,8 @@ body.modal-open {
         max-width: 360px;
         background-color: $color-white;
         border-radius: 24px;
-        padding: 24px 20px;
-        box-shadow: 0 20px 40px rgba($color-black, 0.18);
+        padding: 28px 24px;
+        box-shadow: 0 20px 45px rgba($color-black, 0.18);
         margin: auto;
         box-sizing: border-box;
         overflow: hidden;
