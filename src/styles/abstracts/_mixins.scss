@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use '@styles/abstracts/variables' as variables;
+@use '../abstracts/variables' as variables;
 
 @mixin flex($justify-content: center, $align-items: center, $direction: row) {
     display: flex;
@@ -10,6 +10,12 @@
 
 @mixin breakpoint-min($device) {
     @media (min-width: map.get(variables.$breakpoints, $device)) {
+        @content;
+    }
+}
+
+@mixin breakpoint($device) {
+    @include breakpoint-min($device) {
         @content;
     }
 }
