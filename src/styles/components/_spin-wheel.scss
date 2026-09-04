@@ -183,6 +183,7 @@ body.modal-open {
             #06b6d4 180deg 270deg,
             #f4436c 270deg 360deg
         );
+        will-change: transform;
         transition: transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99);
     }
 
