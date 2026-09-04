@@ -3,11 +3,9 @@ import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
 
 export default [
-    /*
-    Rules from `js.configs.recommended` are included by default. For a full list of these rules,
-    please refer to the ESLint recommended configuration:
-    https://github.com/eslint/eslint/blob/main/packages/js/src/configs/eslint-recommended.js}
-    */
+    {
+        ignores: ['dist/**', 'node_modules/**', 'public/**'],
+    },
     js.configs.recommended,
     eslintPluginPrettier,
     {

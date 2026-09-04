@@ -1,0 +1,54 @@
+@use 'sass:map';
+@use '../abstracts/functions' as function;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+
+@include mixins.font-face(
+    map.get(variables.$font-configs, inter),
+    variables.$font-weight-range
+);
+@include mixins.font-face(
+    map.get(variables.$font-configs, circular-std),
+    variables.$font-weight-range
+);
+
+body {
+    @include mixins.text-style(
+        variables.$font-family-body,
+        function.px-to-rem(16px),
+        regular
+    );
+    color: variables.$color-text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: variables.$font-family-heading;
+    color: variables.$color-heading;
+}
+
+h1,
+section h1,
+article h1,
+aside h1,
+nav h1 {
+    font-size: function.px-to-rem(32px);
+    font-weight: map.get(variables.$font-weights, bold);
+}
+
+a {
+    @include mixins.text-style(
+        variables.$font-family-heading,
+        function.px-to-rem(16px),
+        medium
+    );
+    text-decoration: none;
+}
+
+p {
+    @include mixins.text-style(variables.$font-family-body, inherit, regular);
+}

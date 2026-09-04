@@ -1,1 +1,6 @@
-// TODO: Add styles as per the requirement
+/* SCSS entrypoint */
+@use 'base';
+@use 'components';
+@use 'layout';
+@use 'utilities';
+@use 'vendors';

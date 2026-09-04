@@ -1,0 +1,75 @@
+@use '../abstracts/functions' as function;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+
+.button {
+    @include mixins.flex(center, center);
+    @include mixins.text-style(
+        variables.$font-family-heading,
+        function.px-to-rem(14px),
+        bold
+    );
+    min-height: function.px-to-rem(52px);
+    padding: 0 function.px-to-rem(32px);
+    border: function.px-to-rem(1px) solid transparent;
+    border-radius: variables.$radius-pill;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+    will-change: transform;
+
+    &:focus-visible {
+        outline: function.px-to-rem(2px) solid variables.$color-primary;
+        outline-offset: function.px-to-rem(3px);
+    }
+
+    &:active {
+        transform: translateY(function.px-to-rem(1px));
+    }
+
+    &__icon {
+        display: block;
+        width: function.px-to-rem(24px);
+        height: function.px-to-rem(24px);
+        margin-right: function.px-to-rem(10px);
+        object-fit: contain;
+        flex: 0 0 function.px-to-rem(24px);
+    }
+
+    &--filled {
+        background-color: variables.$color-primary;
+        color: variables.$color-white;
+        border-color: variables.$color-primary;
+        box-shadow: variables.$shadow-button;
+
+        &:hover {
+            box-shadow: variables.$shadow-button-hover;
+        }
+    }
+
+    &--outlined {
+        background-color: variables.$color-white;
+        color: variables.$color-heading;
+        border-color: #eeeeee;
+        box-shadow: variables.$shadow-button-secondary;
+
+        &:hover {
+            box-shadow: variables.$shadow-button-secondary-hover;
+        }
+    }
+
+    &--ghost {
+        background-color: transparent;
+        color: variables.$color-heading;
+        border-color: transparent;
+        box-shadow: none;
+
+        &:hover {
+            color: variables.$color-primary;
+        }
+    }
+}

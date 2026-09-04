@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use '../abstracts/variables' as variables;
+
+body {
+    min-width: map.get(variables.$breakpoints, mobile-min);
+    background-color: variables.$color-white;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+    outline: 2px solid variables.$color-primary;
+    outline-offset: 3px;
+}
