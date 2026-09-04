@@ -1,7 +1,8 @@
 @use 'sass:map';
-@use '../abstracts/functions' as function;
-@use '../abstracts/variables' as variables;
-@use '../abstracts/mixins' as mixins;
+
+@use '@styles/abstracts/functions' as function;
+@use '@styles/abstracts/variables' as variables;
+@use '@styles/abstracts/mixins' as mixins;
 
 @include mixins.font-face(
     map.get(variables.$font-configs, inter),

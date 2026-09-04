@@ -1,6 +1,6 @@
 @use 'sass:map';
-@use '../abstracts/variables' as variables;
-@use '../abstracts/mixins' as mixins;
+@use '@styles/abstracts/variables' as variables;
+@use '@styles/abstracts/mixins' as mixins;
 
 .card {
     @include mixins.flex(center, center, column);
