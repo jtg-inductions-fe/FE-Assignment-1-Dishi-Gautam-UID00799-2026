@@ -63,6 +63,7 @@
         text-transform: uppercase;
     }
 
+    // Circular Std 700
     &__title {
         @include mixins.text-style(
             variables.$font-family-heading,
@@ -77,6 +78,7 @@
         letter-spacing: -0.0375rem;
     }
 
+    // Inter 400
     &__description {
         @include mixins.text-style(
             variables.$font-family-body,
@@ -111,6 +113,7 @@
         background-color: variables.$color-white;
     }
 
+    // Circular Std 700
     &__number {
         @include mixins.text-style(
             variables.$font-family-heading,
@@ -123,6 +126,7 @@
         line-height: 1;
     }
 
+    // Inter 400
     &__label {
         @include mixins.text-style(
             variables.$font-family-body,
