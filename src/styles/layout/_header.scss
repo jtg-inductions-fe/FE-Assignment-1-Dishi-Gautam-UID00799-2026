@@ -1,8 +1,7 @@
 @use 'sass:map';
-@use '@styles/abstracts/variables' as variables;
-@use '@styles/abstracts/functions' as function;
-@use '@styles/abstracts/mixins' as mixins;
-@use '@styles/utilities' as utilities;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/functions' as function;
+@use '../abstracts/mixins' as mixins;
 
 $z-index-header: 100;
 $z-index-navigation-drawer: 200;
@@ -23,7 +22,7 @@ $navigation-drawer-padding: 2rem;
     margin-top: $header-padding;
     padding: 0 function.px-to-rem(72px);
     box-sizing: border-box;
-    background: variables.$color-white;
+    background: transparent;
 
     &__logo {
         display: block;

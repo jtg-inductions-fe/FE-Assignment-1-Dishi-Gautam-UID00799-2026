@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <meta
             name="description"
             content="Travlog - Discover amazing destinations and special travel deals."
@@ -19,6 +18,8 @@
     </head>
 
     <body>
+        <div class="hero__layout-gradient-bg" aria-hidden="true"></div>
+
         <header class="header">
             <nav class="navbar" aria-label="Main navigation">
                 <a href="/" class="navbar__logo" aria-label="Travlog home">
@@ -106,6 +107,176 @@
             </nav>
         </header>
 
-        <script type="module" src="/src/script/index.js"></script>
+        <main>
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero__grid-container">
+                    <div class="hero__content-wrap">
+                        <div class="hero__arrows-grid" aria-hidden="true">
+                            <img src="/assets/svgs/arrow.svg" alt="" />
+                        </div>
+
+                        <div class="hero__content">
+                            <div class="hero__badge">
+                                <span>Explore the world!</span>
+
+                                <img
+                                    src="/assets/svgs/work.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                            </div>
+
+                            <h1 id="hero-title" class="hero__title">
+                                Travel
+                                <span class="highlight">top</span>
+                                <br class="u-break-mobile u-break-desktop" />
+                                <span class="highlight">destination</span>
+                                <br class="u-break-tablet u-break-desktop" />
+                                of the
+                                <br class="u-break-mobile" />world
+                            </h1>
+
+                            <p class="hero__description">
+                                We always make our customer happy by providing
+                                as many choices as possible
+                            </p>
+
+                            <div class="hero__actions">
+                                <button
+                                    class="button button--filled"
+                                    type="button"
+                                >
+                                    Get Started
+                                </button>
+
+                                <button
+                                    class="button button--outlined"
+                                    type="button"
+                                >
+                                    <img
+                                        class="button__icon"
+                                        src="/assets/svgs/play.svg"
+                                        alt=""
+                                        aria-hidden="true"
+                                    />
+
+                                    <span>Watch Demo</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero__visual">
+                        <div class="hero__visual-inner">
+                            <img
+                                class="hero__layer"
+                                src="/assets/images/layer.png"
+                                alt=""
+                                aria-hidden="true"
+                            />
+
+                            <div class="hero__images-grid">
+                                <div class="hero__images-left">
+                                    <img
+                                        class="hero__image"
+                                        src="/assets/images/destination_01.png"
+                                        alt="Seaside destination"
+                                    />
+
+                                    <img
+                                        class="hero__image"
+                                        src="/assets/images/destination_02.png"
+                                        alt="Mountain destination"
+                                    />
+
+                                    <button
+                                        class="hero__share"
+                                        type="button"
+                                        aria-label="Share destination"
+                                    >
+                                        <img
+                                            src="/assets/svgs/share.svg"
+                                            alt=""
+                                            aria-hidden="true"
+                                        />
+                                    </button>
+                                </div>
+
+                                <div class="hero__images-right">
+                                    <img
+                                        class="hero__image"
+                                        src="/assets/images/destination_03.png"
+                                        alt="Traveler exploring a city"
+                                    />
+
+                                    <div class="hero__float-places">
+                                        <img
+                                            class="hero__float-icon-pin"
+                                            src="/assets/svgs/location.svg"
+                                            alt=""
+                                            aria-hidden="true"
+                                        />
+
+                                        <span>Top Places</span>
+                                    </div>
+
+                                    <button
+                                        class="hero__follow"
+                                        type="button"
+                                        aria-label="Follow destination"
+                                    >
+                                        <img
+                                            src="/assets/svgs/follow.svg"
+                                            alt=""
+                                            aria-hidden="true"
+                                        />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="partners"
+                class="partners"
+                aria-labelledby="partners-title"
+            >
+                <div class="partners__logos">
+                    <img
+                        class="partners__logo"
+                        src="/assets/svgs/tripadvisor.svg"
+                        alt="Tripadvisor"
+                    />
+
+                    <img
+                        class="partners__logo"
+                        src="/assets/svgs/expedia.svg"
+                        alt="Expedia"
+                    />
+
+                    <img
+                        class="partners__logo"
+                        src="/assets/svgs/booking.svg"
+                        alt="Booking.com"
+                    />
+
+                    <img
+                        class="partners__logo"
+                        src="/assets/svgs/airbnb.svg"
+                        alt="Airbnb"
+                    />
+
+                    <img
+                        class="partners__logo"
+                        src="/assets/svgs/orbitz.svg"
+                        alt="Orbitz"
+                    />
+                </div>
+            </section>
+        </main>
+
+        <script src="src/script/index.js" type="module"></script>
     </body>
 </html>

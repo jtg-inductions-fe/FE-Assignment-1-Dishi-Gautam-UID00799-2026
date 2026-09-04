@@ -1,19 +1,9 @@
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { defineConfig } from 'vite';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(() => {
     return {
-        resolve: {
-            alias: {
-                '@styles': path.resolve(rootDir, 'src/styles'),
-                '@scripts': path.resolve(rootDir, 'src/script'),
-            },
-        },
         plugins: [
             createHtmlPlugin({
                 minify: true,
