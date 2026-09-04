@@ -1,0 +1,380 @@
+@use 'sass:map';
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+
+.travel-point {
+    position: relative;
+    width: 100%;
+    background-color: variables.$color-white;
+
+    &__container {
+        width: min(
+            variables.$container-max-width,
+            calc(100% - (2 * variables.$container-padding-desktop))
+        );
+        min-height: 654px;
+        margin: 48px auto 0;
+        display: grid;
+        grid-template-columns: 700px 431px;
+        column-gap: 130px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__visual {
+        position: relative;
+        width: 700px;
+        height: 585px;
+        transform: translateX(-120px);
+    }
+
+    &__image-wrapper {
+        position: relative;
+        width: 700px;
+        height: 585px;
+    }
+
+    &__main-image {
+        display: block;
+        width: 700px;
+        height: 585px;
+        object-fit: contain;
+        object-position: left center;
+    }
+
+    &__content {
+        position: relative;
+        width: 100%;
+        max-width: 431px;
+    }
+
+    &__section-label {
+        @include mixins.text-style(
+            variables.$font-family-heading,
+            1.4375rem,
+            map.get(variables.$font-weights, bold)
+        );
+
+        margin: 0 0 16px;
+        color: variables.$color-secondary;
+        line-height: 1.25;
+        letter-spacing: 0.25rem;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        @include mixins.text-style(
+            variables.$font-family-heading,
+            2.75rem,
+            map.get(variables.$font-weights, bold)
+        );
+
+        max-width: 431px;
+        margin: 0;
+        color: variables.$color-black;
+        line-height: 1.18;
+        letter-spacing: -0.0375rem;
+    }
+
+    &__description {
+        @include mixins.text-style(
+            variables.$font-family-body,
+            1.125rem,
+            map.get(variables.$font-weights, regular)
+        );
+
+        max-width: 431px;
+        margin: 27px 0 0;
+        color: variables.$color-text;
+        line-height: 1.55;
+    }
+
+    &__stats {
+        position: relative;
+        display: grid;
+        width: 431px;
+        margin-top: 43px;
+        grid-template-columns: 211px 211px;
+        grid-template-rows: 151px 151px;
+        gap: 16px 9px;
+    }
+
+    &__stat {
+        @include mixins.flex(center, center, column);
+
+        width: 211px;
+        height: 151px;
+        box-sizing: border-box;
+        border: 1px solid rgba(25, 25, 37, 0.1);
+        border-radius: 2rem;
+        background-color: variables.$color-white;
+    }
+
+    &__number {
+        @include mixins.text-style(
+            variables.$font-family-heading,
+            2.1875rem,
+            map.get(variables.$font-weights, bold)
+        );
+
+        margin: 0 0 11px;
+        color: variables.$color-orange;
+        line-height: 1;
+    }
+
+    &__label {
+        @include mixins.text-style(
+            variables.$font-family-body,
+            0.875rem,
+            map.get(variables.$font-weights, regular)
+        );
+
+        margin: 0;
+        color: variables.$color-heading;
+        line-height: 1.25rem;
+    }
+
+    &__ticket {
+        position: absolute;
+        z-index: 10;
+        top: -35px;
+        right: -35px;
+        display: block;
+        width: 130px;
+        height: auto;
+        pointer-events: none;
+        object-fit: contain;
+    }
+
+    &__blur {
+        display: block;
+        position: absolute;
+        top: -240px;
+        right: -250px;
+        z-index: 0;
+        width: 504px;
+        height: 495px;
+        border-radius: 50%;
+        background-color: #facd49;
+        opacity: 0.5;
+        filter: blur(160px);
+        pointer-events: none;
+    }
+
+    @include mixins.breakpoint-max(tablet) {
+        padding-top: 48px;
+
+        &__container {
+            width: 100%;
+            min-height: auto;
+            margin-top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            transform: none;
+        }
+
+        &__visual {
+            width: 100%;
+            height: auto;
+            transform: none;
+        }
+
+        &__image-wrapper {
+            width: 100%;
+            height: auto;
+        }
+
+        &__main-image {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: center top;
+        }
+
+        &__content {
+            width: 100%;
+            max-width: none;
+            padding: 48px 32px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        &__section-label {
+            margin-bottom: 16px;
+            font-size: 23px;
+        }
+
+        &__title {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 2.25rem;
+        }
+
+        &__description {
+            max-width: 600px;
+            margin: 24px auto 0;
+            font-size: 1rem;
+        }
+
+        &__stats {
+            display: grid;
+            width: 100%;
+            max-width: 650px;
+            margin: 46px auto 0;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: repeat(2, 151px);
+            gap: 16px;
+        }
+
+        &__stat {
+            width: 100%;
+            min-width: 0;
+            height: 151px;
+        }
+
+        &__number {
+            font-size: 2rem;
+        }
+
+        &__label {
+            font-size: 0.875rem;
+        }
+
+        &__ticket {
+            display: none;
+        }
+
+        &__blur {
+            top: -240px;
+            right: -260px;
+            width: 406px;
+            height: 406px;
+            filter: blur(140px);
+        }
+    }
+
+    @include mixins.breakpoint-max(mobile) {
+        padding-top: 40px;
+
+        &__container {
+            width: 100%;
+            min-height: auto;
+            margin-top: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__visual {
+            width: 100%;
+            height: auto;
+            min-height: 0;
+            transform: none;
+        }
+
+        &__image-wrapper {
+            width: 100%;
+            height: auto;
+            min-height: 0;
+        }
+
+        &__main-image {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: center top;
+        }
+
+        &__content {
+            width: 100%;
+            max-width: none;
+            padding: 32px 16px 48px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        &__section-label {
+            @include mixins.text-style(
+                variables.$font-family-heading,
+                18px,
+                map.get(variables.$font-weights, bold)
+            );
+
+            margin: 0 0 16px;
+            line-height: 1.25;
+            letter-spacing: 0.2rem;
+        }
+
+        &__title {
+            @include mixins.text-style(
+                variables.$font-family-heading,
+                32px,
+                map.get(variables.$font-weights, bold)
+            );
+
+            max-width: 330px;
+            margin: 0 auto;
+            line-height: 1.2;
+            letter-spacing: 0;
+        }
+
+        &__description {
+            @include mixins.text-style(
+                variables.$font-family-body,
+                16px,
+                map.get(variables.$font-weights, regular)
+            );
+
+            max-width: 330px;
+            margin: 20px auto 0;
+            line-height: 1.55;
+        }
+
+        &__stats {
+            display: grid;
+            width: 100%;
+            max-width: 330px;
+            margin: 32px auto 0;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, 151px);
+            gap: 16px;
+        }
+
+        &__stat {
+            width: 100%;
+            min-width: 0;
+            height: 151px;
+        }
+
+        &__number {
+            @include mixins.text-style(
+                variables.$font-family-heading,
+                35px,
+                map.get(variables.$font-weights, bold)
+            );
+
+            margin: 0 0 11px;
+        }
+
+        &__label {
+            @include mixins.text-style(
+                variables.$font-family-body,
+                18px,
+                map.get(variables.$font-weights, regular)
+            );
+
+            margin: 0;
+        }
+
+        &__ticket {
+            display: none;
+        }
+
+        &__blur {
+            display: none;
+        }
+    }
+}
