@@ -13,12 +13,9 @@ body.modal-open {
     inset: 0;
     z-index: 1000;
     display: none;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding-top: 110px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 24px;
+    padding: 24px 16px;
     box-sizing: border-box;
 
     &--open {
