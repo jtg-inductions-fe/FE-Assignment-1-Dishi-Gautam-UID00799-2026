@@ -20,6 +20,7 @@
         transform 0.2s ease,
         box-shadow 0.2s ease,
         background-color 0.2s ease;
+    will-change: transform;
 
     &:focus-visible {
         outline: function.px-to-rem(2px) solid variables.$color-primary;
