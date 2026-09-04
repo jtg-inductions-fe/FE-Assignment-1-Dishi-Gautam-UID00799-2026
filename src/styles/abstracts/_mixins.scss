@@ -14,12 +14,6 @@
     }
 }
 
-@mixin breakpoint($device) {
-    @include breakpoint-min($device) {
-        @content;
-    }
-}
-
 @mixin breakpoint-max($device) {
     @media (max-width: map.get(variables.$breakpoints, $device)) {
         @content;
