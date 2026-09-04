@@ -31,7 +31,11 @@ h6 {
     color: variables.$color-heading;
 }
 
-h1 {
+h1,
+section h1,
+article h1,
+aside h1,
+nav h1 {
     font-size: function.px-to-rem(32px);
     font-weight: map.get(variables.$font-weights, bold);
 }

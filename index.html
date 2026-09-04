@@ -15,6 +15,20 @@
         <meta name="robots" content="index, follow" />
 
         <title>Travlog - Explore the World</title>
+        <link
+            rel="preload"
+            as="image"
+            href="/assets/images/destination_01.webp"
+            type="image/webp"
+            fetchpriority="high"
+        />
+        <link
+            rel="preload"
+            as="image"
+            href="/assets/images/layer.webp"
+            type="image/webp"
+            fetchpriority="high"
+        />
     </head>
 
     <body>
@@ -27,6 +41,9 @@
                         class="navbar__logo-image"
                         src="/assets/svgs/logo.svg"
                         alt="Travlog"
+                        width="40"
+                        height="40"
+                        loading="eager"
                     />
                 </a>
 
@@ -112,7 +129,13 @@
                 <div class="hero__grid-container">
                     <div class="hero__content-wrap">
                         <div class="hero__arrows-grid" aria-hidden="true">
-                            <img src="/assets/svgs/arrow.svg" alt="" />
+                            <img
+                                src="/assets/svgs/arrow.svg"
+                                alt=""
+                                width="65"
+                                height="168"
+                                loading="eager"
+                            />
                         </div>
 
                         <div class="hero__content">
@@ -123,6 +146,9 @@
                                     src="/assets/svgs/work.svg"
                                     alt=""
                                     aria-hidden="true"
+                                    width="20"
+                                    height="20"
+                                    loading="eager"
                                 />
                             </div>
 
@@ -158,6 +184,9 @@
                                         src="/assets/svgs/play.svg"
                                         alt=""
                                         aria-hidden="true"
+                                        width="24"
+                                        height="24"
+                                        loading="eager"
                                     />
 
                                     <span> Watch Demo </span>
@@ -170,23 +199,31 @@
                         <div class="hero__visual-inner">
                             <img
                                 class="hero__layer"
-                                src="/assets/images/layer.png"
+                                src="/assets/images/layer.webp"
                                 alt=""
                                 aria-hidden="true"
+                                width="710"
+                                height="400"
+                                loading="eager"
+                                fetchpriority="high"
+                                decoding="async"
                             />
 
                             <div class="hero__images-grid">
                                 <div class="hero__images-left">
                                     <img
                                         class="hero__image"
-                                        src="/assets/images/destination_01.png"
+                                        src="/assets/images/destination_01.webp"
                                         alt="Seaside destination"
+                                        loading="eager"
+                                        fetchpriority="high"
                                     />
 
                                     <img
                                         class="hero__image"
-                                        src="/assets/images/destination_02.png"
+                                        src="/assets/images/destination_02.webp"
                                         alt="Mountain destination"
+                                        loading="eager"
                                     />
 
                                     <button
@@ -198,6 +235,9 @@
                                             src="/assets/svgs/share.svg"
                                             alt=""
                                             aria-hidden="true"
+                                            width="40"
+                                            height="40"
+                                            loading="eager"
                                         />
                                     </button>
                                 </div>
@@ -205,8 +245,9 @@
                                 <div class="hero__images-right">
                                     <img
                                         class="hero__image"
-                                        src="/assets/images/destination_03.png"
+                                        src="/assets/images/destination_03.webp"
                                         alt="Traveler exploring a city"
+                                        loading="eager"
                                     />
 
                                     <div class="hero__float-places">
@@ -215,6 +256,7 @@
                                             src="/assets/svgs/location.svg"
                                             alt=""
                                             aria-hidden="true"
+                                            loading="eager"
                                         />
 
                                         <span> Top Places </span>
@@ -229,6 +271,7 @@
                                             src="/assets/svgs/follow.svg"
                                             alt=""
                                             aria-hidden="true"
+                                            loading="eager"
                                         />
                                     </button>
                                 </div>
@@ -248,30 +291,35 @@
                         class="partners__logo"
                         src="/assets/svgs/tripadvisor.svg"
                         alt="Tripadvisor"
+                        loading="lazy"
                     />
 
                     <img
                         class="partners__logo"
                         src="/assets/svgs/expedia.svg"
                         alt="Expedia"
+                        loading="lazy"
                     />
 
                     <img
                         class="partners__logo"
                         src="/assets/svgs/booking.svg"
                         alt="Booking.com"
+                        loading="lazy"
                     />
 
                     <img
                         class="partners__logo"
                         src="/assets/svgs/airbnb.svg"
                         alt="Airbnb"
+                        loading="lazy"
                     />
 
                     <img
                         class="partners__logo"
                         src="/assets/svgs/orbitz.svg"
                         alt="Orbitz"
+                        loading="lazy"
                     />
                 </div>
             </section>
@@ -283,8 +331,9 @@
                         <div class="travel-point__image-wrapper">
                             <img
                                 class="travel-point__main-image"
-                                src="assets/images/travel.png"
+                                src="assets/images/travel.webp"
                                 alt="Traveler with backpack sitting on luggage"
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -335,9 +384,11 @@
 
                             <img
                                 class="travel-point__ticket"
-                                src="assets/images/ticket.png"
+                                src="assets/images/ticket.webp"
                                 alt=""
                                 aria-hidden="true"
+                                height="64"
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -352,9 +403,12 @@
                 <div class="testimonials__background">
                     <img
                         class="testimonials__wave"
-                        src="assets/images/wave.png"
+                        src="assets/images/wave.webp"
                         alt=""
                         aria-hidden="true"
+                        width="1200"
+                        height="400"
+                        loading="lazy"
                     />
                 </div>
 
@@ -399,8 +453,6 @@
                         >
                             <svg
                                 class="testimonials__nav-icon"
-                                width="24"
-                                height="24"
                                 viewBox="0 0 24 24"
                                 fill="none"
                             >
@@ -423,8 +475,9 @@
                                         >
                                             <img
                                                 class="testimonials__avatar"
-                                                src="assets/images/vr.png"
+                                                src="assets/images/vr.webp"
                                                 alt="Mark Smith wearing VR headset"
+                                                loading="lazy"
                                             />
                                         </div>
 
@@ -448,26 +501,31 @@
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                         </div>
 
@@ -487,8 +545,9 @@
                                         >
                                             <img
                                                 class="testimonials__avatar"
-                                                src="assets/images/destination_01.png"
+                                                src="assets/images/destination_01.webp"
                                                 alt="Sarah Johnson"
+                                                loading="lazy"
                                             />
                                         </div>
 
@@ -512,26 +571,35 @@
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                width="20"
+                                                height="20"
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                width="20"
+                                                height="20"
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                         </div>
 
@@ -551,8 +619,9 @@
                                         >
                                             <img
                                                 class="testimonials__avatar"
-                                                src="assets/images/destination_02.png"
+                                                src="assets/images/destination_02.webp"
                                                 alt="Michael Chen"
+                                                loading="lazy"
                                             />
                                         </div>
 
@@ -576,26 +645,31 @@
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                             <img
                                                 class="testimonials__star"
                                                 src="assets/svgs/star.svg"
                                                 alt=""
+                                                loading="lazy"
                                             />
                                         </div>
 
@@ -641,13 +715,117 @@
             </section>
         </main>
 
+        <!-- Spin & Win Modal -->
+        <div
+            class="spin-modal"
+            id="spin-modal"
+            aria-hidden="true"
+            inert
+            role="dialog"
+            aria-labelledby="spin-modal-title"
+        >
+            <div class="spin-modal__overlay"></div>
+
+            <div class="spin-modal__container">
+                <button
+                    class="spin-modal__close"
+                    type="button"
+                    aria-label="Close modal"
+                >
+                    &times;
+                </button>
+
+                <div class="spin-modal__header">
+                    <span class="spin-modal__badge">
+                        <img
+                            src="/assets/svgs/gift.svg"
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                        />
+                        Special Deals
+                    </span>
+                    <h2 id="spin-modal-title" class="spin-modal__title">
+                        Spin & Win!
+                    </h2>
+                    <p class="spin-modal__subtitle" id="spin-modal-subtitle">
+                        Tap the center of the wheel to spin
+                    </p>
+                </div>
+                <div class="spin-modal__loading" id="spin-loading">
+                    <div class="spin-modal__loading-circle">Loading...</div>
+                </div>
+                <div
+                    class="spin-modal__wheel-view"
+                    id="spin-wheel-view"
+                    style="display: none"
+                >
+                    <div class="spin-modal__wheel-wrapper">
+                        <div class="spin-modal__pointer"></div>
+                        <div class="spin-modal__wheel" id="spin-wheel"></div>
+                        <button
+                            class="spin-modal__spin-btn"
+                            id="spin-btn"
+                            type="button"
+                        >
+                            Spin
+                        </button>
+                    </div>
+
+                    <div
+                        class="spin-modal__result"
+                        id="spin-result"
+                        style="display: none"
+                    ></div>
+                    <button
+                        class="spin-modal__view-deals-btn"
+                        id="view-deals-btn"
+                        type="button"
+                        style="display: none"
+                    >
+                        View All Unlocked Deals
+                        <span class="spin-modal__deals-badge" id="deals-badge"
+                            >0</span
+                        >
+                    </button>
+                </div>
+
+                <div
+                    class="spin-modal__deals-view"
+                    id="spin-deals-view"
+                    style="display: none"
+                >
+                    <ul class="spin-modal__deals-list" id="deals-list"></ul>
+                    <button
+                        class="spin-modal__back-btn"
+                        id="back-to-wheel-btn"
+                        type="button"
+                    >
+                        Go Back
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <footer class="footer">
             <div class="footer__bg-grid" aria-hidden="true">
-                <img src="/assets/svgs/footer_grid.svg" alt="" />
+                <img
+                    src="/assets/svgs/footer_grid.svg"
+                    alt=""
+                    width="600"
+                    height="300"
+                    loading="lazy"
+                />
             </div>
 
             <div class="footer__bg-graphic" aria-hidden="true">
-                <img src="/assets/svgs/layers.svg" alt="" />
+                <img
+                    src="/assets/svgs/layers.svg"
+                    alt=""
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                />
             </div>
 
             <div class="footer__container">
@@ -657,6 +835,7 @@
                             src="/assets/svgs/logo.svg"
                             alt=""
                             class="footer__logo-icon"
+                            loading="lazy"
                         />
                         <span class="footer__logo-text">Travlog</span>
                     </a>

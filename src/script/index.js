@@ -4,6 +4,7 @@ import '@splidejs/splide/css';
 import '../styles/main.scss';
 import '../script/navigation.js';
 import '../script/footer.js';
+import '../script/spin-wheel.js';
 
 const splideElement = document.querySelector('.splide');
 if (splideElement) {
