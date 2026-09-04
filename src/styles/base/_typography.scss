@@ -7,7 +7,6 @@
     map.get(variables.$font-configs, inter),
     variables.$font-weight-range
 );
-
 @include mixins.font-face(
     map.get(variables.$font-configs, circular-std),
     variables.$font-weight-range
@@ -19,7 +18,6 @@ body {
         function.px-to-rem(16px),
         regular
     );
-
     color: variables.$color-text;
 }
 
@@ -33,7 +31,11 @@ h6 {
     color: variables.$color-heading;
 }
 
-h1 {
+h1,
+section h1,
+article h1,
+aside h1,
+nav h1 {
     font-size: function.px-to-rem(32px);
     font-weight: map.get(variables.$font-weights, bold);
 }
@@ -44,7 +46,6 @@ a {
         function.px-to-rem(16px),
         medium
     );
-
     text-decoration: none;
 }
 

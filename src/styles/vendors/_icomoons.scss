@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use '../abstracts/variables' as var;
+
 @font-face {
     font-family: 'icomoon';
     src: url('/assets/fonts/icomoon/icomoon.eot?52jsyj');
@@ -9,14 +12,13 @@
         url('/assets/fonts/icomoon/icomoon.svg?52jsyj#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
-    font-display: block;
+    font-display: swap;
 }
 
 [class^='icon-'],
 [class*=' icon-'] {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'icomoon' !important;
-    speak: never;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -43,4 +45,18 @@
 }
 .icon-twitter:before {
     content: '\ea96';
+}
+
+.icon-arrow-circle-down9-1 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23191825' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9.5'/%3E%3Cpath d='M8.5 10.5l3.5 3.5 3.5-3.5'/%3E%3C/svg%3E");
+
+    &::before {
+        content: none !important;
+    }
 }
