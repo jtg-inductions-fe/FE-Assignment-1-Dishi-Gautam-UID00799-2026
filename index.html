@@ -1,10 +1,111 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Title</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="src/styles/main.scss" />
+
+        <meta
+            name="description"
+            content="Travlog - Discover amazing destinations and special travel deals."
+        />
+        <meta
+            name="keywords"
+            content="travel, destinations, vacation, travel deals, Travlog"
+        />
+        <meta name="author" content="Dishi Gautam" />
+        <meta name="robots" content="index, follow" />
+
+        <title>Travlog - Explore the World</title>
     </head>
-    <body></body>
+
+    <body>
+        <header class="header">
+            <nav class="navbar" aria-label="Main navigation">
+                <a href="/" class="navbar__logo" aria-label="Travlog home">
+                    <img
+                        class="navbar__logo-image"
+                        src="/assets/svgs/logo.svg"
+                        alt="Travlog"
+                    />
+                </a>
+
+                <button
+                    class="navbar__menu-btn"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="navigation-drawer"
+                >
+                    <span class="icon-menu" aria-hidden="true"></span>
+                </button>
+
+                <div
+                    id="navigation-drawer"
+                    class="navbar__menu-drawer"
+                    aria-hidden="true"
+                >
+                    <div class="navbar__menu-header">
+                        <span class="navbar__menu-title">Menu</span>
+
+                        <button
+                            class="navbar__menu-close-btn"
+                            type="button"
+                            aria-label="Close navigation menu"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="navbar__nav-links">
+                        <a href="/" class="navbar__link" aria-current="page"
+                            >Home</a
+                        >
+                        <a href="/discover" class="navbar__link">Discover</a>
+                        <a href="/special-deals" class="navbar__link"
+                            >Special Deals</a
+                        >
+                        <a href="/contact" class="navbar__link">Contact</a>
+                    </div>
+
+                    <div
+                        class="navbar__action-buttons navbar__action-buttons--drawer"
+                    >
+                        <button
+                            type="button"
+                            class="navbar__login button button--ghost"
+                        >
+                            Log In
+                        </button>
+
+                        <button
+                            type="button"
+                            class="navbar__signup button button--filled"
+                        >
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="navbar__action-buttons navbar__action-buttons--header"
+                >
+                    <button
+                        type="button"
+                        class="navbar__login button button--ghost"
+                    >
+                        Log In
+                    </button>
+
+                    <button
+                        type="button"
+                        class="navbar__signup button button--filled"
+                    >
+                        Sign Up
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <script type="module" src="/src/script/index.js"></script>
+    </body>
 </html>

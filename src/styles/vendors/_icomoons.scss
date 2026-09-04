@@ -1,15 +1,23 @@
 @use 'sass:map';
 @use '@styles/abstracts/variables' as var;
-@use '@styles/abstracts/mixins' as mixins;
 
-@include mixins.font-face(
-    map.get(var.$font-configs, icomoon),
-    map.get(var.$font-weights, regular)
-);
+@font-face {
+    font-family: 'icomoon';
+    src:
+        url('/assets/fonts/icomoon/fonts/icomoon.eot')
+            format('embedded-opentype'),
+        url('/assets/fonts/icomoon/fonts/icomoon.woff') format('woff'),
+        url('/assets/fonts/icomoon/fonts/icomoon.ttf') format('truetype'),
+        url('/assets/fonts/icomoon/fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
 
 [class^='icon-'],
 [class*=' icon-'] {
-    font-family: 'icomoon';
+    display: inline-block;
+    font-family: 'icomoon' !important;
     font-style: normal;
     font-weight: map.get(var.$font-weights, regular);
     line-height: 1;
@@ -17,8 +25,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-th-menu::before {
-    content: '\e900';
+.icon-menu::before {
+    content: '\e902';
+}
+
+.icon-arrow-circle-down9-1::before {
+    content: '\e901';
 }
 
 .icon-facebook::before {

@@ -4,11 +4,14 @@
 @use '@styles/abstracts/variables' as variables;
 @use '@styles/abstracts/mixins' as mixins;
 
-@include mixins.font-face(map.get(variables.$font-configs, inter), 100 900);
+@include mixins.font-face(
+    map.get(variables.$font-configs, inter),
+    variables.$font-weight-range
+);
 
 @include mixins.font-face(
     map.get(variables.$font-configs, circular-std),
-    100 900
+    variables.$font-weight-range
 );
 
 body {
